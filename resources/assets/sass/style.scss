@@ -143,3 +143,52 @@ body {
   -webkit-align-items: center;
   align-items: center;
 }
+.btn-read-more{
+  cursor: pointer;
+}
+.btn-read-more:hover{
+  color: #065a74 !important;
+}
+#summary {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#summary p.collapse:not(.show) {
+  height: 42px !important;
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+#summary p.collapsing {
+  min-height: 42px !important;
+}
+
+#summary a.collapsed:after  {
+  content: '+ بیشتر';
+}
+
+#summary a:not(.collapsed):after {
+  content: '- کمتر';
+}
+.list-group-item{
+  font-size:0.8em;
+}
+.card-info{
+  font-size: 0.8em;
+}
+ #project_card.card{
+    border:2px #1c7430 solid;
+
+  }
+ .alert{
+   height: 2em !important;
+   vertical-align: baseline;
+ }
+ .hide{
+   visibility: hidden;
+ }
+
