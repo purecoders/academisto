@@ -1,0 +1,141 @@
+@font-face {
+  font-family: 'vazir';
+  src: url("../fonts/vazir/Vazir.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/vazir/Vazir.eot?#iefix") format("embedded-opentype"), url("../fonts/vazir/Vazir.woff2") format("woff2"), url("../fonts/vazir/Vazir.woff") format("woff"), url("../fonts/vazir/Vazir.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: 'afsane';
+  src: url("../fonts/AAfsaneh.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+
+body {
+  background-color: #29eaea;
+  font-family: vazir;
+  background-color: #29eaea;
+}
+
+#grid {
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+  padding: 0;
+  /* Clears unordered list default of 40px */
+}
+
+.containerr {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top center;
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #1ae2f1;
+}
+
+.fixed-links {
+  list-style-type: none;
+  padding: -15px;
+  margin-right: 10px;
+}
+
+.fixed-links li {
+  list-style-image: url("../img/list-item.png");
+  color: #ed1c66;
+}
+
+.fixed-links li a {
+  display: inline-block;
+  height: 50px;
+  padding-right: 10px;
+  padding-top: -20px;
+  vertical-align: 35%;
+  color: #ed1c66;
+  font-size: 1.5em;
+  text-decoration: none;
+  text-align: center;
+}
+
+.fixed-links li a:hover {
+  color: #491424;
+}
+
+.testt {
+  color: #ed1c66 !important;
+  font-size: 1.5em;
+}
+
+.form-check {
+  margin-right: 15px;
+}
+
+/* equal card height */
+.row-equal > div[class*='col-'] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+.row-equal .card {
+  width: 100%;
+}
+
+/* ensure equal card height inside carousel */
+.carousel-inner > .row-equal.active,
+.carousel-inner > .row-equal.next,
+.carousel-inner > .row-equal.prev {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* prevent flicker during transition */
+.carousel-inner > .row-equal.active.left,
+.carousel-inner > .row-equal.active.right {
+  opacity: 0.5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* control image height */
+.card-img-top-250 {
+  max-height: 250px;
+  overflow: hidden;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}

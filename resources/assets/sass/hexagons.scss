@@ -1,0 +1,242 @@
+body {
+  background-color: #29eaea;
+  font-family: vazir;
+  overflow-y: hidden;
+}
+
+@import "resources/assets/sass/hex-style.scss";
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(26, 226, 241, 0.47);
+  z-index: 50;
+
+}
+.hexGrid{
+  margin:5px 0px !important;
+}
+
+
+.hover-able-hex:hover{
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.87) !important;
+}
+
+
+#myHexGrid{
+  //position: absolute;
+}
+
+#hex3 {
+  z-index: 100;
+  position: relative;
+  bottom: 465px;
+  width: 250px;
+  height: 250px;
+  transform: rotate(90deg);
+}
+
+#color1 {
+  background-color: #ffffff;
+}
+
+.main-hexagon-wrapper {
+  text-align: center;
+  z-index: 51;
+  position: fixed;
+  bottom:50%;
+  right: 0;
+  display: inline-block;
+  transform: rotate(60deg);
+}
+
+.main-hexagon {
+  height: 100%;
+  width: calc(100% * 0.57735);
+  display: inline-block;
+
+}
+
+.main-hexagon:before {
+  position: absolute;
+  top: 0;
+  right: calc((100% / 2) - ((100% * 0.57735) / 2));
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  transform: rotateZ(60deg);
+}
+
+.main-hexagon:after {
+  position: absolute;
+  top: 0;
+  right: calc((100% / 2) - ((100% * 0.57735) / 2));
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  transform: rotateZ(-60deg);
+}
+
+//
+//@media (min-width: 576px) {
+//  body {
+//    background-color: #740528;
+//  }
+//  #myHexGrid {
+//    height: 28.30909091em;
+//    width: 40em;
+//  }
+//  #myHexGrid .hexGrid {
+//    height: 28.30909091em;
+//    width: 40em;
+//    grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+//    grid-template-rows: repeat(9, 3.14545455em);
+//  }
+//}
+.logo{
+  z-index: 1200;
+  height: 144px;
+  width: 271px;
+  position: relative;
+  transform: rotate(-90deg);
+  top: 50px;
+  right: 60% ;
+}
+@media (min-width: 0px) {
+  body{
+    background-color: #1d2124;
+
+  }
+  #myHexGrid{
+    //visibility: hidden ;
+  }
+
+}
+
+@media (min-width: 576px) {
+  body {
+    background-color: #9d40cc;
+  }
+  #myHexGrid {
+    visibility: visible ;
+    height: 24.77045455em;
+    width: 35em;
+  }
+  #myHexGrid .hexGrid {
+    height: 24.77045455em;
+    width: 35em;
+    grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+    grid-template-rows: repeat(9, 2.75227273em);
+  }
+  .logo{
+    height: 72px;
+    width: 135px;
+    top: 34px;
+    right: 40% ;
+  }
+  #hex3 {
+    bottom: 230px;
+    width: 140px;
+    height: 140px;
+  }
+  #background{
+    height: 214px;
+  }
+
+}
+@media (min-width: 768px) {
+  body {
+    background-color: #727411;
+  }
+  #myHexGrid {
+    visibility: visible ;
+    height: 35.38636364em;
+    width: 50em;
+  }
+  #myHexGrid .hexGrid {
+    height: 35.38636364em;
+    width: 50em;
+    grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+    grid-template-rows: repeat(9, 3.93181818em);
+  }
+  .logo{
+    height: 96px;
+    width: 180px;
+    top: 38px;
+    right: 50% ;
+  }
+  #hex3 {
+    bottom: 313px;
+    width: 170px;
+    height: 170px;
+  }
+  #background{
+    height: 282px;
+  }
+}
+@media (min-width: 992px) {
+  body {
+    background-color: #74152c;
+  }
+  #myHexGrid {
+    visibility: visible ;
+    height: 46.00227273em;
+    width: 65em;
+  }
+  #myHexGrid .hexGrid {
+    height: 46.00227273em;
+    width: 65em;
+    grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+    grid-template-rows: repeat(9, 5.11136364em);
+  }
+  .logo{
+    height: 124.8px;
+    width: 234px;
+    top: 43px;
+    right: 55% ;
+  }
+  #hex3 {
+    bottom: 415px;
+    width: 220px;
+    height: 220px;
+  }
+  #background {
+    height: 350px;
+  }
+
+}
+@media (min-width: 1200px) {
+  body {
+    background-color: #022674;
+  }
+  #myHexGrid {
+    visibility: visible ;
+    height: 49.54090909em;
+    width: 70em;
+  }
+  #myHexGrid .hexGrid {
+    height: 49.54090909em;
+    width: 70em;
+    grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+    grid-template-rows: repeat(9, 5.50454545em);
+  }
+  .logo{
+    height: 144px;
+    width: 271px;
+    top: 50px;
+    right: 60% ;
+  }
+  #hex3 {
+    bottom: 465px;
+    width: 250px;
+    height: 250px;
+  }
+  #background{
+    height: 372px;
+  }
+}
