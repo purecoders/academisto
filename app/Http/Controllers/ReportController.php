@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+    $this->middleware('super_admin', ['only' => [ 'index', 'show', 'destroy']]);
+  }
+
 
   public function index()
   {

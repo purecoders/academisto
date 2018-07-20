@@ -40,3 +40,8 @@ Route::get('user-panel',['middleware'=>'auth',function (){
 Route::get('user-ads',['middleware'=>'auth',function (){
     return view('user.ads');
 }])->name('user-ads');
+
+
+Route::get('/super-admin-panel', function (){
+  //you must return 'admin panel view';
+})->middleware(['auth', 'super_admin']);

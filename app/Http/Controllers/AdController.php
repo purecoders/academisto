@@ -9,9 +9,18 @@ use Illuminate\Http\Request;
 class AdController extends Controller
 {
 
+  public function __construct()
+  {
+    //$this->middleware('auth');
+    //$this->middleware('auth', ['only' => ['create', 'update','store', 'edit', 'delete']]);
+    $this->middleware('auth', ['except' => ['index', 'show']]);
+  }
+
+
     public function index()
     {
       $ads = Ad::all();
+      echo 'ad';
     }
 
 
@@ -124,9 +133,6 @@ class AdController extends Controller
       $ad= User::findOrFail($id);
       $ad->delete();
     }
-
-
-
 
 
 

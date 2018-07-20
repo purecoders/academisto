@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 class SitePayController extends Controller
 {
 
+
+
+  public function __construct()
+  {
+    $this->middleware('auth', 'super_admin');
+  }
+
   public function index()
   {
     $site_pays = SitePay::all();
