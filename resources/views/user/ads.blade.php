@@ -6,62 +6,122 @@
         <div class="swiper-container" dir="rtl">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div class="card">
+                    <div class="card rtl">
                         <img class="card-img-top  card-img-top-250" src="assets/img/logo.png" alt="Card image cap">
-                        <div class="card-body">
+                        <div class="card-body pb-1">
                             <h5 class="card-title">کتاب شیمی</h5>
-                            <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                از
-                                طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</p>
-                            <a href="#" class="btn btn-danger">حذف آگهی</a>
+                            <div id="summary">
+                                <p class="collapse" id="collapseSummary1">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+
+                                </p>
+                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary1" aria-expanded="false"
+                                   aria-controls="collapseSummary"></a>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush p-0 rtl">
+                            <li class="list-group-item">شهر: تهران</li>
+                            <li class="list-group-item">دانشگاه: دانشگاه شهید مدنی آذربایجان</li>
+                        </ul>
+                        <div class="card-footer p-1">
+                            <span class="card-info pr-4">قیمت:10000 تومان</span>
+                            <a href="#" class="btn btn-danger mr-auto">حذف آگهی</a>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div class="card">
+                    <div class="card rtl">
                         <img class="card-img-top  card-img-top-250" src="assets/img/logo.png" alt="Card image cap">
-                        <div class="card-body">
+                        <div class="card-body pb-1">
                             <h5 class="card-title">کتاب شیمی</h5>
-                            <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                از
-                                طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</p>
-                            <a href="#" class="btn btn-danger">حذف آگهی</a>
+                            <div id="summary">
+                                <p class="collapse" id="collapseSummary2">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+
+                                </p>
+                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary2" aria-expanded="false"
+                                   aria-controls="collapseSummary"></a>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush p-0 rtl">
+                            <li class="list-group-item">شهر: تهران</li>
+                            <li class="list-group-item">دانشگاه: دانشگاه شهید مدنی آذربایجان</li>
+                        </ul>
+                        <div class="card-footer p-1">
+                            <span class="card-info pr-4">قیمت:10000 تومان</span>
+                            <a href="#" class="btn btn-danger mr-auto">حذف آگهی</a>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div class="card">
+                    <div class="card rtl">
                         <img class="card-img-top  card-img-top-250" src="assets/img/logo.png" alt="Card image cap">
-                        <div class="card-body">
+                        <div class="card-body pb-1">
                             <h5 class="card-title">کتاب شیمی</h5>
-                            <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                از
-                                طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</p>
-                            <a href="#" class="btn btn-danger">حذف آگهی</a>
+                            <div id="summary">
+                                <p class="collapse" id="collapseSummary3">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+
+                                </p>
+                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary3" aria-expanded="false"
+                                   aria-controls="collapseSummary"></a>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush p-0 rtl">
+                            <li class="list-group-item">شهر: تهران</li>
+                            <li class="list-group-item">دانشگاه: دانشگاه شهید مدنی آذربایجان</li>
+                        </ul>
+                        <div class="card-footer p-1">
+                            <span class="card-info pr-4">قیمت:10000 تومان</span>
+                            <a href="#" class="btn btn-danger mr-auto">حذف آگهی</a>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div class="card">
+                    <div class="card rtl">
                         <img class="card-img-top  card-img-top-250" src="assets/img/logo.png" alt="Card image cap">
-                        <div class="card-body">
+                        <div class="card-body pb-1">
                             <h5 class="card-title">کتاب شیمی</h5>
-                            <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                از
-                                طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</p>
-                            <a href="#" class="btn btn-danger">حذف آگهی</a>
+                            <div id="summary">
+                                <p class="collapse" id="collapseSummary4">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+
+                                </p>
+                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary4" aria-expanded="false"
+                                   aria-controls="collapseSummary"></a>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush p-0 rtl">
+                            <li class="list-group-item">شهر: تهران</li>
+                            <li class="list-group-item">دانشگاه: دانشگاه شهید مدنی آذربایجان</li>
+                        </ul>
+                        <div class="card-footer p-1">
+                            <span class="card-info pr-4">قیمت:10000 تومان</span>
+                            <a href="#" class="btn btn-danger mr-auto">حذف آگهی</a>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div class="card">
+                    <div class="card rtl">
                         <img class="card-img-top  card-img-top-250" src="assets/img/logo.png" alt="Card image cap">
-                        <div class="card-body">
+                        <div class="card-body pb-1">
                             <h5 class="card-title">کتاب شیمی</h5>
-                            <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-                                از
-                                طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله</p>
-                            <a href="#" class="btn btn-danger">حذف آگهی</a>
+                            <div id="summary">
+                                <p class="collapse" id="collapseSummary5">
+                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+
+                                </p>
+                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary5" aria-expanded="false"
+                                   aria-controls="collapseSummary"></a>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush p-0 rtl">
+                            <li class="list-group-item">شهر: تهران</li>
+                            <li class="list-group-item">دانشگاه: دانشگاه شهید مدنی آذربایجان</li>
+                        </ul>
+                        <div class="card-footer p-1">
+                            <span class="card-info pr-4">قیمت:10000 تومان</span>
+                            <a href="#" class="btn btn-danger mr-auto">حذف آگهی</a>
                         </div>
                     </div>
                 </div>
@@ -90,8 +150,15 @@
                     <div class="form-group row">
                         <label for="inputDescription" class="col-sm-2 col-form-label">توضیحات:</label>
                         <div class="col-sm-10">
-                            <input type="text" name="decs" class="form-control" id="inputDescription"
-                                   placeholder="توضیحات آگهی">
+                            <textarea type="text" name="decs" class="form-control" id="inputDescription" rows="4"
+                                      placeholder="توضیحات آگهی"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPrice" class="col-sm-2 col-form-label">قیمت:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="price" class="form-control" id="inputPrice"
+                                   placeholder="قیمت (تومان)">
                         </div>
                     </div>
                     <div class="form-group row">
