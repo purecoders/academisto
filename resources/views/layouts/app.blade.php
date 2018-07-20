@@ -97,10 +97,6 @@
             slidesPerView: 4,
             spaceBetween: 10,
             // init: false,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
