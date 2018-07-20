@@ -40,3 +40,13 @@ Route::get('user-panel',['middleware'=>'auth',function (){
 Route::get('user-ads',['middleware'=>'auth',function (){
     return view('user.ads');
 }])->name('user-ads');
+Route::get('user-orders',['middleware'=>'auth',function (){
+    return view('user.orders');
+}])->name('user-orders');
+Route::get('user-order-edit/{id}',['middleware'=>'auth',function ($id){
+    return view('user.edit_order',compact('id'));
+}])->name('user-order-edit');
+Route::get('/test',function (){
+
+    return view('test');
+});
