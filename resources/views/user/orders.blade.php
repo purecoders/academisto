@@ -19,8 +19,9 @@
         <div class="swiper-container" dir="rtl">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div id="project_card" class="card rtl border-primary">
+                   <div id="project_card" class="card rtl border-primary">
                         <div class="card-body">
+
                             <h5 class="card-title">پروژه 1</h5>
                             <div id="summary">
                                 <p class="card-text collapse" id="collapseSummary1">
@@ -31,7 +32,7 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between p-0">
-                        <item class="p-1 m-1 card-info"></item>
+                        <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-secondary">مشاهده جزئیات</a>
                         <alert class="alert alert-danger p-1 m-1">فوری</alert>
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">

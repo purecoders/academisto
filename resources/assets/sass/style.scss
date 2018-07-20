@@ -184,6 +184,11 @@ body {
     border:2px #1c7430 solid;
 
   }
+#project_card{
+  .card-body:hover{
+    cursor: pointer;
+  }
+}
  .alert{
    height: 2em !important;
    vertical-align: baseline;

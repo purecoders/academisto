@@ -46,6 +46,9 @@ Route::get('user-orders',['middleware'=>'auth',function (){
 Route::get('user-order-edit/{id}',['middleware'=>'auth',function ($id){
     return view('user.edit_order',compact('id'));
 }])->name('user-order-edit');
+Route::get('user-order-detail/{id}',['middleware'=>'auth',function ($id){
+    return view('user.detail_order',compact('id'));
+}])->name('user-order-detail');
 Route::get('/test',function (){
 
     return view('test');

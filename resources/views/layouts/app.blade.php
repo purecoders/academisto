@@ -20,9 +20,9 @@
     <!-- Styles -->
     {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     {{--<link href="{{ asset('css/style.css') }}" rel="stylesheet">--}}
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/swiper.min.css')}}">
 
 </head>
 <body>
@@ -87,8 +87,8 @@
         </main>
     </div>
 </body>
-<script src="assets/js/bundle.js"></script>
-<script src="assets/js/swiper.min.js"></script>
+<script src="{{asset('assets/js/bundle.js')}}"></script>
+<script src="{{asset('assets/js/swiper.min.js')}}"></script>
 <script>
 
     $(document).ready(function() {
@@ -120,18 +120,7 @@
                 }
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
     });
+
 </script>
 </html>
