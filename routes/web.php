@@ -57,6 +57,20 @@ Route::get('user-requests',['middleware'=>'auth',function (){
     return view('user.user_requests');
 }])->name('user-requests');
 
+Route::get('user-cv',function (){
+    return view('user.cv');
+})->middleware('auth')->name('user-cv');
+
+Route::get('user-finance',function (){
+    return view('user.finance');
+})->middleware('auth')->name('user-finance');
+
+Route::get('user-ticket',function (){
+    return view('user.ticket');
+})->middleware('auth')->name('user-ticket');
+
+
+
 Route::get('/test',function (){
     return view('test');
 });
