@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -12,6 +13,42 @@ class ProjectController extends Controller
   {
     $this->middleware('auth', ['except' => ['index', 'show']]);
   }
+
+
+  public function payment(){
+
+  }
+
+
+  public function userProjectEdit($id){
+    $user = Auth::user();
+    $project = Project::findOrFail($id);
+    if($project->user_id == $user->id){
+
+      return view('user.edit_order',compact('project'));
+    }else{
+      return redirect('/user-orders');
+    }
+
+
+  }
+
+  public function update2(Request $request){
+    $user = Auth::user();
+    $id = $request->input('id');
+    $project = Project::findOrFail($id);
+    if($project->user_id == $user->id){
+      $project->title = $request->input('title');
+      $project->description = $request->input('description');
+      $project->user_price = $request->input('user_price');
+      $project->save();
+    }
+
+    return redirect('/user-orders');
+
+  }
+
+
 
   public function index()
   {
@@ -61,15 +98,15 @@ class ProjectController extends Controller
   public function update(Request $request, $id)
   {
 
-    $this->validate($request,[
-      'user_id'     =>'required',
-      'title'       =>'required',
-      'description'       =>'required',
-      'user_price'       =>'required',
-      'is_immediate'       =>'required',
-      'is_started'       =>'required',
-      'is_finished'       =>'required',
-    ]);
+//    $this->validate($request,[
+//      'user_id'     =>'required',
+//      'title'       =>'required',
+//      'description'       =>'required',
+//      'user_price'       =>'required',
+//      'is_immediate'       =>'required',
+//      'is_started'       =>'required',
+//      'is_finished'       =>'required',
+//    ]);
 
     $project = Project::findOrFail($id);
     $project->update($request->all());

@@ -1,5 +1,6 @@
 @extends('user.user_panel')
-@section('ads')
+{{--@section('ads')--}}
+@section('user_info')
     {{--User Ads List--}}
     <section>
         <h5>آخرین آگهی های شما:</h5>
@@ -15,11 +16,11 @@
                             <div class="card-body pb-1">
                                 <h5 class="card-title">{{$ad->title}}</h5>
                                 <div id="summary">
-                                    <p class="collapse" id="collapseSummary1">
+                                    <p class="collapse" id="sum1{{$ad->id}}">
                                        {{$ad->description}}
 
                                     </p>
-                                    <a class="collapsed" data-toggle="collapse" href="#collapseSummary1" aria-expanded="false"
+                                    <a class="collapsed" data-toggle="collapse" href="#sum1{{$ad->id}}" aria-expanded="false"
                                        aria-controls="collapseSummary"></a>
                                 </div>
                             </div>

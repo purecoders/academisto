@@ -48,22 +48,30 @@ Route::get('user-ads','UserController@getUserAds')->name('user-ads')->middleware
 //  return view('user.ads');
 //}])->name('user-ads');
 
-Route::get('user-orders',['middleware'=>'auth',function (){
-  return view('user.orders');
-}])->name('user-orders');
+Route::get('user-orders','UserController@getUserOrders')->name('user-orders')->middleware('auth');
+Route::post('project/accept', 'ProjectRequestController@startProject')->name('project-request-accept')->middleware('auth');
+Route::post('project/deny', 'ProjectRequestController@denyRequest')->name('project-request-deny')->middleware('auth');
+Route::get('user-order-edit/{id}', 'ProjectController@userProjectEdit')->name('user-order-edit')->middleware('auth');
+Route::post('project-update', 'ProjectController@update2')->name('project-update')->middleware('auth');
+Route::get('user-order-detail/{id}','UserController@getUserSpecialProjectDetail')->name('user-order-detail')->middleware('auth');
 
-Route::get('user-order-edit/{id}',['middleware'=>'auth',function ($id){
-  return view('user.edit_order',compact('id'));
-}])->name('user-order-edit');
 
-Route::get('user-order-detail/{id}',['middleware'=>'auth',function ($id){
-  return view('user.detail_order',compact('id'));
-}])->name('user-order-detail');
+
+Route::get('user-requests','UserController@getUserProjectRequests')->name('user-requests')->middleware('auth');
+
+
+
+
+
 
 Route::get('/test',function (){
 
   return view('test');
 });
+
+
+
+
 
 
 Route::get('/super-admin-panel', function (){

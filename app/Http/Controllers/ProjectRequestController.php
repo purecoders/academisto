@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use App\ProjectRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectRequestController extends Controller
 {
@@ -12,6 +14,46 @@ class ProjectRequestController extends Controller
   public function __construct()
   {
     $this->middleware('auth');
+  }
+
+  public function startProject(Request $request){
+    $user = Auth::user();
+
+    $id = $request->input('project_request_id');
+    $project_request = ProjectRequest::findOrFail($id);
+    $project = Project::findOrFail($project_request->project_id);
+    if($project->user_id == $user->id){
+      $project_request->is_accepted = 1;
+      $project_request->save();
+
+      $project->is_started = 1;
+      $project->save();
+
+      $project_requests = ProjectRequest::where('project_id', '=', $project_request->project_id)->get();
+      foreach ($project_requests as $project_request){
+        if($project_request->id != $id) {
+          $project_request->delete();
+        }
+      }
+    }
+
+    return redirect('/user-order-detail/'.$id);
+
+  }
+
+
+  public function denyRequest(Request $request){
+    $user = Auth::user();
+    $id = $request->input('project_request_id');
+
+    $project_request = ProjectRequest::findOrFail($id);
+    $project = Project::findOrFail($project_request->project_id);
+    if($project->user_id == $user->id){
+      $project_request->delete();
+    }
+
+    return redirect('/user-order-detail/'.$id);
+
   }
 
   public function index()
@@ -56,12 +98,7 @@ class ProjectRequestController extends Controller
 
   public function update(Request $request, $id)
   {
-    $this->validate($request,[
-      'user_id'     =>'required',
-      'project_id'       =>'required',
-      'description'       =>'required',
-      'price'       =>'required',
-    ]);
+
 
 
     $project_request = ProjectRequest::findOrFail($id);

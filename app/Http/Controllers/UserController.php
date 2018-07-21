@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\Project;
 use App\State;
 use App\Univ;
 use App\User;
@@ -25,6 +26,44 @@ class UserController extends Controller
       return view('user.ads', compact(['ads', 'states', 'cities', 'univs']));
     }
 
+
+    public function getUserOrders(){
+      $user = Auth::user();
+      $projects = $user->projects;
+      return view('user.orders',compact(['projects','user']));
+    }
+
+    public function getUserSpecialProjectDetail($id){
+
+      $user = Auth::user();
+      $projects = $user->projects;
+      $isForThisUser = false;
+      foreach ($projects as $project){
+        if($project->id == $id){
+          $isForThisUser = true;
+          break;
+        }
+      }
+
+      if($isForThisUser) {
+        $project = Project::findOrFail($id);
+        $project_requests = $project->requests;
+        $requests = array();
+        foreach ($project_requests as $project_request){
+          $requests[] = ["project_request"=>$project_request, "user"=>User::findOrFail($project_request->user_id)];
+        }
+
+        return view('user.detail_order', compact(['id', 'project', 'requests']));
+      }else{
+        return redirect('/user-orders');
+      }
+    }
+
+    public function getUserProjectRequests(){
+      $user = Auth::user();
+      $project_requests = $user->projectRequests;
+      return view('user.user_requests', compact('project_requests'));
+    }
 
     public function index()
     {

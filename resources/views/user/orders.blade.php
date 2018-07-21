@@ -1,5 +1,5 @@
 @extends('user.user_panel')
-@section('ads')
+@section('user_info')
     {{--User Project Order List--}}
     <section>
         <div class="row">
@@ -18,117 +18,45 @@
 
         <div class="swiper-container" dir="rtl">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                   <div id="project_card" class="card rtl border-primary">
-                        <div class="card-body">
+                @foreach($projects as $project)
+                    <div class="swiper-slide">
+                        <div id="project_card"
+                             @if($project->is_finished == 1 && $project->is_started == 1)
+                                class="card rtl border-success"
+                             @elseif($project->is_started == 1 && $project->is_finished == 0)
+                                class="card rtl border-warning"
+                             @elseif($project->is_started == 0)
+                                class="card rtl border-primary"
+                                     @endif>
+                            <div class="card-body">
+                                <h5 class="card-title">{{$project->title}}</h5>
+                                <div id="summary">
+                                    <p class="card-text collapse" id="sum1{{$project->id}}">
+                                        {{$project->description}}
+                                    </p>
+                                    <a class="collapsed" data-toggle="collapse" href="#sum1{{$project->id}}" aria-expanded="false"
+                                       aria-controls="collapseSummary"></a>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between p-0">
+                                <a href="{{route('user-order-detail',$project->id)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                                @if($project->is_immediate == 1)
 
-                            <h5 class="card-title">پروژه 1</h5>
-                            <div id="summary">
-                                <p class="card-text collapse" id="collapseSummary1">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-                                </p>
-                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary1" aria-expanded="false"
-                                   aria-controls="collapseSummary"></a>
+                                  <alert class="alert alert-danger p-1 m-1">فوری</alert>
+                                @endif
+                            </div>
+                            <div class="card-footer d-flex justify-content-between p-1">
+                                <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
+                                <a href="#" class="btn btn-danger">حذف پروژه</a>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between p-0">
-                        <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-secondary">مشاهده جزئیات</a>
-                        <alert class="alert alert-danger p-1 m-1">فوری</alert>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between p-1">
-                            <a href="https://www.google.com" class="btn btn-primary">ویرایش پروژه</a>
-                            <a href="#" class="btn btn-danger">حذف پروژه</a>
-                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div id="project_card" class="card rtl border-warning">
-                        <div class="card-body">
-                            <h5 class="card-title">پروژه 1</h5>
-                            <div id="summary">
-                                <p class="card-text collapse" id="collapseSummary2">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-                                </p>
-                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary2" aria-expanded="false"
-                                   aria-controls="collapseSummary"></a>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between p-0">
-                            <item class="p-1 m-1 card-info"></item>
-                            <alert class="alert alert-danger p-1 m-1 hide">فوری</alert>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between p-1">
-                            <a href="https://www.google.com" class="btn btn-primary">ویرایش پروژه</a>
-                            <a href="#" class="btn btn-danger">حذف پروژه</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div id="project_card" class="card rtl border-primary">
-                        <div class="card-body">
-                            <h5 class="card-title">پروژه 1</h5>
-                            <div id="summary">
-                                <p class="card-text collapse" id="collapseSummary3">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-                                </p>
-                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary3" aria-expanded="false"
-                                   aria-controls="collapseSummary"></a>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between p-0">
-                            <item class="p-1 m-1 card-info"></item>
-                            <alert class="alert alert-danger p-1 m-1 hide">فوری</alert>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between p-1">
-                            <a href="https://www.google.com" class="btn btn-primary">ویرایش پروژه</a>
-                            <a href="#" class="btn btn-danger">حذف پروژه</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div id="project_card" class="card rtl border-success">
-                        <div class="card-body">
-                            <h5 class="card-title">پروژه 1</h5>
-                            <div id="summary">
-                                <p class="card-text collapse" id="collapseSummary4">
-                                     چاپ و با استفاده از طراحان گرافیک است.
-                                </p>
-                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary4" aria-expanded="false"
-                                   aria-controls="collapseSummary"></a>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between p-0">
-                            <item class="p-1 m-1 card-info"></item>
-                            <alert class="alert alert-danger p-1 m-1">فوری</alert>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between p-1">
-                            <a href="https://www.google.com" class="btn btn-primary">ویرایش پروژه</a>
-                            <a href="#" class="btn btn-danger">حذف پروژه</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div id="project_card" class="card rtl border-warning">
-                        <div class="card-body">
-                            <h5 class="card-title">پروژه 1</h5>
-                            <div id="summary">
-                                <p class="card-text collapse" id="collapseSummary5">
-                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
-                                </p>
-                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary5" aria-expanded="false"
-                                   aria-controls="collapseSummary"></a>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between p-0">
-                            <item class="p-1 m-1 card-info"></item>
-                            <alert class="alert alert-danger p-1 m-1 hide">فوری</alert>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between p-1">
-                            <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
-                            <a href="#" class="btn btn-danger">حذف پروژه</a>
-                        </div>
-                    </div>
-                </div>
+                    @endforeach
+
+
+
+
+
             </div>
             <!-- Add Pagination -->
             <!-- Add Navigation -->
@@ -141,7 +69,8 @@
     <section>
         <div class="row">
             <div class="col-md-6">
-                <form class="rtl">
+
+                <form class="rtl" action="{{route('project.store')}}">
                     <div class="form-group row">
                         <label for="inputTitle" class="col-sm-2 col-form-label">عنوان:</label>
                         <div class="col-sm-10">
@@ -152,7 +81,7 @@
                     <div class="form-group row">
                         <label for="inputDescription" class="col-sm-2 col-form-label">توضیحات:</label>
                         <div class="col-sm-10">
-                            <textarea name="decs" class="form-control" id="inputDescription" rows="4"
+                            <textarea name="description" class="form-control" id="inputDescription" rows="4"
                                       placeholder="توضیحات پروژه"></textarea>
                         </div>
                     </div>
@@ -181,9 +110,13 @@
                         </div>
                     </div>
 
+                    {{csrf_field()}}
+
                     <div class="form-group row">
                         <div class="col-sm-10">
                             <button type="submit" class="btn btn-success">ارسال و پرداخت</button>
+
+                            goto payment page
                         </div>
                     </div>
                 </form>
