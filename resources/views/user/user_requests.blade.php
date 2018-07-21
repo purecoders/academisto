@@ -20,9 +20,10 @@
         <div class="swiper-container" dir="rtl">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <div id="project_card" class="card rtl bg-danger text-light">
+                    <div id="request_card" class="card rtl">
+                        <div class="card-header bg-danger"></div>
                         <div class="card-body">
-                            <h5 class="card-title">درخواست 1</h5>
+                            <h5 class="card-title">متن درخواست</h5>
                             <div id="summary">
                                 <p class="card-text collapse" id="collapseSummary1">
                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
@@ -32,18 +33,23 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between p-0">
-                            <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                            <item class="py-1 m-1 card-info">پروژه سما</item>
+                            <item class="py-1 m-1 card-info">
+                                <item>قیمت:</item>
+                                <item>10000</item>
+                            </item>
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">
-                            <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
-                            <a href="#" class="btn btn-danger">حذف پروژه</a>
+                            <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                            <a href="#" class="btn btn-danger">حذف</a>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div id="project_card" class="card rtl border-warning">
+                    <div id="request_card" class="card rtl">
+                        <div class="card-header bg-primary"></div>
                         <div class="card-body">
-                            <h5 class="card-title">پروژه 1</h5>
+                            <h5 class="card-title">درخواست 1</h5>
                             <div id="summary">
                                 <p class="card-text collapse" id="collapseSummary2">
                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
@@ -53,18 +59,23 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between p-0">
-                            <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                            <item class="py-1 m-1 card-info">پروژه سما</item>
+                            <item class="py-1 m-1 card-info">
+                                <item>قیمت:</item>
+                                <item>10000</item>
+                            </item>
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">
-                            <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
-                            <a href="#" class="btn btn-danger">حذف پروژه</a>
+                            <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                            <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ارسال پروژه</a>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div id="project_card" class="card rtl border-primary">
+                    <div id="request_card" class="card rtl">
+                        <div class="card-header bg-warning"></div>
                         <div class="card-body">
-                            <h5 class="card-title">پروژه 1</h5>
+                            <h5 class="card-title">درخواست 1</h5>
                             <div id="summary">
                                 <p class="card-text collapse" id="collapseSummary3">
                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
@@ -74,39 +85,49 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-between p-0">
-                            <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                            <item class="py-1 m-1 card-info">پروژه سما</item>
+                            <item class="py-1 m-1 card-info">
+                                <item>قیمت:</item>
+                                <item>10000</item>
+                            </item>
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">
-                            <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
-                            <a href="#" class="btn btn-danger">حذف پروژه</a>
+                            <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                            <a href="#" class="btn btn-danger">حذف</a>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div id="project_card" class="card rtl border-success">
+                    <div id="request_card" class="card rtl border-success">
+                        <div class="card-header bg-success"></div>
                         <div class="card-body">
-                            <h5 class="card-title">پروژه 1</h5>
+                            <h5 class="card-title">درخواست 1</h5>
                             <div id="summary">
                                 <p class="card-text collapse" id="collapseSummary4">
-                                    چاپ و با استفاده از طراحان گرافیک است.
+                                    چاپ و sf است.
                                 </p>
                                 <a class="collapsed" data-toggle="collapse" href="#collapseSummary4" aria-expanded="false"
                                    aria-controls="collapseSummary"></a>
                             </div>
                         </div>
                         <div class="d-flex justify-content-between p-0">
-                            <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                            <item class="py-1 m-1 card-info">پروژه سما</item>
+                            <item class="py-1 m-1 card-info">
+                                <item>قیمت:</item>
+                                <item>10000</item>
+                            </item>
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">
-                            <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
-                            <a href="#" class="btn btn-danger">حذف پروژه</a>
+                            <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                            <a href="#" class="btn btn-danger">حذف</a>
                         </div>
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <div id="project_card" class="card rtl border-warning">
+                    <div id="request_card" class="card rtl">
+                        <div class="card-header bg-success"></div>
                         <div class="card-body">
-                            <h5 class="card-title">پروژه 1</h5>
+                            <h5 class="card-title">درخواست 1</h5>
                             <div id="summary">
                                 <p class="card-text collapse" id="collapseSummary5">
                                     لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
@@ -119,8 +140,8 @@
                             <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">
-                            <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
-                            <a href="#" class="btn btn-danger">حذف پروژه</a>
+                            <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                            <a href="#" class="btn btn-danger">حذف</a>
                         </div>
                     </div>
                 </div>
