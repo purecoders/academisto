@@ -79,7 +79,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="card rtl">
-                        <img class="card-img-top  card-img-top-250 card-img-top-custom" src="assets/img/logo.png" alt="Card image cap">
+                        <img class="card-img-top  card-img-top-250" src="assets/img/logo.png" alt="Card image cap">
                         <div class="card-body pb-1">
                             <h5 class="card-title">کتاب شیمی</h5>
                             <div id="summary">

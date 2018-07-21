@@ -184,7 +184,7 @@ body {
     border:2px #1c7430 solid;
 
   }
- .alert{
+ #orders.alert{
    height: 2em !important;
    vertical-align: baseline;
  }
@@ -195,4 +195,19 @@ body {
   width: 100%;
   height: 13vw;
   object-fit: cover;
+}
+#chat{
+  height: 400px;
+  overflow-y: scroll;
+  .chat-view{
+    border:1px #1d2124 solid;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    min-height: 40px;
+    background: #aae6b1;
+  }
+  .img-chat-view{
+    font-size: 1.9em;
+  }
 }

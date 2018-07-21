@@ -7,9 +7,9 @@
                     <li class="active mr-auto"><a  href="{{route('user-ads')}}">آگهی های من</a></li>
                     <li class=" mr-auto"><a href="{{route('user-orders')}}">سفارش پروژه</a></li>
                     <li class="mr-auto"><a href="{{route('user-requests')}}">انجام پروژه</a></li>
-                    <li class="mr-auto"><a data-toggle="tab" href="#menu3">ارسال رزومه</a></li>
-                    <li class="mr-auto"><a data-toggle="tab" href="#menu3">امور مالی</a></li>
-                    <li class="mr-auto"><a data-toggle="tab" href="#menu3">تیکت</a></li>
+                    <li class="mr-auto"><a  href="{{route('user-cv')}}">ارسال رزومه</a></li>
+                    <li class="mr-auto"><a href="{{route('user-finance')}}">امور مالی</a></li>
+                    <li class="mr-auto"><a  href="{{route('user-ticket')}}">تیکت</a></li>
                 </ul>
             </div>
             <div class="card-body">
