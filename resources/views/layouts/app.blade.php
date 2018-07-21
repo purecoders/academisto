@@ -122,5 +122,41 @@
         });
     });
 
+    function send(e) {
+        var text=document.getElementById('chat-text');
+        if(text.value==""){
+            return false
+        }
+         var dump=text.value.toString().split(' ').join('');
+        if(dump==''){
+            return false;
+        }
+       //  var template = $('#hidden-template').html();
+       // // template.find('p').value=text.value;
+       //  container = $('<div/>').html(template);
+       //  container.find('p').value=text.value;
+       //  template.html(container.html())
+        var t = $("script[type='text/x-custom-template']")
+        container = $('<div/>').html(t.html())
+        var newtext="<p>"+text.value+"</p>"
+        container.find('p').replaceWith(newtext)
+        var temp=t.html(container.html())
+        console.log($("script[type='text/x-custom-template']").html())
+        $('#chat').append(temp.html());
+        document.getElementById('chat-text').value="";
+
+
+    }
+</script>
+<script id="hidden-template" type="text/x-custom-template">
+    <div class="chat-view d-flex">
+        <div class="d-flex flex-column  m-1">
+            <i class="fa fa-user img-chat-view"></i>
+            <span>کاربر</span>
+        </div>
+        <p class="ml-1">
+
+        </p>
+    </div>
 </script>
 </html>
