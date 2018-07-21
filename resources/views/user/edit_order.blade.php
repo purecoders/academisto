@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container text-center rtl">
+    <div class="container rtl">
+        <a href="{{route('user-orders')}}" class="btn btn-secondary mb-1 ">بازگشت به قسمت پروژه ها</a>
         <div class="row mx-auto">
+
             <div class="col-md-6 m-auto bg-light pt-3">
                 <form class="rtl">
                     <div class="form-group row">

@@ -186,10 +186,6 @@ body {
   border: 2px #1c7430 solid;
 }
 
-#project_card .card-body:hover {
-  cursor: pointer;
-}
-
 .alert {
   height: 2em !important;
   vertical-align: baseline;
@@ -197,4 +193,11 @@ body {
 
 .hide {
   visibility: hidden;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 13vw;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
