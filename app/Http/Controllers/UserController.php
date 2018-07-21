@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
+use App\State;
+use App\Univ;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -12,6 +16,14 @@ class UserController extends Controller
 
 
 
+    public function getUserAds(){
+      $user = Auth::user();
+      $ads = $user->ads;
+      $states = State::all();
+      $cities = City::all();
+      $univs = Univ::all();
+      return view('user.ads', compact(['ads', 'states', 'cities', 'univs']));
+    }
 
 
     public function index()
@@ -78,6 +90,8 @@ class UserController extends Controller
 
         //return redirect('/post');
     }
+
+
 
 
 

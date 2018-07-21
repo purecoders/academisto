@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ad;
 use App\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdController extends Controller
 {
@@ -32,19 +33,20 @@ class AdController extends Controller
 
     public function store(Request $request)
     {
+
+      $user = Auth::user();
+      $user_id = $user->id;
+
       $this->validate($request,[
-        'user_id'     =>'required',
         'title'       =>'required',
         'description' =>'required',
         'price'       =>'required',
-        'state_id'    =>'required',
-        'city_id'     =>'required',
+        //'state_id'    =>'required',
+        //'city_id'     =>'required',
         'image'       =>'required',
-        'image'       =>'required'
-        //'filename.*'     => 'image|mimes:jpeg,png,jpg|max:2048'
       ]);
 
-      $info = $request->all();
+
 
       //use image key in upload form
       $image = $request->file('image');
@@ -67,7 +69,7 @@ class AdController extends Controller
         $minute = date('i', time());
 
 
-        $image_name = $day.'d'.$hour.'h'.$minute. 'm' . $info->user_id . 'u'. $this->generateRandomString(15) . $image_extension;
+        $image_name = $day.'d'.$hour.'h'.$minute. 'm' .$user_id . 'u'. $this->generateRandomString(15) . $image_extension;
 
         //save image into dir
         $image->move($image_dir, $image_name);
@@ -77,13 +79,13 @@ class AdController extends Controller
 
       //save ad
       $newAd = new Ad();
-      $newAd->user_id = $info->user_id;
-      $newAd->title = $info->title;
-      $newAd->description = $info->description;
-      $newAd->price = $info->price;
-      $newAd->state_id = $info->state_id;
-      $newAd->city_id = $info->city_id;
-      $newAd->univ_id = $info->univ_id;
+      $newAd->user_id = $user_id;
+      $newAd->title = $request->input('title');
+      $newAd->description = $request->input('description');
+      $newAd->price = $request->input('price');
+      $newAd->state_id = $request->input('state_id');
+      $newAd->city_id = $request->input('city_id');
+      $newAd->univ_id = $request->input('univ_id');
       $newAd->save();
 
       //save image to table
@@ -95,6 +97,9 @@ class AdController extends Controller
       $photo->imageable_type = 'App\Ad';
       $photo->save();
 
+
+
+      return redirect('/user-ads');
 
     }
 
@@ -130,8 +135,10 @@ class AdController extends Controller
 
     public function destroy($id)
     {
-      $ad= User::findOrFail($id);
+      echo 'h';
+      $ad= Ad::findOrFail($id);
       $ad->delete();
+      return redirect('/user-ads');
     }
 
 

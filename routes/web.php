@@ -24,7 +24,6 @@ Route::get('/hex', function (){
 
 
 Route::resource('/ad','AdController');
-Route::resource('/chat','ChatController');
 Route::resource('/city','CityController');
 Route::resource('/cv','CvController');
 Route::resource('/project','ProjectController');
@@ -34,12 +33,37 @@ Route::resource('/site-pay','SitePayController');
 Route::resource('/ticket','TicketController');
 Route::resource('/user','UserController');
 Route::resource('/user-full-info','UserFullInformationController');
+
+
 Route::get('user-panel',['middleware'=>'auth',function (){
     return view('user.user_panel');
 }]);
-Route::get('user-ads',['middleware'=>'auth',function (){
-    return view('user.ads');
-}])->name('user-ads');
+
+
+Route::get('user-ads','UserController@getUserAds')->name('user-ads')->middleware('auth');
+//
+//
+//
+//Route::get('user-ads',['middleware'=>'auth',function (){
+//  return view('user.ads');
+//}])->name('user-ads');
+
+Route::get('user-orders',['middleware'=>'auth',function (){
+  return view('user.orders');
+}])->name('user-orders');
+
+Route::get('user-order-edit/{id}',['middleware'=>'auth',function ($id){
+  return view('user.edit_order',compact('id'));
+}])->name('user-order-edit');
+
+Route::get('user-order-detail/{id}',['middleware'=>'auth',function ($id){
+  return view('user.detail_order',compact('id'));
+}])->name('user-order-detail');
+
+Route::get('/test',function (){
+
+  return view('test');
+});
 
 
 Route::get('/super-admin-panel', function (){

@@ -36,8 +36,8 @@ class Ad extends Model
       return $this->morphOne('App\Payment','paymentable');
     }
 
-    public function photos (){
-      return $this->morphMany('App\Photo','imageable');
+    public function photo (){
+      return $this->morphOne('App\Photo','imageable');
     }
 
     public function reports (){
