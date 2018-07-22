@@ -201,7 +201,7 @@ body {
 
 .card-img-top {
   width: 100%;
-  height: 13vw;
+  height: 400px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -222,4 +222,12 @@ body {
 
 #chat .img-chat-view {
   font-size: 1.9em;
+}
+
+.site-filer-container {
+  border: 1px solid #444444;
+}
+
+.site-ads-container {
+  background: rgba(247, 247, 247, 0.4);
 }
