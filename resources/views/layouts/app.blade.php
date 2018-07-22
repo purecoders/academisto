@@ -40,10 +40,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('ad.index') }}">آگهی ها</a>
+                            <a class="nav-link" href="{{ route('ads') }}">آگهی ها</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('project.index') }}">پروژه ها</a>
+                            <a class="nav-link" href="{{ route('projects') }}">پروژه ها</a>
                         </li>
                     </ul>
 
@@ -120,6 +120,7 @@
                 }
             }
         });
+
     });
 
     function send(e) {
@@ -147,6 +148,22 @@
 
 
     }
+    var filterForm=document.getElementById('filter-form');
+    filterForm.onsubmit=function () {
+        var uniSelect=document.getElementById('uni-select');
+        var citySelect=document.getElementById('city-select');
+        if(!uniSelect.value&&!citySelect.value){
+            alert("لطفا با یک مورد فیلتر کنید");
+            return false;
+        }
+        if(uniSelect.value&&citySelect.value){
+            alert("لطفا بین دانشگاه و شهر فقط یکی را انتخاب کنید!");
+            return false;
+        }
+
+
+        
+    };
 </script>
 <script id="hidden-template" type="text/x-custom-template">
     <div class="chat-view d-flex">
