@@ -12,9 +12,10 @@
             </form>
         </div>
         <div class="col-md-6">
-            <h5>اطلاعات پروفایل</h5>
-            <div class=" p-1 border-info border-top border-left border-right border-bottom h-75">
-                <form action="">
+            <h5 class="pb-1">اطلاعات پروفایل</h5>
+            <form action="">
+            <div class="p-1 border-info border-top border-left border-right border-bottom h-75 pb-4">
+
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label"> ایمیل: </label>
                         <div class="col-sm-9">
@@ -33,14 +34,11 @@
                             <input type="text" class="form-control" value="09388584677">
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end mb-5">
                         <item></item>
-
                     </div>
-
-
             </div>
-            <input type="submit" class="btn btn-outline-secondary btn-block mt-3 mr-2" value="ویرایش">
+                <input type="submit" class="btn btn-outline-secondary btn-block mt-3 mr-2" value="ویرایش">
             </form>
         </div>
     </div>
