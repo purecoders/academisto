@@ -69,6 +69,15 @@ Route::get('user-ticket',function (){
     return view('user.ticket');
 })->middleware('auth')->name('user-ticket');
 
+Route::get('ads',function (){
+    return view('site.ads');
+})->middleware('auth')->name('ads');
+
+Route::get('projects',function (){
+    return view('site.projects');
+})->middleware('auth')->name('projects');
+
+
 
 
 Route::get('/test',function (){
