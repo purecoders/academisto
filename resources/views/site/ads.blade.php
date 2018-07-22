@@ -30,19 +30,15 @@
             <div class="col-md-6">
                 <form action="">
                     <div class="d-flex justify-content-end mt-4 pt-3">
-
-
                         <item></item>
                         <input type="text" class="form-control w-50 mr-2" placeholder="جستجو">
                         <button type="submit" class=" btn btn-outline-success ">جستجو</button>
-
                     </div>
-
                 </form>
             </div>
 
         </div>
-        <div class="row mt-3 site-ads-container">
+        <div class="mt-3 site-ads-container">
             <h4 class="m-3">آخرین آگهی ها</h4>
             <div class="row p-4">
                 <div class="col-lg-4 col-md-6"><div class="card rtl mb-3">
@@ -224,7 +220,25 @@
 
             </div>
 
-
+            <nav>
+                <ul class="pagination justify-content-center p-1">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 @endsection

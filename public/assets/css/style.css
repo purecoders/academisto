@@ -16,7 +16,7 @@
 body {
   background-color: #29eaea;
   font-family: vazir;
-  background-color: #29eaea;
+  background-color: #232323;
 }
 
 #grid {
@@ -230,4 +230,8 @@ body {
 
 .site-ads-container {
   background: rgba(247, 247, 247, 0.4);
+}
+
+#site-projects_card {
+  border: 1px #bf0056 solid;
 }

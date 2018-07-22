@@ -34,9 +34,11 @@ Route::resource('/site-pay','SitePayController');
 Route::resource('/ticket','TicketController');
 Route::resource('/user','UserController');
 Route::resource('/user-full-info','UserFullInformationController');
-Route::get('user-panel',['middleware'=>'auth',function (){
+
+Route::get('user-panel',function (){
     return view('user.user_panel');
-}]);
+})->middleware('auth')->name('user-panel');
+
 Route::get('user-ads',['middleware'=>'auth',function (){
     return view('user.ads');
 }])->name('user-ads');
