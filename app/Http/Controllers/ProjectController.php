@@ -117,10 +117,12 @@ class ProjectController extends Controller
 
   public function destroy($id)
   {
-    $project = Project::findOrFail($id);
-    $project->delete();
-
-    //return redirect('/post');
+    $user = Auth::user();
+    $project= Project::findOrFail($id);
+    if($project->user_id = $user->id){
+      $project->delete();
+    }
+    return redirect('/user-orders');
   }
 
 

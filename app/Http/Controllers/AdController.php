@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class AdController extends Controller
 {
 
-  public function __construct()
+    public function __construct()
   {
     //$this->middleware('auth');
     //$this->middleware('auth', ['only' => ['create', 'update','store', 'edit', 'delete']]);
@@ -18,10 +18,16 @@ class AdController extends Controller
   }
 
 
+    public function showAds(){
+       $ads = Ad::orderBy('created_at', 'desc')->paginate(2);
+
+      return view('site.ads', compact('ads'));
+    }
+
+
     public function index()
     {
-      $ads = Ad::all();
-      echo 'ad';
+
     }
 
 
@@ -135,9 +141,11 @@ class AdController extends Controller
 
     public function destroy($id)
     {
-      echo 'h';
+      $user = Auth::user();
       $ad= Ad::findOrFail($id);
-      $ad->delete();
+      if($ad->user_id = $user->id){
+        $ad->delete();
+      }
       return redirect('/user-ads');
     }
 

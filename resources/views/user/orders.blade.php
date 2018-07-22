@@ -47,7 +47,15 @@
                             </div>
                             <div class="card-footer d-flex justify-content-between p-1">
                                 <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
-                                <a href="#" class="btn btn-danger">حذف پروژه</a>
+
+
+                                {{--<a href="#" class="btn btn-danger">حذف پروژه</a>--}}
+
+                                <form class="form-group mr-auto d-inline-block" method="post" action="{{route('project.destroy', $project->id)}}">
+                                    {{csrf_field()}}
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input class="form-control btn btn-danger" type="submit" value="حذف پروژه">
+                                </form>
                             </div>
                         </div>
                     </div>

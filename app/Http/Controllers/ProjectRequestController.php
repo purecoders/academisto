@@ -32,12 +32,13 @@ class ProjectRequestController extends Controller
       $project_requests = ProjectRequest::where('project_id', '=', $project_request->project_id)->get();
       foreach ($project_requests as $project_request){
         if($project_request->id != $id) {
-          $project_request->delete();
+          $project_request->is_denied = 1;
+          $project_request->save();
         }
       }
     }
 
-    return redirect('/user-order-detail/'.$id);
+    return redirect('/user-order-detail/'.$project->id);
 
   }
 
@@ -49,10 +50,11 @@ class ProjectRequestController extends Controller
     $project_request = ProjectRequest::findOrFail($id);
     $project = Project::findOrFail($project_request->project_id);
     if($project->user_id == $user->id){
-      $project_request->delete();
+      $project_request->is_denied = 1;
+      $project_request->save();
     }
 
-    return redirect('/user-order-detail/'.$id);
+    return redirect('/user-order-detail/'. $project->id);
 
   }
 
@@ -110,10 +112,13 @@ class ProjectRequestController extends Controller
 
   public function destroy($id)
   {
-    $project_request = ProjectRequest::findOrFail($id);
-    $project_request->delete();
+    $user = Auth::user();
+    $project_request= ProjectRequest::findOrFail($id);
 
-    //return redirect('/post');
+    if($project_request->user_id = $user->id){
+      $project_request->delete();
+    }
+    return redirect('/user-requests');
   }
 
 

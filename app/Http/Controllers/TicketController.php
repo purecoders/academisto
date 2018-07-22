@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -11,6 +12,20 @@ class TicketController extends Controller
   public function __construct()
   {
     $this->middleware('auth');
+  }
+
+
+  public function sendTicket(Request $request){
+    if(strlen($request->input('text')) > 0) {
+      $user = Auth::user();
+      $ticket = new Ticket();
+      $ticket->user_id = $user->id;
+      $ticket->text = $request->input('text');
+      $ticket->is_user_send = 1;
+      $ticket->save();
+    }
+
+    return redirect('/user-ticket');
   }
 
 

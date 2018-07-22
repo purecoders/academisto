@@ -62,8 +62,67 @@ class UserController extends Controller
     public function getUserProjectRequests(){
       $user = Auth::user();
       $project_requests = $user->projectRequests;
-      return view('user.user_requests', compact('project_requests'));
+      $requests = array();
+      foreach ($project_requests as $project_request){
+        $requests[] = ["project_request"=>$project_request, "projects"=>Project::findOrFail($project_request->project_id)];
+      }
+      return view('user.user_requests', compact('requests'));
     }
+
+    public function userCv(){
+      $user = Auth::user();
+      $cv = $user->cv;
+      return view('user.cv', compact(['user', 'cv']));
+    }
+
+    public function userUpdate(Request $request){
+        $user = Auth::user();
+        $user->name = $request->input('name');
+        $user->phone_number = $request->input('phone_number');
+        $user->save();
+
+        return redirect('/user-cv');
+    }
+
+    public function userFinance(){
+      $user = Auth::user();
+      $userFullInfo = $user->fullInfo;
+      $payments = $user->payments;
+      $received_payments = $user->sitePays;
+
+      return view('user.finance', compact(['user', 'userFullInfo', 'payments', 'received_payments']));
+    }
+
+
+    public function userFinanceUpdate(Request $request){
+      $user = Auth::user();
+      $fullInfo = $user->fullInfo;
+
+      $fullInfo->bank_card_id =  $request->input('bank_card_id');
+      $fullInfo->bank_account_id = $request->input('bank_account_id');
+      $fullInfo->bank_account_owner_name = $request->input('bank_account_owner_name');
+      $fullInfo->save();
+
+      return redirect('user-finance');
+    }
+
+    public function userTickets(){
+      $user = Auth::user();
+      $tickets = $user->tickets;
+
+      return view('user.ticket', compact(['user', 'tickets']));
+    }
+
+    public function userSendTicket(){
+
+    }
+
+
+
+
+
+
+
 
     public function index()
     {

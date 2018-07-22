@@ -54,12 +54,27 @@ Route::post('project/deny', 'ProjectRequestController@denyRequest')->name('proje
 Route::get('user-order-edit/{id}', 'ProjectController@userProjectEdit')->name('user-order-edit')->middleware('auth');
 Route::post('project-update', 'ProjectController@update2')->name('project-update')->middleware('auth');
 Route::get('user-order-detail/{id}','UserController@getUserSpecialProjectDetail')->name('user-order-detail')->middleware('auth');
-
-
-
 Route::get('user-requests','UserController@getUserProjectRequests')->name('user-requests')->middleware('auth');
 
 
+
+
+Route::get('user-cv','UserController@userCv')->middleware('auth')->name('user-cv');
+Route::post('cv-update','CvController@cvUpdate')->middleware('auth')->name('cv-update');
+Route::post('user-update','UserController@userUpdate')->middleware('auth')->name('user-update');
+Route::get('user-finance','UserController@userFinance')->middleware('auth')->name('user-finance');
+Route::post('user-finance-update','UserController@userFinanceUpdate')->middleware('auth')->name('user-finance-update');
+Route::get('user-ticket','userController@userTickets')->middleware('auth')->name('user-ticket');
+Route::post('user-send-ticket','ticketController@sendTicket')->middleware('auth')->name('user-send-ticket');
+
+
+
+
+Route::get('ads', 'AdController@showAds')->middleware('auth')->name('ads');
+
+Route::get('projects',function (){
+      return view('site.projects');
+})->middleware('auth')->name('projects');
 
 
 

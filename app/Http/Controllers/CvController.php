@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cv;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CvController extends Controller
 {
@@ -11,6 +12,16 @@ class CvController extends Controller
   public function __construct()
   {
     $this->middleware('auth');
+  }
+
+  public function cvUpdate(Request $request){
+    $user = Auth::user();
+
+    $cv = $user->cv;
+    $cv->cv_text = $request->input('cv_text');
+    $cv->save();
+
+    return redirect('/user-cv');
   }
 
   public function index()
@@ -54,15 +65,11 @@ class CvController extends Controller
 
   public function update(Request $request, $id)
   {
-    $this->validate($request,[
-      'user_id'     =>'required',
-      'cv_text'       =>'required',
-    ]);
+    $user = Auth::user();
 
-    $cv = Cv::findOrFail($id);
-    $cv->update($request->all());
-
-    //return redirect('/user/' . $user->id);
+    $cv = $user->cv;
+    $cv->cv_text = $request->input('cv_text');
+    return redirect('/user-cv');
   }
 
 

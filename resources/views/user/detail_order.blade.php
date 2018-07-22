@@ -36,35 +36,46 @@
 
                     @php($i=1)
                     @foreach($requests as $request)
-                        <tr>
+                        <tr @if($request['project_request']['is_accepted'] && $request['project_request']['user_id'] == $request['user']['id'])
+                            class="bg-success"
+                            @endif
+                            >
                             <th scope="row">{{$i}}</th>
                             @php($i++)
-                            <td>{{$request['user']['name']}}</td>
+                            <td>{{$request['user']['email']}}</td>
                             <td>
 
                                 {{$request['project_request']['description']}}
                             </td>
 
-                            <td>
-                                <form class="form-group mr-auto d-inline-block " method="post" action="{{route('project-request-accept')}}">
-                                    {{csrf_field()}}
-                                    <input type="hidden" name="_method" value="POST">
-                                    <input type="hidden" name="project_request_id" value="{{$request['project_request']['id']}}">
-                                    <input class="form-control btn btn-success" type="submit" value="پذیرفتن">
-                                </form>
 
-                                {{--<button class="btn btn-success">پذیرفتن</button>--}}
 
-                            </td>
-                            <td>
-                                <form class="form-group mr-auto d-inline-block" method="post" action="{{route('project-request-deny')}}">
-                                    {{csrf_field()}}
-                                    <input type="hidden" name="_method" value="post">
-                                    <input type="hidden" name="project_request_id" value="{{$request['project_request']['id']}}">
-                                    <input class="form-control btn btn-danger" type="submit" value="رد">
-                                </form>
-                                {{--<button class="btn btn-danger">رد</button>--}}
-                            </td>
+
+                                <td>
+                                    @if($project->is_started == 0)
+                                    <form class="form-group mr-auto d-inline-block " method="post" action="{{route('project-request-accept')}}">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="_method" value="POST">
+                                        <input type="hidden" name="project_request_id" value="{{$request['project_request']['id']}}">
+                                        <input class="form-control btn btn-success" type="submit" value="پذیرفتن">
+                                    </form>
+                                    @endif
+
+                                    {{--<button class="btn btn-success">پذیرفتن</button>--}}
+
+                                </td>
+                                <td>
+                                    @if($project->is_started == 0)
+                                    <form class="form-group mr-auto d-inline-block" method="post" action="{{route('project-request-deny')}}">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="_method" value="post">
+                                        <input type="hidden" name="project_request_id" value="{{$request['project_request']['id']}}">
+                                        <input class="form-control btn btn-danger" type="submit" value="رد">
+                                    </form>
+                                    @endif
+                                    {{--<button class="btn btn-danger">رد</button>--}}
+                                </td>
+
                         </tr>
 
                         @endforeach
