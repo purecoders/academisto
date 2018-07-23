@@ -151,10 +151,18 @@
 
 
     }
+    var uniSelect=document.getElementById('uni-select');
+    var citySelect=document.getElementById('city-select');
     var filterForm=document.getElementById('filter-form');
+
+
+    uniSelect.onchange=function () {
+        citySelect.value="";
+    }
+    citySelect.onchange=function () {
+        uniSelect.value="";
+    }
     filterForm.onsubmit=function () {
-        var uniSelect=document.getElementById('uni-select');
-        var citySelect=document.getElementById('city-select');
         if(!uniSelect.value&&!citySelect.value){
             alert("لطفا با یک مورد فیلتر کنید");
             return false;
@@ -163,9 +171,6 @@
             alert("لطفا بین دانشگاه و شهر فقط یکی را انتخاب کنید!");
             return false;
         }
-
-
-        
     };
 </script>
 <script id="hidden-template" type="text/x-custom-template">
