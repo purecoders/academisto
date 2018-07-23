@@ -79,6 +79,44 @@ Route::get('projects',function (){
     return view('site.projects');
 })->middleware('auth')->name('projects');
 
+Route::get('admin/ads',function (){
+    return view('admin.ads');
+})->middleware('auth')->name('admin-ads');
+
+Route::get('admin/projects',function (){
+    return view('admin.projects');
+})->middleware('auth')->name('admin-projects');
+
+Route::get('admin/users',function (){
+    return view('admin.users');
+})->middleware('auth')->name('admin-users');
+
+Route::get('admin/user-control',function (){
+    return view('admin.user_pages.user_control');
+})->middleware('auth')->name('admin-user-control');
+
+Route::get('admin/user-profile',function (){
+    return view('admin.user_pages.profile');
+})->middleware('auth')->name('admin-user-profile');
+
+Route::get('admin/user-ads',function (){
+    return view('admin.user_pages.ads');
+})->middleware('auth')->name('admin-user-ads');
+
+Route::get('admin/user-orders',function (){
+    return view('admin.user_pages.orders');
+})->middleware('auth')->name('admin-user-orders');
+
+Route::get('admin/user-requests',function (){
+    return view('admin.user_pages.user_requests');
+})->middleware('auth')->name('admin-user-requests');
+
+
+
+
+
+
+
 
 
 
