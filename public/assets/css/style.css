@@ -16,7 +16,7 @@
 body {
   background-color: #29eaea;
   font-family: vazir;
-  background-color: #232323;
+  background-color: #29eaea;
 }
 
 #grid {
@@ -234,4 +234,10 @@ body {
 
 #site-projects_card {
   border: 1px #bf0056 solid;
+}
+
+.card-header-icon {
+  font-size: 1.4em;
+  cursor: pointer;
+  text-decoration: none;
 }

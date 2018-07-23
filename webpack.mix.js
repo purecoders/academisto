@@ -22,6 +22,7 @@ mix
     })
     .sass('resources/assets/sass/app.scss', 'public/assets/css/bootstrap.css')
     .sass('resources/assets/sass/style.scss', 'public/assets/css/style.css')
+    .sass('resources/assets/sass/secondStyle.scss', 'public/assets/css/secondStyle.css')
     .sass('resources/assets/sass/hexagons.scss', 'public/assets/css/hexagons.css')
     .disableNotifications()
     .options({

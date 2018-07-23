@@ -684,13 +684,13 @@ body {
 
 @media (min-width: 0px) {
   body {
-    background-color: #1d2124;
+    background-color: #29eaea;
   }
 }
 
 @media (min-width: 576px) {
   body {
-    background-color: #9d40cc;
+    background-color: #29eaea;
   }
   #myHexGrid {
     visibility: visible;
@@ -721,7 +721,7 @@ body {
 
 @media (min-width: 768px) {
   body {
-    background-color: #727411;
+    background-color: #29eaea;
   }
   #myHexGrid {
     visibility: visible;
@@ -752,7 +752,7 @@ body {
 
 @media (min-width: 992px) {
   body {
-    background-color: #74152c;
+    background-color: #29eaea;
   }
   #myHexGrid {
     visibility: visible;
@@ -783,7 +783,7 @@ body {
 
 @media (min-width: 1200px) {
   body {
-    background-color: #022674;
+    background-color: #29eaea;
   }
   #myHexGrid {
     visibility: visible;
@@ -810,4 +810,8 @@ body {
   #background {
     height: 372px;
   }
+}
+
+.first-page-links {
+  font-size: 1.3em;
 }

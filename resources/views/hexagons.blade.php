@@ -11,7 +11,6 @@
 </head>
 <body>
 
-
 <div id="background"></div>
 <div class="container text-center">
     <div id="myHexGrid">
@@ -65,6 +64,15 @@
         </div>
     </div>
 </div>
+<ul class="fixed-top d-inline-block rtl mt-4 mr-2 first-page-links">
+    <li><a href="{{route('register')}}">ثبت نام</a></li>
+    <li><a href="{{route('register')}}">ورود</a></li>
+</ul>
+
+<ul class="fixed-bottom d-inline-block rtl mb-4 mr-2 first-page-links">
+    <li>درباره ما</li>
+    <li>تماس با ما</li>
+</ul>
 
 
 
