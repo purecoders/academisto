@@ -154,8 +154,6 @@
     var uniSelect=document.getElementById('uni-select');
     var citySelect=document.getElementById('city-select');
     var filterForm=document.getElementById('filter-form');
-
-
     uniSelect.onchange=function () {
         citySelect.value="";
     }
@@ -172,6 +170,10 @@
             return false;
         }
     };
+    function sendRequet(e){
+        //e is project id
+        document.getElementById('request-form').action="Your route"+e;
+    }
 </script>
 <script id="hidden-template" type="text/x-custom-template">
     <div class="chat-view d-flex">
