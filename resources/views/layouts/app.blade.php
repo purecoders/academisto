@@ -171,8 +171,7 @@
         }
     };
     function sendRequet(e){
-        //e is project id
-        document.getElementById('request-form').action="Your route"+e;
+        document.getElementById('project_id').value=e;
     }
 </script>
 <script id="hidden-template" type="text/x-custom-template">
