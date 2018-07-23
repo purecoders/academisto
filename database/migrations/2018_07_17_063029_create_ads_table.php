@@ -24,7 +24,7 @@ class CreateAdsTable extends Migration
             $table->integer('univ_id');
             $table->timestamps();
             $table->softDeletes();
-          $table->charset = 'utf8';
+            $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
         });
     }

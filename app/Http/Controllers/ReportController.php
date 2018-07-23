@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Ad;
+use App\Project;
 use App\Report;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -12,6 +16,48 @@ class ReportController extends Controller
     $this->middleware('auth');
     $this->middleware('super_admin', ['only' => [ 'index', 'show', 'destroy']]);
   }
+
+
+  public function reportAd(Request $request){
+    $user = Auth::user();
+    $user_id_from = $user->id;
+
+    $ad_id = $request->input('ad_id');
+    $ad = Ad::findOrFail($ad_id);
+    $user_id_to = User::findOrFail($ad->user_id)->id;
+
+    $report = new Report();
+    $report->user_id_from = $user_id_from;
+    $report->user_id_to = $user_id_to;
+    $report->reportable_id = $ad_id;
+    $report->reportable_type = 'App\Ad';
+
+    $report->save();
+
+    return redirect('/ads');
+  }
+
+  public function reportProject(Request $request){
+    $user = Auth::user();
+    $user_id_from = $user->id;
+
+    $project_id = $request->input('project_id');
+    $project = Project::findOrFail($project_id);
+    $user_id_to = User::findOrFail($project->user_id)->id;
+
+    $report = new Report();
+    $report->user_id_from = $user_id_from;
+    $report->user_id_to = $user_id_to;
+    $report->reportable_id = $project_id;
+    $report->reportable_type = 'App\Project';
+
+    $report->save();
+
+    return redirect('/projects');
+  }
+
+
+
 
 
   public function index()

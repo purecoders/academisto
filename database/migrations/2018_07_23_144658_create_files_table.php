@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReportsTable extends Migration
+class CreateFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateReportsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reports', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id_from');
-            $table->integer('user_id_to');
-            $table->integer('reportable_id');
-            $table->string('reportable_type');
+            $table->integer('user_id');
+            $table->integer('project_id');
+            $table->boolean('is_for_answer');
+            $table->string('path');
             $table->timestamps();
             $table->softDeletes();
-          $table->charset = 'utf8';
+            $table->charset = 'utf8';
             $table->collation = 'utf8_general_ci';
         });
     }
@@ -33,6 +33,6 @@ class CreateReportsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reports');
+        Schema::dropIfExists('files');
     }
 }

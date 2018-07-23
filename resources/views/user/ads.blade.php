@@ -25,8 +25,8 @@
                                 </div>
                             </div>
                             <ul class="list-group list-group-flush p-0 rtl">
-                                <li class="list-group-item">شهر : {{$ad->city->name}}</li>
-                                <li class="list-group-item">دانشگاه : {{$ad->univ->name}}</li>
+                                <li class="list-group-item">شهر : {{ $ad->city['name']}}</li>
+                                <li class="list-group-item">دانشگاه : {{$ad->univ['name']}}</li>
                             </ul>
                             <div class="card-footer p-1">
                                 <span class="card-info pr-4">قیمت : {{$ad->price}}  </span>
@@ -96,6 +96,7 @@
                             {{--</select>--}}
 
                             <select class="form-control" name="state_id">
+                                <option value="0"></option>
                                 @foreach($states as $state)
                                     <option value="{{$state->id}}">{{$state->name}}</option>
                                 @endforeach
@@ -110,6 +111,7 @@
                         <div class="col-sm-10">
 
                             <select class="form-control" name="city_id">
+                                <option value="0"></option>
                                 @foreach($cities as $city)
                                     <option value="{{$city->id}}">{{$city->name}}</option>
                                 @endforeach
@@ -124,6 +126,7 @@
                         <div class="col-sm-10">
 
                             <select class="form-control" name="univ_id">
+                                <option value="0"></option>
                                 @foreach($univs as $univ)
                                     <option  value="{{$univ->id}}">{{$univ->name}}</option>
                                 @endforeach

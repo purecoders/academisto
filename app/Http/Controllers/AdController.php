@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Ad;
+use App\City;
 use App\Photo;
+use App\State;
+use App\Univ;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdController extends Controller
 {
@@ -14,15 +18,45 @@ class AdController extends Controller
   {
     //$this->middleware('auth');
     //$this->middleware('auth', ['only' => ['create', 'update','store', 'edit', 'delete']]);
-    $this->middleware('auth', ['except' => ['index', 'show']]);
+    $this->middleware('auth', ['except' => ['index', 'show', 'showAds']]);
   }
 
 
     public function showAds(){
-       $ads = Ad::orderBy('created_at', 'desc')->paginate(2);
+       $ads = Ad::orderBy('created_at', 'desc')->paginate(12);
+       $states = State::all();
+       $cities = City::all();
+       $univs = Univ::all();
 
-      return view('site.ads', compact('ads'));
+      return view('site.ads', compact(['ads', 'states', 'cities', 'univs']));
     }
+
+
+    public function searchAds(Request $request){
+      $city_id = $request->input('city_id');
+      $univ_id = $request->input('univ_id');
+      $text = $request->input('text');
+
+
+      if($city_id !== null && $city_id != 0){
+        $ads = Ad::orderBy('created_at', 'desc')->where('city_id', '=', $city_id)->where('title', 'like', '%'.$text.'%')->paginate(12);
+      }elseif ($univ_id !==  null && $univ_id != 0){
+        $ads = Ad::orderBy('created_at', 'desc')->where('univ_id', '=', $univ_id)->where('title', 'like', '%'.$text.'%')->paginate(12);
+      }else{
+        $ads = Ad::orderBy('created_at', 'desc')->where('title', 'like', '%'.$text.'%')->paginate(12);
+      }
+
+      $states = State::all();
+      $cities = City::all();
+      $univs = Univ::all();
+
+      return view('site.ads', compact(['ads', 'states', 'cities', 'univs']));
+    }
+
+
+
+
+
 
 
     public function index()
@@ -82,16 +116,34 @@ class AdController extends Controller
 
       }
 
+      $title = $request->input('title');
+      $description = $request->input('description');
+      $price = $request->input('price');
+      if ($request->input('state_id') === null){
+        $state_id = 0;
+      }else{
+        $state_id = $request->input('state_id');
+      }
+      if ($request->input('city_id') === null){
+        $city_id = 0;
+      }else{
+        $city_id = $request->input('city_id');
+      }
+      if ($request->input('univ_id') === null){
+        $univ_id = 0;
+      }else{
+        $univ_id = $request->input('univ_id');
+      }
 
       //save ad
       $newAd = new Ad();
       $newAd->user_id = $user_id;
-      $newAd->title = $request->input('title');
-      $newAd->description = $request->input('description');
-      $newAd->price = $request->input('price');
-      $newAd->state_id = $request->input('state_id');
-      $newAd->city_id = $request->input('city_id');
-      $newAd->univ_id = $request->input('univ_id');
+      $newAd->title = $title;
+      $newAd->description = $description;
+      $newAd->price = $price;
+      $newAd->state_id = $state_id;
+      $newAd->city_id = $city_id;
+      $newAd->univ_id = $univ_id;
       $newAd->save();
 
       //save image to table

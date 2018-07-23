@@ -70,6 +70,9 @@
                                                      document.getElementById('logout-form').submit();">
                                     خروج
                                 </a>
+                                <a class="dropdown-item" href="{{ route('user-panel') }}">
+                                    حساب کاربری
+                                </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -143,10 +146,16 @@
     $('#chat').append(temp.html());
     document.getElementById('chat-text').value="";
   }
+  var uniSelect=document.getElementById('uni-select');
+  var citySelect=document.getElementById('city-select');
   var filterForm=document.getElementById('filter-form');
+  uniSelect.onchange=function () {
+    citySelect.value="";
+  }
+  citySelect.onchange=function () {
+    uniSelect.value="";
+  }
   filterForm.onsubmit=function () {
-    var uniSelect=document.getElementById('uni-select');
-    var citySelect=document.getElementById('city-select');
     if(!uniSelect.value&&!citySelect.value){
       alert("لطفا با یک مورد فیلتر کنید");
       return false;
@@ -155,8 +164,10 @@
       alert("لطفا بین دانشگاه و شهر فقط یکی را انتخاب کنید!");
       return false;
     }
-
   };
+  function sendRequet(e){
+    document.getElementById('project_id').value=e;
+  }
 </script>
 <script id="hidden-template" type="text/x-custom-template">
     <div class="chat-view d-flex">

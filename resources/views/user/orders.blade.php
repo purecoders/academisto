@@ -46,16 +46,20 @@
                                 @endif
                             </div>
                             <div class="card-footer d-flex justify-content-between p-1">
-                                <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
-
-
-                                {{--<a href="#" class="btn btn-danger">حذف پروژه</a>--}}
-
-                                <form class="form-group mr-auto d-inline-block" method="post" action="{{route('project.destroy', $project->id)}}">
-                                    {{csrf_field()}}
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input class="form-control btn btn-danger" type="submit" value="حذف پروژه">
-                                </form>
+                                @if($project->is_started == 0)
+                                    <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
+                                     <form class="form-group mr-auto d-inline-block" method="post" action="{{route('project.destroy', $project->id)}}">
+                                         {{csrf_field()}}
+                                         <input type="hidden" name="_method" value="DELETE">
+                                         <input class="form-control btn btn-danger" type="submit" value="حذف پروژه">
+                                     </form>
+                                @else
+                                    <a href="" class="btn btn-primary hide">ه</a>
+                                    <form class="form-group mr-auto d-inline-block hide" method="" action="">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input class="form-control btn btn-danger hide" type="submit" value="">
+                                    </form>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -78,7 +82,7 @@
         <div class="row">
             <div class="col-md-6">
 
-                <form class="rtl" action="{{route('project.store')}}">
+                <form class="rtl" action="{{route('add-new-project')}}">
                     <div class="form-group row">
                         <label for="inputTitle" class="col-sm-2 col-form-label">عنوان:</label>
                         <div class="col-sm-10">
@@ -100,29 +104,56 @@
                                    placeholder="قیمت (تومان)">
                         </div>
                     </div>
+
+                    {{--add file input to project--}}
+
                     <div class="form-group row">
-                        <label for="inputDescription" class="col-sm-2 col-form-label">فوری:</label>
+                        <label for="adphoto" class="col-sm-2 col-form-label">پیوست: </label>
                         <div class="col-sm-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                <label class="form-check-label" for="gridRadios1">
-                                    فوری باشد
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                <label class="form-check-label" for="gridRadios2">
-                                    فوری نباشد
-                                </label>
-                            </div>
+                            <input  accept=".zip" type="file" class="form-control-file" id="adphoto" name="file">
+                            <span style="color: #f82a38; font-size: 13px">اگر پروژه شما نیاز به پیوست فایلی دارد لطفا آن را به فرمت .zip درآورده و انتخاب کنید</span>
                         </div>
                     </div>
+
+
+
+                    {{--<div class="form-group row">--}}
+                        {{--<label for="inputDescription" class="col-sm-2 col-form-label">فوری:</label>--}}
+                        {{--<div class="col-sm-10" name="imm">--}}
+                            {{--<div class="form-check">--}}
+                                {{--<input class="form-check-input" type="radio" name="is_imm_1" id="gridRadios1" value="is_imm_1" checked>--}}
+                                {{--<label class="form-check-label" for="gridRadios1">--}}
+                                    {{--فوری باشد--}}
+                                {{--</label>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-check">--}}
+                                {{--<input class="form-check-input" type="radio" name="is_imm_0" id="gridRadios2" value="is_imm_0">--}}
+                                {{--<label class="form-check-label" for="gridRadios2">--}}
+                                    {{--فوری نباشد--}}
+                                {{--</label>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
+                    <div class="form-group row">
+                        <label for="inputPrice" class="col-sm-2 col-form-label">فوری: </label>
+                        <div class="col-sm-10">
+                            <select id="imm-select" class="form-control " name="is_immediate" >
+                                <option value="0">فوری نباشد</option>
+                                <option value="1">فوری باشد</option>
+                            </select>
+                         </div>
+                        <br>
+                    </div>
+
+
+
 
                     {{csrf_field()}}
 
                     <div class="form-group row">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-success">ارسال و پرداخت</button>
+                            <button type="submit" class="btn btn-success">پرداخت و ارسال پروژه</button>
 
                             goto payment page
                         </div>

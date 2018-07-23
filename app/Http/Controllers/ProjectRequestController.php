@@ -58,6 +58,34 @@ class ProjectRequestController extends Controller
 
   }
 
+
+  public function sendRequest(Request $request){
+    $user = Auth::user();
+    $project_id = $request->input('project_id');
+    $description = $request->input('description');
+    $price = $request->input('price');
+
+    if($description === null)$description = " ";
+    if($price === null)$price = 0;
+
+    $project_request = new ProjectRequest();
+    $project_request->user_id = $user->id;
+    $project_request->project_id = $project_id;
+    $project_request->description = $description;
+    $project_request->price = $price;
+    $project_request->is_accepted = 0;
+    $project_request->is_denied = 0;
+    $project_request->save();
+
+    return redirect('/projects');
+
+  }
+
+
+
+
+
+
   public function index()
   {
     $project_requests = ProjectRequest::all();

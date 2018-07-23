@@ -11,6 +11,10 @@
 |
 */
 
+use App\Ad;
+use App\City;
+use App\State;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -35,12 +39,14 @@ Route::resource('/user','UserController');
 Route::resource('/user-full-info','UserFullInformationController');
 
 
-Route::get('user-panel',['middleware'=>'auth',function (){
-    return view('user.user_panel');
-}]);
+//Route::get('user-panel', 'ProjectController@showAllProjects')->name('user-panel');
+Route::get('user-panel',function (){
+  return view('user.user_panel');
+})->middleware('auth')->name('user-panel');
 
 
 Route::get('user-ads','UserController@getUserAds')->name('user-ads')->middleware('auth');
+
 //
 //
 //
@@ -67,21 +73,39 @@ Route::post('user-finance-update','UserController@userFinanceUpdate')->middlewar
 Route::get('user-ticket','userController@userTickets')->middleware('auth')->name('user-ticket');
 Route::post('user-send-ticket','ticketController@sendTicket')->middleware('auth')->name('user-send-ticket');
 
+Route::get('ads', 'AdController@showAds')->name('ads');
+Route::get('search-ad', 'AdController@searchAds')->middleware('auth')->name('search-ad');
+Route::post('report-ad', 'ReportController@reportAd')->middleware('auth')->name('report-ad');
+
+
+Route::get('projects','ProjectController@showAllProjects')->name('projects');
+Route::post('search-project','ProjectController@searchProject')->name('search-project');
+Route::post('add-new-project','ProjectController@addNewProject')->name('add-new-project');///add new project with pay###############
 
 
 
-Route::get('ads', 'AdController@showAds')->middleware('auth')->name('ads');
+Route::post('send-request','ProjectRequestController@sendRequest')->middleware('auth')->name('send-request');
 
-Route::get('projects',function (){
-      return view('site.projects');
-})->middleware('auth')->name('projects');
+Route::post('report-project', 'ReportController@reportProject')->middleware('auth')->name('report-project');
+
+
+
+
+
+
+
 
 
 
 
 Route::get('/test',function (){
 
-  return view('test');
+//  $states = State::all();
+//  foreach ($states as $state){
+//    echo $state->name . '<hr>';
+//  }
+  $ad = Ad::find(1);
+  echo $ad->city->name;
 });
 
 

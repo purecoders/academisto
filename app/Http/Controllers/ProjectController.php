@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -15,7 +16,7 @@ class ProjectController extends Controller
   }
 
 
-  public function payment(){
+  public function addNewProject(){
 
   }
 
@@ -37,7 +38,8 @@ class ProjectController extends Controller
     $user = Auth::user();
     $id = $request->input('id');
     $project = Project::findOrFail($id);
-    if($project->user_id == $user->id){
+
+    if($project->user_id == $user->id && $project->is_started == 0){
       $project->title = $request->input('title');
       $project->description = $request->input('description');
       $project->user_price = $request->input('user_price');
@@ -49,16 +51,31 @@ class ProjectController extends Controller
   }
 
 
+  public function showAllProjects(){
+    $projects = Project::orderBy('created_at', 'desc')->paginate(12);
+    return view('site.projects', compact('projects'));
+  }
+
+
+  public function searchProject(Request $request){
+    $text = $request->input('text');
+    if ($text !== null && strlen($text) > 1) {
+      $projects = Project::orderBy('created_at', 'desc')->where('title', 'like', '%'.$text.'%')->paginate(12);
+      return view('site.projects', compact('projects'));
+    }else{
+      return redirect('/projects');
+    }
+  }
+
+
+
 
   public function index()
   {
-    $projects = Project::all();
-    //return view('user.show_users', compact('users'));
   }
 
   public function create()
   {
-    // return view('user.register');
   }
 
   public function store(Request $request)
