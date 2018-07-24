@@ -1,5 +1,6 @@
 //Fonts
 $vazir-font-path: "../fonts/vazir";
+$vazir-fd-font-path: "../fonts/Farsi-Digits";
 $afsane-font-path: "../fonts";
 $img-back-path: "../img";
 @font-face {
@@ -10,6 +11,14 @@ $img-back-path: "../img";
   url('#{$vazir-font-path}/Vazir.woff') format('woff'), /* Pretty Modern Browsers */
   url('#{$vazir-font-path}/Vazir.ttf') format('truetype'); /* Safari, Android, iOS */
 }
+@font-face {
+  font-family: 'vazir-fd';
+  src: url('#{$vazir-fd-font-path}/Vazir-FD.eot'); /* IE9 Compat Modes */
+  src: url('#{$vazir-fd-font-path}/Vazir-FD.woff2') format('woff2'), /* Super Modern Browsers */
+  url('#{$vazir-fd-font-path}/Vazir-FD.woff') format('woff'), /* Pretty Modern Browsers */
+  url('#{$vazir-fd-font-path}/Vazir-FD.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
 
 @font-face {
   font-family: 'afsane';
@@ -229,6 +238,21 @@ body {
   font-size: 1.4em;
   cursor: pointer;
   text-decoration: none;
-
 }
-
+.strong-font-size{
+  font-size:1.1em;
+}
+.admin-price-info{
+  font-family: vazir-fd;
+  border: 1px solid #bf0056;
+  border-radius: 6px;
+}
+.admin-price-info:hover{
+  background: #bf0056;
+  color: #ffffff;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #495057;
+  background-color: #ffffff;
+  border-color: #dee2e6 #dee2e6 #ffffff;
+}

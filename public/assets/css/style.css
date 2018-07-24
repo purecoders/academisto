@@ -8,6 +8,14 @@
 }
 
 @font-face {
+  font-family: 'vazir-fd';
+  src: url("../fonts/Farsi-Digits/Vazir-FD.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/Farsi-Digits/Vazir-FD.woff2") format("woff2"), url("../fonts/Farsi-Digits/Vazir-FD.woff") format("woff"), url("../fonts/Farsi-Digits/Vazir-FD.ttf") format("truetype");
+  /* Safari, Android, iOS */
+}
+
+@font-face {
   font-family: 'afsane';
   src: url("../fonts/AAfsaneh.ttf") format("truetype");
   /* Safari, Android, iOS */
@@ -240,4 +248,25 @@ body {
   font-size: 1.4em;
   cursor: pointer;
   text-decoration: none;
+}
+
+.strong-font-size {
+  font-size: 1.1em;
+}
+
+.admin-price-info {
+  font-family: vazir-fd;
+  border: 1px solid #bf0056;
+  border-radius: 6px;
+}
+
+.admin-price-info:hover {
+  background: #bf0056;
+  color: #ffffff;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: #495057;
+  background-color: #ffffff;
+  border-color: #dee2e6 #dee2e6 #ffffff;
 }
