@@ -35,7 +35,7 @@
                 <td>Mark</td>
                 <td>Mark@yahoo.com</td>
                 <td>4.8</td>
-                <td><a href="{{route('admin-user-control')}}" class="btn btn-outline-light">مشاهده پروفایل</a></td>
+                <td><a href="{{route('admin-user-profile')}}" class="btn btn-outline-light">مشاهده پروفایل</a></td>
                 <td><a href="" class="btn btn-outline-danger">حذف</a></td>
             </tr>
             <tr>
