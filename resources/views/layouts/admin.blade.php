@@ -51,13 +51,13 @@
                         <a id="nav-users" class="nav-link" href="{{ route('admin-users') }}">کاربران</a>
                     </li>
                     <li class="nav-item">
-                        <a id="nav-reports" class="nav-link" href="{{ route('admin-projects') }}">گزارش ها</a>
+                        <a id="nav-reports" class="nav-link" href="{{ route('admin-reports') }}">گزارش ها</a>
                     </li>
                     <li class="nav-item">
-                        <a id="nav-finance" class="nav-link" href="{{ route('admin-projects') }}">امور مالی</a>
+                        <a id="nav-finance" class="nav-link" href="{{ route('admin-finance') }}">امور مالی</a>
                     </li>
                     <li class="nav-item">
-                        <a id="nav-ticket" class="nav-link" href="{{ route('admin-projects') }}">تیکت ها</a>
+                        <a id="nav-ticket" class="nav-link" href="{{ route('admin-tickets') }}">تیکت ها</a>
                     </li>
 
                 </ul>
@@ -152,8 +152,13 @@
         if(url.includes("/admin/projects")){
             document.getElementById('nav-projects').classList.add('active')
         }
-        if(url.includes("/admin/users")){
+        if(url.includes("/admin/user")){
             document.getElementById('nav-users').classList.add('active')
+            if(url.includes("profile")){document.getElementById('card-nav-profile').classList.add('active')}
+            if(url.includes("ads")){document.getElementById('card-nav-ads').classList.add('active')}
+            if(url.includes("orders")){document.getElementById('card-nav-orders').classList.add('active')}
+            if(url.includes("requests")){document.getElementById('card-nav-requests').classList.add('active')}
+            if(url.includes("finance")){document.getElementById('card-nav-finance').classList.add('active')}
         }
         if(url.includes("/admin/reports")){
             document.getElementById('nav-reports').classList.add('active')
@@ -164,6 +169,7 @@
         if(url.includes("/admin/ticket")){
             document.getElementById('nav-ticket').classList.add('active')
         }
+
 
     });
 
