@@ -1,0 +1,25 @@
+.custom-table {
+  background: #616161;
+}
+
+.admin-finance-card-income:hover {
+  background: rgba(38, 255, 56, 0.38) !important;
+}
+
+.admin-finance-card-pay:hover {
+  background: rgba(253, 25, 80, 0.41) !important;
+}
+
+.admin-finance-price {
+  font-family: vazir-fd;
+  font-size: 2.5em;
+}
+
+.farsi-digits {
+  font-family: vazir-fd;
+}
+
+#admin-finance table {
+  border-collapse: separate;
+  border-spacing: 0 0.1em;
+}
