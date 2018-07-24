@@ -37,9 +37,11 @@
                 </tr>
                 </thead>
                 <tbody>
+                @php($i=0)
                 @foreach($payments as $payment)
+                    @php($i++)
                     <tr class="text-center">
-                        <th class="text-center" scope="row ">1</th>
+                        <th class="text-center" scope="row ">{{$i}}</th>
                         <td>{{$payment->created_at}}</td>
                         <td>{{$payment->amount}}</td>
                     </tr>
@@ -69,9 +71,11 @@
                 </tr>
                 </thead>
                 <tbody>
+                @php($i=0)
                 @foreach($received_payments as $payment)
+                    @php($i++)
                     <tr class="text-center">
-                        <th class="text-center" scope="row ">1</th>
+                        <th class="text-center" scope="row ">{{$i}}</th>
                         <td>{{$payment->created_at}}</td>
                         <td>{{$payment->amount}}</td>
                     </tr>

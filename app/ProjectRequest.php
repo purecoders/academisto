@@ -13,4 +13,8 @@ class ProjectRequest extends Model
     'user_id', 'project_id', 'description','price',
     'is_accepted'
   ];
+
+  public function project(){
+    return $this->belongsTo('App\Project');
+  }
 }

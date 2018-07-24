@@ -2,6 +2,7 @@
 @section('content')
     <div class="container rtl">
         <div class="row bg-light site-filer-container">
+
             <form class="row" id="filter-form" action="{{route('search-ad')}}">
                 <div class="col-md-6">
 

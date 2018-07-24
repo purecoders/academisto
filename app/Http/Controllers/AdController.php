@@ -56,6 +56,49 @@ class AdController extends Controller
 
 
 
+    //admin
+    public function adminShowAds(){
+      $ads = Ad::orderBy('created_at', 'desc')->paginate(12);
+      $states = State::all();
+      $cities = City::all();
+      $univs = Univ::all();
+
+      return view('admin.ads', compact(['ads', 'states', 'cities', 'univs']));
+    }
+
+
+    public function adminSearchAds(Request $request){
+      $city_id = $request->input('city_id');
+      $univ_id = $request->input('univ_id');
+      $text = $request->input('text');
+
+
+      if($city_id !== null && $city_id != 0){
+        $ads = Ad::orderBy('created_at', 'desc')->where('city_id', '=', $city_id)->where('title', 'like', '%'.$text.'%')->paginate(12);
+      }elseif ($univ_id !==  null && $univ_id != 0){
+        $ads = Ad::orderBy('created_at', 'desc')->where('univ_id', '=', $univ_id)->where('title', 'like', '%'.$text.'%')->paginate(12);
+      }else{
+        $ads = Ad::orderBy('created_at', 'desc')->where('title', 'like', '%'.$text.'%')->paginate(12);
+      }
+
+      $states = State::all();
+      $cities = City::all();
+      $univs = Univ::all();
+
+      return view('admin.ads', compact(['ads', 'states', 'cities', 'univs']));
+    }
+
+    public function adminRemoveAd(Request $request){
+      $ad_id = $request->input('ad_id');
+      $ad = Ad::find($ad_id);
+      $ad->delete();
+      return redirect('/admin/ads');
+    }
+
+
+
+
+
 
 
 

@@ -82,12 +82,55 @@ Route::get('projects','ProjectController@showAllProjects')->name('projects');
 Route::post('search-project','ProjectController@searchProject')->name('search-project');
 Route::post('add-new-project','ProjectController@addNewProject')->name('add-new-project');///add new project with pay###############
 
-
-
 Route::post('send-request','ProjectRequestController@sendRequest')->middleware('auth')->name('send-request');
 
 Route::post('report-project', 'ReportController@reportProject')->middleware('auth')->name('report-project');
 
+
+
+
+////############ admin ###############///
+
+Route::get('admin/ads', 'AdController@adminShowAds')->middleware(['auth','super_admin'])->name('admin-ads');
+Route::post('admin/remove-ads', 'AdController@adminRemoveAd')->middleware(['auth','super_admin'])->name('admin-remove-ads');
+Route::post('admin/user-profile', 'AdminController@adminShowUserProfile')->middleware(['auth','super_admin'])->name('admin-user-profile');////
+Route::post('admin/accept-cv', 'AdminController@adminAcceptCv')->middleware(['auth','super_admin'])->name('admin-accept-cv');
+Route::get('admin/search-ads', 'AdController@adminSearchAds')->middleware(['auth','super_admin'])->name('admin-search-ads');
+Route::get('admin/projects', 'ProjectController@adminShowAllProjects')->middleware(['auth','super_admin'])->name('admin-projects');
+Route::post('admin/search-project', 'ProjectController@adminSearchProject')->middleware(['auth','super_admin'])->name('admin-search-project');
+Route::post('admin/remove-project', 'ProjectController@adminRemoveProject')->middleware(['auth','super_admin'])->name('admin-remove-project');
+Route::get('admin/users', 'AdminController@adminShowUsers')->middleware(['auth','super_admin'])->name('admin-users');
+Route::post('admin/remove-user', 'AdminController@adminRemoveUser')->middleware(['auth','super_admin'])->name('admin-remove-user');
+//Route::post('admin/user-control', 'AdminController@adminUserControl')->middleware('auth')->name('admin-user-control');
+Route::post('admin/user-ads', 'AdminController@adminUserAds')->middleware(['auth','super_admin'])->name('admin-user-ads');
+Route::post('admin/remove-user-ad', 'AdminController@adminRemoveUserAd')->middleware(['auth','super_admin'])->name('admin-remove-user-ad');
+Route::post('admin/remove-user-project', 'AdminController@adminRemoveUserProject')->middleware(['auth','super_admin'])->name('admin-remove-user-project');
+Route::post('admin/remove-user-project-request', 'AdminController@adminRemoveUserProjectRequest')->middleware(['auth','super_admin'])->name('admin-remove-user-project-request');
+Route::post('admin/user-orders', 'AdminController@adminUserOrders')->middleware(['auth','super_admin'])->name('admin-user-orders');
+
+
+Route::post('admin/user-requests', 'AdminController@adminUserRequests')->middleware(['auth','super_admin'])->name('admin-user-requests');
+
+
+
+
+
+
+Route::get('admin/user-finance',function (){
+  return view('admin.user_pages.finance');
+})->middleware(['auth','super_admin'])->name('admin-user-finance');
+
+Route::get('admin/reports',function (){
+  return view('admin.reports');
+})->middleware(['auth','super_admin'])->name('admin-reports');
+
+Route::get('admin/finance',function (){
+  return view('admin.finance');
+})->middleware(['auth','super_admin'])->name('admin-finance');
+
+Route::get('admin/tickets',function (){
+  return view('admin.tickets');
+})->middleware(['auth','super_admin'])->name('admin-tickets');
 
 
 
@@ -100,12 +143,15 @@ Route::post('report-project', 'ReportController@reportProject')->middleware('aut
 
 Route::get('/test',function (){
 
-//  $states = State::all();
-//  foreach ($states as $state){
-//    echo $state->name . '<hr>';
-//  }
-  $ad = Ad::find(1);
-  echo $ad->city->name;
+$ad = Ad::find(10);
+$reports = $ad->reports;
+$i=0;
+  foreach ($reports as $report){
+   // echo $reports;
+    $i++;
+  }
+
+  echo $i;
 });
 
 

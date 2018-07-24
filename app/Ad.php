@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Ad extends Model
 {
 
-  use SoftDeletes;
+    use SoftDeletes;
 
-  protected $fillable = [
-    'user_id', 'title', 'description','price', 'state_id', 'city_id',
-    'univ_id', 'photo_id'
-  ];
+    protected $fillable = [
+      'user_id', 'title', 'description','price', 'state_id', 'city_id',
+      'univ_id', 'photo_id'
+    ];
+
+    private $report_count;
 
 
     public function user(){
@@ -43,4 +45,17 @@ class Ad extends Model
     public function reports (){
       return $this->morphMany('App\Report','reportable');
     }
+
+//  public  function getReportCount (){
+//    $reports = $this->reports();
+//    $i = 0;
+//    foreach ( $reports as $report) {
+//      $i++;
+//    }
+//
+//    return $i;
+//  }
+
+
+
 }

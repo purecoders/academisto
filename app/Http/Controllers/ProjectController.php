@@ -69,6 +69,31 @@ class ProjectController extends Controller
 
 
 
+//########### admin
+
+  public function adminShowAllProjects(){
+    $projects = Project::orderBy('created_at', 'desc')->paginate(12);
+    return view('admin.projects', compact('projects'));
+  }
+
+
+  public function adminSearchProject(Request $request){
+    $text = $request->input('text');
+    if ($text !== null && strlen($text) > 1) {
+      $projects = Project::orderBy('created_at', 'desc')->where('title', 'like', '%'.$text.'%')->paginate(12);
+      return view('admin.projects', compact('projects'));
+    }else{
+      return redirect('admin/projects');
+    }
+  }
+
+  public function adminRemoveProject(Request $request){
+    $project_id = $request->input('project_id');
+    $project = Project::find($project_id);
+    $project->delete();
+    return redirect('/admin/projects');
+  }
+
 
   public function index()
   {

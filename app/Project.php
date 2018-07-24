@@ -25,7 +25,10 @@ class Project extends Model
 
 
     public function reports(){
-      return $this->morphMany('App\Report');
+      return $this->morphMany('App\Report', 'reportable');
     }
 
+    public function user(){
+      return $this->belongsTo('App\User');
+    }
 }
