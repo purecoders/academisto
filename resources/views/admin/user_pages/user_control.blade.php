@@ -4,11 +4,11 @@
         <div class="card">
             <div class="card-header ">
                 <ul class="nav nav-tabs card-header-tabs">
-                    <li class="active mr-auto"><a  href="{{route('admin-user-profile')}}">پروفایل</a></li>
-                    <li class="active mr-auto"><a  href="{{route('admin-user-ads')}}">آگهی ها</a></li>
-                    <li class=" mr-auto"><a href="{{route('admin-user-orders')}}">سفارش ها</a></li>
-                    <li class="mr-auto"><a href="{{route('admin-user-requests')}}">درخواست ها</a></li>
-                    <li class="mr-auto"><a href="{{route('user-finance')}}">امور مالی</a></li>
+                    <li class="nav-item mr-auto"><a id="card-nav-profile" class="nav-link"  href="{{route('admin-user-profile')}}">پروفایل</a></li>
+                    <li class="nav-item mr-auto"><a id="card-nav-ads"  class="nav-link" href="{{route('admin-user-ads')}}">آگهی ها</a></li>
+                    <li class="nav-item mr-auto"><a id="card-nav-orders" class="nav-link" href="{{route('admin-user-orders')}}">سفارش ها</a></li>
+                    <li class="nav-item mr-auto"><a id="card-nav-requests" class="nav-link" href="{{route('admin-user-requests')}}">درخواست ها</a></li>
+                    <li class="nav-item mr-auto"><a id="card-nav-finance" class="nav-link" href="{{route('admin-user-finance')}}">امور مالی</a></li>
                 </ul>
             </div>
             <div class="card-body">
