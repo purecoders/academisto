@@ -40,6 +40,7 @@
                             </item>
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">
+                            <a href="#" class="btn btn-danger">حذف</a>
                         </div>
                     </div>
                 </div>
@@ -64,6 +65,7 @@
                             </item>
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">
+                            <a href="#" class="btn btn-danger">حذف</a>
                         </div>
                     </div>
                 </div>
@@ -88,33 +90,11 @@
                             </item>
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">
+                            <a href="#" class="btn btn-danger">حذف</a>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div id="request_card" class="card rtl border-success">
-                        <div class="card-header bg-success"></div>
-                        <div class="card-body">
-                            <h5 class="card-title">درخواست 1</h5>
-                            <div id="summary">
-                                <p class="card-text collapse" id="collapseSummary4">
-                                    چاپ و sf است.
-                                </p>
-                                <a class="collapsed" data-toggle="collapse" href="#collapseSummary4" aria-expanded="false"
-                                   aria-controls="collapseSummary"></a>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between p-0">
-                            <item class="py-1 m-1 card-info">پروژه سما</item>
-                            <item class="py-1 m-1 card-info">
-                                <item>قیمت:</item>
-                                <item>10000</item>
-                            </item>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between p-1">
-                        </div>
-                    </div>
-                </div>
+
                 <div class="swiper-slide">
                     <div id="request_card" class="card rtl">
                         <div class="card-header bg-warning"></div>
@@ -136,6 +116,7 @@
                             </item>
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">
+                            <a href="#" class="btn btn-danger">حذف</a>
                         </div>
                     </div>
                 </div>
