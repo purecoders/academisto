@@ -111,6 +111,26 @@ Route::get('admin/user-requests',function (){
     return view('admin.user_pages.user_requests');
 })->middleware('auth')->name('admin-user-requests');
 
+Route::get('admin/user-finance',function (){
+    return view('admin.user_pages.finance');
+})->middleware('auth')->name('admin-user-finance');
+
+Route::get('admin/reports',function (){
+    return view('admin.reports');
+})->middleware('auth')->name('admin-reports');
+
+Route::get('admin/finance',function (){
+    return view('admin.finance');
+})->middleware('auth')->name('admin-finance');
+
+Route::get('admin/tickets',function (){
+    return view('admin.tickets');
+})->middleware('auth')->name('admin-tickets');
+
+
+
+
+
 
 
 
