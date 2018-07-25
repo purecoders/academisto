@@ -64,7 +64,7 @@ class UserController extends Controller
       $project_requests = $user->projectRequests;
       $requests = array();
       foreach ($project_requests as $project_request){
-        $requests[] = ["project_request"=>$project_request, "projects"=>Project::findOrFail($project_request->project_id)];
+        $requests[] = ["project_request"=>$project_request, "projects"=>Project::find($project_request->project_id)];
       }
       return view('user.user_requests', compact('requests'));
     }

@@ -112,16 +112,16 @@ Route::post('admin/remove-user-project-request', 'AdminController@adminRemoveUse
 Route::post('admin/user-orders', 'AdminController@adminUserOrders')->middleware(['auth','super_admin'])->name('admin-user-orders');
 Route::post('admin/user-requests', 'AdminController@adminUserRequests')->middleware(['auth','super_admin'])->name('admin-user-requests');
 Route::post('admin/user-finance', 'AdminController@adminUserFinance')->middleware(['auth','super_admin'])->name('admin-user-finance');
-
-
-
 Route::get('admin/reports', 'AdminController@adminReports')->middleware(['auth','super_admin'])->name('admin-reports');
+Route::get('admin/finance', 'AdminController@adminFinance')->middleware(['auth','super_admin'])->name('admin-finance');
+
+
+Route::post('admin/search-user', 'AdminController@adminSearchUser')->middleware(['auth','super_admin'])->name('admin-search-user');
 
 
 
-Route::get('admin/finance',function (){
-  return view('admin.finance');
-})->middleware(['auth','super_admin'])->name('admin-finance');
+
+
 
 Route::get('admin/tickets',function (){
   return view('admin.tickets');

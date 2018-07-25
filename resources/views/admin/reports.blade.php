@@ -58,8 +58,7 @@
                                     {{csrf_field()}}
                                     <input  type="hidden" name="ad_id" value="{{$item['report']['reportable_id']}}">
                                     <input  type="hidden" name="user_id" value="{{$item['report']['user_id_to']}}">
-                                    <input  type="hidden" name="report_id" value="{{$item['report']['user_id_to']}}">
-                                    <input class="btn btn-outline-danger" type="submit" value="حذف">
+                                    <input class="btn btn-outline-danger" type="submit" value="حذف این پروژه یا آگهی">
                                 </form>
                                 </td>
 
@@ -71,7 +70,7 @@
                                     {{csrf_field()}}
                                     <input  type="hidden" name="project_id" value="{{$item['report']['reportable_id']}}">
                                     <input  type="hidden" name="user_id" value="{{$item['report']['user_id_to']}}">
-                                    <input class="btn btn-outline-danger" type="submit" value="حذف">
+                                    <input class="btn btn-outline-danger" type="submit" value="حذف این پروژه یا آگهی">
                                 </form>
                                 </td>
 

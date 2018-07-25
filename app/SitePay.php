@@ -14,4 +14,10 @@ class SitePay extends Model
     'amount',
     'bank_receipt'
   ];
+
+
+  public function user(){
+    return $this->belongsTo('App\User');
+  }
+
 }

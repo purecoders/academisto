@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ad;
 use App\City;
 use App\Photo;
+use App\Report;
 use App\State;
 use App\Univ;
 use Illuminate\Http\Request;
@@ -91,6 +92,10 @@ class AdController extends Controller
     public function adminRemoveAd(Request $request){
       $ad_id = $request->input('ad_id');
       $ad = Ad::find($ad_id);
+      $reports = Report::where('reportable_id', '=', $ad_id)->where('reportable_type', '=', 'App\Ad')->get();
+      foreach ($reports as $report){
+        $report->delete();
+      }
       $ad->delete();
       return redirect('/admin/ads');
     }

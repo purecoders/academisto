@@ -15,6 +15,13 @@ class Project extends Model
     'is_started', 'is_finished'
   ];
 
+  public function delete(){
+    $this->requests()->delete();
+    $this->reports()->delete();
+
+    parent::delete();
+  }
+
     public function requests(){
       return $this->hasMany('App\ProjectRequest');
     }

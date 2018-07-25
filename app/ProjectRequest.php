@@ -14,6 +14,11 @@ class ProjectRequest extends Model
     'is_accepted'
   ];
 
+
+
+
+
+
   public function project(){
     return $this->belongsTo('App\Project');
   }

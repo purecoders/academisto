@@ -175,10 +175,14 @@ class AdminController extends Controller
 
   public function adminRemoveUserAdFromReports(Request $request){
     $ad_id = $request->input('ad_id');
+    $reports = Report::where('reportable_id' ,'=', $ad_id)->where('reportable_type', '=', 'App\Ad')->get();
     $user_id = $request->input('user_id');
     $user = User::findOrFail($user_id);
     $ad = Ad::find($ad_id);
     $ad->delete();
+    foreach ($reports as $report){
+      $report->delete();
+    }
     $ads = $user->ads;
     return redirect('/admin/reports');
   }
@@ -196,10 +200,14 @@ class AdminController extends Controller
 
   public function adminRemoveUserProjectFromReports(Request $request){
     $project_id = $request->input('project_id');
+    $reports = Report::where('reportable_id' ,'=', $project_id)->where('reportable_type', '=', 'App\Project')->get();
     $user_id = $request->input('user_id');
     $user = User::findOrFail($user_id);
     $project = Project::find($project_id);
     $project->delete();
+    foreach ($reports as $report){
+      $report->delete();
+    }
     $projects = $user->projects;
     return redirect('/admin/reports');
   }
@@ -239,6 +247,55 @@ class AdminController extends Controller
 
 
 
+  public function adminFinance(){
+    $payments = Payment::where('success', '=', 1)->withTrashed()->get();
+    $site_pays = SitePay::where('success', '=', 1)->withTrashed()->get();
+
+    $paymentsSum = 0;
+    $site_paysSum = 0;
+
+    foreach ($payments as $payment){
+      $paymentsSum += $payment->amount;
+    }
+
+    foreach ($site_pays as $pay){
+      $site_paysSum += $pay->amount;
+    }
+
+
+    return view('admin.finance', compact(['payments', 'site_pays', 'paymentsSum', 'site_paysSum']));
+  }
+
+
+
+  public function adminSearchUser(Request $request){
+    $email = $request->input('user_email');
+    if($email === null || strlen($email) < 2){
+      return redirect('admin/users');
+    }else{
+      $users = User::where('email', 'like', '%'.$email.'%')->get();
+      $rates = array();
+      foreach ($users as $user) {
+        $user_rates = $user->rates;
+        $rate_count = 0;
+        $sum_rates = 0;
+        foreach ($user_rates as $rate) {
+          $sum_rates += $rate->rate;
+          $rate_count++;
+        }
+
+        if ($rate_count != 0) {
+          $rate = $sum_rates / $rate_count;
+        } else {
+          $rate = 0;
+        }
+        $rates[$user->id] = $rate;
+      }
+
+      return view('admin.users', compact(['users', 'rates']));
+    }
+
+  }
 
 
 

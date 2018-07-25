@@ -15,7 +15,14 @@ class Ad extends Model
       'univ_id', 'photo_id'
     ];
 
-    private $report_count;
+
+
+  public function delete(){
+    $this->reports()->delete();
+
+    parent::delete();
+  }
+
 
 
     public function user(){

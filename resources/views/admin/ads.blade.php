@@ -72,12 +72,24 @@
                         <div class="card rtl mb-3">
                             <div class="card-header bg-light ">
                                 <div class="d-flex justify-content-around">
-                                    <a href="{{route('admin-user-profile', $ad->user_id)}}" style="text-decoration: none;color:black">
+
+
+                                    <form action="{{route('admin-user-profile')}}" method="post" style="text-decoration: none;color:black">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="user_id" value="{{$ad->user_id}}"/>
+
+
                                         <div class="card-header-icon">
                                             <item><i class="fa fa-user-circle "></i></item>
-                                            <item>{{$ad->user->name}}</item>
+                                            <input style="text-decoration: none;color:black" type="submit"  value="{{$ad->user->email}}"/>
                                         </div>
-                                    </a>
+
+                                        {{--<a href="{{route('admin-user-profile', $ad->user_id)}}" style="text-decoration: none;color:black">--}}
+                                                 {{--<item type="submit">{{$ad->user->name}}</item>--}}
+                                         {{--</a>--}}
+
+                                    </form>
+
                                     {{--<a href="http://www.google.com" style="text-decoration: none;color:black">--}}
                                         <div class="card-header-icon">
                                             <item class="">   {{$ad->reports->count()}} </item>

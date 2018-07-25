@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\ProjectRequest;
+use App\Report;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -90,6 +92,10 @@ class ProjectController extends Controller
   public function adminRemoveProject(Request $request){
     $project_id = $request->input('project_id');
     $project = Project::find($project_id);
+    $reports = Report::where('reportable_id', '=', $project_id)->where('reportable_type', '=', 'App\Project')->get();
+    foreach ($reports as $report){
+      $report->delete();
+    }
     $project->delete();
     return redirect('/admin/projects');
   }

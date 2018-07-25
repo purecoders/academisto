@@ -22,6 +22,30 @@ class User extends Authenticatable
 
 
 
+    public function delete(){
+      $this->ads()->delete();
+      $this->projects()->delete();
+      $this->rates()->delete();
+      $this->projectRequests()->delete();
+      $this->tickets()->delete();
+      $this->cv()->delete();
+      $this->sent_reports()->delete();
+      $this->received_reports()->delete();
+      $this->fullInfo()->delete();
+
+      parent::delete();
+    }
+
+
+//  protected static function boot() {
+//    parent::boot();
+//
+//    static::deleting(function($user) { // before delete() method call this
+//      $user->ads()->delete();
+//      // do the rest of the cleanup...
+//    });
+//  }
+
 
 
 
@@ -41,13 +65,13 @@ class User extends Authenticatable
       return $this->hasMany('App\ProjectRequest');
     }
 
-    public function sentChats(){
-      return $this->hasMany('App\Chat', 'user_id_from');
-    }
+//    public function sentChats(){
+//      return $this->hasMany('App\Chat', 'user_id_from');
+//    }
 
-    public function receivedChats(){
-      return $this->hasMany('App\ProjectRequest', 'user_id_to');
-    }
+//    public function receivedChats(){
+//      return $this->hasMany('App\ProjectRequest', 'user_id_to');
+//    }
 
     public function tickets(){
       return $this->hasMany('App\Ticket');

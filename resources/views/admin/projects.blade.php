@@ -35,18 +35,35 @@
                         <div id="site-projects_card" class="card rtl mb-3">
                             <div class="card-header bg-light">
                                 <div class="d-flex justify-content-around">
-                                    <a href="" style="text-decoration: none;color:black">
+
+
+                                    <form action="{{route('admin-user-profile')}}" method="post" style="text-decoration: none;color:black">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="user_id" value="{{$project->user_id}}"/>
+
+
                                         <div class="card-header-icon">
                                             <item><i class="fa fa-user-circle "></i></item>
-                                            <item>{{$project->user->name}}</item>
+                                            <input style="text-decoration: none;color:black" type="submit"  value="{{$project->user->email}}"/>
                                         </div>
-                                    </a>
-                                    <a href="http://www.google.com" style="text-decoration: none;color:black">
+
+                                        {{--<a href="{{route('admin-user-profile', $ad->user_id)}}" style="text-decoration: none;color:black">--}}
+                                        {{--<item type="submit">{{$ad->user->name}}</item>--}}
+                                        {{--</a>--}}
+
+                                    </form>
+
+
+
+                                    {{--<a href="http://www.google.com" style="text-decoration: none;color:black">--}}
                                         <div class="card-header-icon">
                                             <item >{{$project->reports->count()}}</item>
                                             <item class="text-danger" > گزارش </item>
                                         </div>
-                                    </a>
+                                    {{--</a>--}}
+
+
+
                                 </div>
                             </div>
                             <div class="card-body">

@@ -125,6 +125,7 @@
   });
   function send(e) {
     var text=document.getElementById('chat-text');
+    var chatContaienr=document.querySelector('#chat');
     if(text.value==""){
       return false
     }
@@ -142,9 +143,9 @@
     var newtext="<p>"+text.value+"</p>"
     container.find('p').replaceWith(newtext)
     var temp=t.html(container.html())
-    console.log($("script[type='text/x-custom-template']").html())
     $('#chat').append(temp.html());
     document.getElementById('chat-text').value="";
+    chatContaienr.scrollTop=chatContaienr.scrollHeight;
   }
   var uniSelect=document.getElementById('uni-select');
   var citySelect=document.getElementById('city-select');

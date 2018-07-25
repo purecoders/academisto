@@ -6,8 +6,8 @@
             <div class="col-md-6 p-5 text-center">
                 <div class="card bg-light  border-danger admin-finance-card-pay">
                     <div class="card-body ">
-                        <h4>کل پرداخت <strong class="academisto-brand">آکادمیستو</strong></h4>
-                        <h3 class="admin-finance-price">19,254,000</h3>
+                        <h4>کل پرداخت های <strong class="academisto-brand">آکادمیستو</strong></h4>
+                        <h3 class="admin-finance-price">{{$site_paysSum}} ریال </h3>
                     </div>
                 </div>
             </div>
@@ -15,83 +15,74 @@
                 <div class="card bg-light  border-success admin-finance-card-income">
                     <div class="card-body ">
                         <h4>کل درآمد <strong class="academisto-brand">آکادمیستو</strong></h4>
-                        <h3 class="admin-finance-price">87,627,000</h3>
+                        <h3 class="admin-finance-price">{{$paymentsSum}} ریال </h3>
                     </div>
                 </div>
             </div>
         </div>
         <h3>ریز تراکنش های سایت:</h3>
-        <div class="row ">
-            <div id="admin-finance" class="col-md-10 m-auto">
-                <table  class="table table-sm">
+
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <h4>پرداخت های کاربران به <strong class="academisto-brand">آکادمیستو</strong> </h4>
+                <table class="table table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">کاربر</th>
-                        <th scope="col">مبلغ</th>
-                        <th scope="col">بابت</th>
-                        <th scope="col">تاریخ</th>
-                        <th scope="col">اطلاعات مالی کاربر</th>
+                        <th  class="text-center" scope="col" >ردیف</th>
+                        <th  class="text-center" scope="col">کاربر</th>
+                        <th  class="text-center" scope="col">تاریخ</th>
+                        <th  class="text-center" scope="col">مبلغ</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="table-success spacer">
-                        <th scope="row">1</th>
-                        <td>محسن</td>
-                        <td class="farsi-digits">15,000+</td>
-                        <td>درج آگهی</td>
-                        <td class="farsi-digits">96/12/02</td>
-                        <td><a href="{{route('admin-user-finance')}}" class="btn btn-outline-info">مشاهده اطلاعات مالی</a></td>
-                    </tr>
+                    @php($i=0)
+                    @foreach($payments as $payment)
+                        @php($i++)
+                        <tr class="text-center">
+                            <th class="text-center" scope="row ">{{$i}}</th>
+                            <td>{{$payment->user['email']}}</td>
+                            <td>{{$payment->created_at}}</td>
+                            <td>{{$payment->amount}} ریال </td>
 
-                    <tr class="table-success">
-                        <th scope="row">2</th>
-                        <td>علی</td>
-                        <td class="farsi-digits">18,000+</td>
-                        <td>درج آگهی</td>
-                        <td class="farsi-digits">96/12/01</td>
-                        <td><a href="{{route('admin-user-finance')}}" class="btn btn-outline-info">مشاهده اطلاعات مالی</a></td>
+                        </tr>
+                    @endforeach
+
+
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h4>پرداخت های <strong class="academisto-brand">آکادمیستو</strong> به کاربران</h4>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th  class="text-center" scope="col" >ردیف</th>
+                        <th  class="text-center" scope="col" >کاربر</th>
+                        <th   class="text-center" scope="col">تاریخ</th>
+                        <th class="text-center" scope="col">مبلغ</th>
+
                     </tr>
-                    <tr class="table-danger">
-                        <th scope="row">4</th>
-                        <td>پویا</td>
-                        <td class="farsi-digits">184,000-</td>
-                        <td>انجام پروژه</td>
-                        <td class="farsi-digits">95/12/02</td>
-                        <td><a href="{{route('admin-user-finance')}}" class="btn btn-outline-info">مشاهده اطلاعات مالی</a></td>
-                    </tr>
-                    <tr class="table-success">
-                        <th scope="row">5</th>
-                        <td>مهدی</td>
-                        <td class="farsi-digits">15000+</td>
-                        <td>درج آگهی</td>
-                        <td class="farsi-digits">96/02/24</td>
-                        <td><a href="{{route('admin-user-finance')}}" class="btn btn-outline-info">مشاهده اطلاعات مالی</a></td>
-                    </tr>
-                    <tr class="table-success">
-                        <th scope="row">6</th>
-                        <td>حسن</td>
-                        <td class="farsi-digits">15000+</td>
-                        <td>درج آگهی</td>
-                        <td class="farsi-digits">96/12/02</td>
-                        <td><a href="{{route('admin-user-finance')}}" class="btn btn-outline-info">مشاهده اطلاعات مالی</a></td>
-                    </tr>
-                    <tr class="table-danger">
-                        <th scope="row">7</th>
-                        <td>امین</td>
-                        <td class="farsi-digits">150,000-</td>
-                        <td>انجام پروژه</td>
-                        <td class="farsi-digits">97/04/14</td>
-                        <td><a href="{{route('admin-user-finance')}}" class="btn btn-outline-info">مشاهده اطلاعات مالی</a></td>
-                    </tr>
-                    <tr class="table-success">
-                        <th scope="row">8</th>
-                        <td>محسن</td>
-                        <td class="farsi-digits">15000+</td>
-                        <td>درج آگهی</td>
-                        <td class="farsi-digits">96/12/02</td>
-                        <td><a href="{{route('admin-user-finance')}}" class="btn btn-outline-info">مشاهده اطلاعات مالی</a></td>
-                    </tr>
+                    </thead>
+                    <tbody>
+                    @php($i=0)
+                    @foreach($site_pays as $site_pay)
+                        @php($i++)
+                        <tr class="text-center">
+                            <th class="text-center" scope="row ">{{$i}}</th>
+                            <td>{{$site_pay->user['email']}}</td>
+                            <td>{{$site_pay->created_at}}</td>
+                            <td>{{$site_pay->amount}} ریال </td>
+                        </tr>
+                    @endforeach
+
+
+
                     </tbody>
                 </table>
             </div>
