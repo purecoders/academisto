@@ -82,7 +82,7 @@
         <div class="row">
             <div class="col-md-6">
 
-                <form class="rtl" action="{{route('add-new-project')}}">
+                <form class="rtl" action="{{route('add-new-project')}}" enctype="multipart/form-data" method="post">
                     <div class="form-group row">
                         <label for="inputTitle" class="col-sm-2 col-form-label">عنوان:</label>
                         <div class="col-sm-10">
@@ -98,10 +98,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPrice" class="col-sm-2 col-form-label">قیمت:</label>
+                        <label for="inputPrice" class="col-sm-2 col-form-label">قیمت : (ریال)</label>
                         <div class="col-sm-10">
-                            <input type="text" name="price" class="form-control" id="inputPrice"
-                                   placeholder="قیمت (تومان)">
+                            <input type="text" name="user_price" class="form-control" id="inputPrice"
+                                   placeholder="قیمت (ریال)">
                         </div>
                     </div>
 

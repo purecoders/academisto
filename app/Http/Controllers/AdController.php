@@ -157,7 +157,7 @@ class AdController extends Controller
         $minute = date('i', time());
 
 
-        $image_name = $day.'d'.$hour.'h'.$minute. 'm' .$user_id . 'u'. $this->generateRandomString(15) . $image_extension;
+        $image_name = $day.'d'.$hour.'h'.$minute. 'm' .$user_id . 'u'. $this->generateRandomString(15). '.' . $image_extension;
 
         //save image into dir
         $image->move($image_dir, $image_name);

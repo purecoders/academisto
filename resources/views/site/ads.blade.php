@@ -69,7 +69,7 @@
                                 @if($ad->city_id != 0)
                                     <li class="list-group-item">شهر: {{$ad->city->name}}</li>
                                 @else
-                                    <li class="list-group-item">شهر:<li class="list-group-item">شهر: {{$ad->city['name']}}</li></li>
+                                    <li class="list-group-item">شهر:</li>
                                 @endif
                                 @if($ad->univ_id != 0)
                                      <li class="list-group-item">دانشگاه: {{$ad->univ->name}}</li>
