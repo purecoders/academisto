@@ -14,6 +14,7 @@
 use App\Ad;
 use App\City;
 use App\State;
+use App\User;
 
 Route::get('/', function () {
     return view('welcome');
@@ -104,25 +105,19 @@ Route::post('admin/remove-user', 'AdminController@adminRemoveUser')->middleware(
 //Route::post('admin/user-control', 'AdminController@adminUserControl')->middleware('auth')->name('admin-user-control');
 Route::post('admin/user-ads', 'AdminController@adminUserAds')->middleware(['auth','super_admin'])->name('admin-user-ads');
 Route::post('admin/remove-user-ad', 'AdminController@adminRemoveUserAd')->middleware(['auth','super_admin'])->name('admin-remove-user-ad');
+Route::post('admin/remove-user-ad-from-reports', 'AdminController@adminRemoveUserAdFromReports')->middleware(['auth','super_admin'])->name('admin-remove-user-ad-from-reports');
 Route::post('admin/remove-user-project', 'AdminController@adminRemoveUserProject')->middleware(['auth','super_admin'])->name('admin-remove-user-project');
+Route::post('admin/remove-user-project-from-reports', 'AdminController@adminRemoveUserProjectFromReports')->middleware(['auth','super_admin'])->name('admin-remove-user-project-from-reports');
 Route::post('admin/remove-user-project-request', 'AdminController@adminRemoveUserProjectRequest')->middleware(['auth','super_admin'])->name('admin-remove-user-project-request');
 Route::post('admin/user-orders', 'AdminController@adminUserOrders')->middleware(['auth','super_admin'])->name('admin-user-orders');
-
-
 Route::post('admin/user-requests', 'AdminController@adminUserRequests')->middleware(['auth','super_admin'])->name('admin-user-requests');
+Route::post('admin/user-finance', 'AdminController@adminUserFinance')->middleware(['auth','super_admin'])->name('admin-user-finance');
 
 
 
+Route::get('admin/reports', 'AdminController@adminReports')->middleware(['auth','super_admin'])->name('admin-reports');
 
 
-
-Route::get('admin/user-finance',function (){
-  return view('admin.user_pages.finance');
-})->middleware(['auth','super_admin'])->name('admin-user-finance');
-
-Route::get('admin/reports',function (){
-  return view('admin.reports');
-})->middleware(['auth','super_admin'])->name('admin-reports');
 
 Route::get('admin/finance',function (){
   return view('admin.finance');

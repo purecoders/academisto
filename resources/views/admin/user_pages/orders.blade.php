@@ -24,7 +24,14 @@
                     @php($i++)
                     <div class="swiper-slide">
 
-                        <div id="project_card" class="card rtl border-primary">
+                        <div id="project_card"
+                             @if($project->is_finished == 1 && $project->is_started == 1)
+                                 class="card rtl border-success"
+                             @elseif($project->is_started == 1 && $project->is_finished == 0)
+                                  class="card rtl border-warning"
+                             @elseif($project->is_started == 0)
+                                     class="card rtl border-primary"
+                             @endif>
 
                             <div class="card-header bg-light p-1">
                                 <div class="d-flex justify-content-around">

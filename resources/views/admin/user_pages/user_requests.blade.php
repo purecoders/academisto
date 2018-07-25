@@ -24,7 +24,18 @@
                 @foreach($project_requests as $request)
                     <div class="swiper-slide">
                         <div id="request_card" class="card rtl">
-                            <div class="card-header bg-danger"></div>
+
+                            <div @if($request['project_request']['is_denied'] == 1)
+                                    class="card-header bg-danger"
+                                 @elseif($request['projects']['is_finished'] == 1)
+                                    class="card-header bg-success"
+                                 @elseif($request['projects']['is_started'] == 1 && $request['project_request']['is_accepted'] == 1 && $request['projects']['is_finished'] == 0)
+                                    class="card-header bg-primary"
+                                 @else
+                                    class="card-header bg-warning"
+                                 @endif>
+
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{$request->description}}</h5>
                                 <div id="summary">

@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Ad;
 use App\Cv;
+use App\Payment;
 use App\Project;
 use App\ProjectRequest;
+use App\Report;
+use App\SitePay;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -83,13 +86,6 @@ class AdminController extends Controller
   }
 
 
-//  public function adminUserControl($id){
-//    $user = findOrFail($id);
-//
-//    return view('admin.user_pages.user_control', compact('user'));
-//  }
-
-
   public function adminUserAds(Request $request){
     $user_id = $request->input('user_id');
     $user = User::findOrFail($user_id);
@@ -113,6 +109,59 @@ class AdminController extends Controller
 
   }
 
+  public function adminUserFinance(Request $request){
+
+    $user_id = $request->input('user_id');
+    $user = User::findOrFail($user_id);
+    $user_full_info = $user->fullInfo;
+
+    $payments = $user->payments;
+    $paymentsFullInfo = array();
+    foreach ($payments as $payment){
+
+      if($payment->success == 1) {
+
+        if ($payment->paymentable_type == 'App\Ad') {
+          $ad = Ad::find($payment->paymentable_id);
+          $paymentsFullInfo [] = ['payment' => $payment, 'payment_name' => $ad['title']];
+        }elseif ($payment->paymentable_type == 'App\Project') {
+          $project = Project::find($payment->paymentable_id);
+          $paymentsFullInfo [] = ['payment' => $payment, 'payment_name' => $project['title']];
+        }
+
+      }
+
+    }
+
+
+    $userPays = Payment::where('user_id', '=', $user->id)->where('success', '=', 1)->get();
+    $sitePays = SitePay::where('user_id', '=', $user->id)->where('success', '=', 1)->get();
+    $siteMustPays = SitePay::where('user_id', '=', $user->id)->where('success', '=', 0)->get();
+
+    $userSumPays = 0;
+    $siteSumPays = 0;
+    $siteSumMustPays = 0;
+
+    foreach ($userPays as $pay){
+      $userSumPays += $pay->amount;
+    }
+
+    foreach ($sitePays as $pay){
+      $siteSumPays += $pay->amount;
+    }
+
+    foreach ($siteMustPays as $pay){
+      $siteSumMustPays += $pay->amount;
+    }
+
+
+
+
+
+    return view('admin.user_pages.finance', compact(['user', 'user_full_info','paymentsFullInfo', 'userPays', 'sitePays', 'userSumPays', 'siteSumPays', 'siteSumMustPays']));
+//    return view('admin.user_pages.finance', compact(['user', 'user_full_info']));
+  }
+
 
   public function adminRemoveUserAd(Request $request){
     $ad_id = $request->input('ad_id');
@@ -122,6 +171,16 @@ class AdminController extends Controller
     $ad->delete();
     $ads = $user->ads;
     return view('admin.user_pages.ads', compact(['user', 'ads']));
+  }
+
+  public function adminRemoveUserAdFromReports(Request $request){
+    $ad_id = $request->input('ad_id');
+    $user_id = $request->input('user_id');
+    $user = User::findOrFail($user_id);
+    $ad = Ad::find($ad_id);
+    $ad->delete();
+    $ads = $user->ads;
+    return redirect('/admin/reports');
   }
 
 
@@ -135,6 +194,17 @@ class AdminController extends Controller
     return view('admin.user_pages.orders', compact(['user', 'projects']));
   }
 
+  public function adminRemoveUserProjectFromReports(Request $request){
+    $project_id = $request->input('project_id');
+    $user_id = $request->input('user_id');
+    $user = User::findOrFail($user_id);
+    $project = Project::find($project_id);
+    $project->delete();
+    $projects = $user->projects;
+    return redirect('/admin/reports');
+  }
+
+
 
   public function adminRemoveUserProjectRequest(Request $request){
     $project_request_id = $request->input('request_id');
@@ -144,6 +214,26 @@ class AdminController extends Controller
     $project_request->delete();
     $project_requests = $user->projectRequests;
     return view('admin.user_pages.user_requests', compact(['user', 'project_requests']));
+  }
+
+
+
+  public function adminReports(){
+    $reports = Report::all();
+    $reportsFullInfo = array();
+    foreach ($reports as $report) {
+      if($report->reportable_type == 'App\Ad'){
+        $ad = Ad::find($report->reportable_id);
+        $reportsFullInfo [] = ['report'=>$report, 'reportable_name'=>$ad['title']];
+      }elseif ($report->reportable_type == 'App\Project'){
+        $project = Project::find($report->reportable_id);
+        $reportsFullInfo [] = ['report'=>$report, 'reportable_name'=>$project['title']];
+      }
+
+    }
+
+
+    return view('admin.reports', compact(['reportsFullInfo']));
   }
 
 
