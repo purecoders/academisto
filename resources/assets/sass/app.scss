@@ -1,0 +1,15 @@
+
+// Fonts
+$fa-font-path: "../fonts/FontAwesome";
+@import "node_modules/font-awesome/scss/font-awesome";
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-v4-rtl/scss/bootstrap-rtl";
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}

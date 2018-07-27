@@ -1,0 +1,817 @@
+body {
+  background-color: #29eaea;
+  font-family: vazir;
+  overflow-y: hidden;
+}
+
+#myHexGrid {
+  margin: auto;
+}
+
+#myHexGrid {
+  height: 49.54090909em;
+  width: 70em;
+}
+
+#myHexGrid .hexCrop {
+  position: relative;
+  overflow: visible;
+}
+
+#myHexGrid .hexGrid {
+  display: grid;
+  justify-items: auto;
+  -webkit-box-align: auto;
+      -ms-flex-align: auto;
+          align-items: auto;
+  height: 49.54090909em;
+  width: 70em;
+  grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+  grid-template-rows: repeat(9, 5.50454545em);
+}
+
+#myHexGrid .hexGrid .hex {
+  display: none;
+}
+
+#myHexGrid .hexGrid .c-1, #myHexGrid .hexGrid .hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(8), #myHexGrid .hexGrid .hex:nth-child(15), #myHexGrid .hexGrid .hex:nth-child(22) {
+  grid-column-start: 1;
+  grid-column-end: span 3;
+}
+
+#myHexGrid .hexGrid .c-1.r-1, #myHexGrid .hexGrid .hex:nth-child(1), #myHexGrid .hexGrid .c-1.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(22), #myHexGrid .hexGrid .r-1.hex:nth-child(8), #myHexGrid .hexGrid .r-1.hex:nth-child(15), #myHexGrid .hexGrid .r-1.hex:nth-child(22) {
+  grid-row-start: 2;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-1.r-1, #myHexGrid .hexGrid .hex:nth-child(1), #myHexGrid .hexGrid .c-1.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(22), #myHexGrid .hexGrid .r-1.hex:nth-child(8), #myHexGrid .hexGrid .r-1.hex:nth-child(15), #myHexGrid .hexGrid .r-1.hex:nth-child(22) {
+  visibility: hidden;
+}
+
+#myHexGrid .hexGrid .c-1.r-2, #myHexGrid .hexGrid .r-2.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(8), #myHexGrid .hexGrid .c-1.hex:nth-child(9), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(10), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(11), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(12), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(13), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(14), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(22), #myHexGrid .hexGrid .r-2.hex:nth-child(15), #myHexGrid .hexGrid .r-2.hex:nth-child(22) {
+  grid-row-start: 4;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-1.r-3, #myHexGrid .hexGrid .r-3.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(21), #myHexGrid .hexGrid .r-3.hex:nth-child(8), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(15), #myHexGrid .hexGrid .c-1.hex:nth-child(16), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(17), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(18), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(19), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(20), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(21), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(22), #myHexGrid .hexGrid .r-3.hex:nth-child(22) {
+  grid-row-start: 6;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-1.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(8), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(15), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(28), #myHexGrid .hexGrid .hex:nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(23), #myHexGrid .hexGrid .c-1.hex:nth-child(24), #myHexGrid .hexGrid .c-1.hex:nth-child(25), #myHexGrid .hexGrid .c-1.hex:nth-child(26), #myHexGrid .hexGrid .c-1.hex:nth-child(27), #myHexGrid .hexGrid .c-1.hex:nth-child(28) {
+  grid-row-start: 8;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-1.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(8), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(15), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(28), #myHexGrid .hexGrid .hex:nth-child(22), #myHexGrid .hexGrid .c-1.hex:nth-child(23), #myHexGrid .hexGrid .c-1.hex:nth-child(24), #myHexGrid .hexGrid .c-1.hex:nth-child(25), #myHexGrid .hexGrid .c-1.hex:nth-child(26), #myHexGrid .hexGrid .c-1.hex:nth-child(27), #myHexGrid .hexGrid .c-1.hex:nth-child(28) {
+  visibility: hidden;
+}
+
+#myHexGrid .hexGrid .c-2, #myHexGrid .hexGrid .hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(9), #myHexGrid .hexGrid .hex:nth-child(16), #myHexGrid .hexGrid .hex:nth-child(23) {
+  grid-column-start: 3;
+  grid-column-end: span 3;
+}
+
+#myHexGrid .hexGrid .c-2.r-1, #myHexGrid .hexGrid .c-2.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(2), #myHexGrid .hexGrid .c-2.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(23), #myHexGrid .hexGrid .r-1.hex:nth-child(9), #myHexGrid .hexGrid .r-1.hex:nth-child(16), #myHexGrid .hexGrid .r-1.hex:nth-child(23) {
+  grid-row-start: 1;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-2.r-1, #myHexGrid .hexGrid .c-2.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(2), #myHexGrid .hexGrid .c-2.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(23), #myHexGrid .hexGrid .r-1.hex:nth-child(9), #myHexGrid .hexGrid .r-1.hex:nth-child(16), #myHexGrid .hexGrid .r-1.hex:nth-child(23) {
+  visibility: hidden;
+}
+
+#myHexGrid .hexGrid .c-2.r-2, #myHexGrid .hexGrid .r-2.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(14), #myHexGrid .hexGrid .c-2.hex:nth-child(8), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(9), #myHexGrid .hexGrid .c-2.hex:nth-child(10), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(11), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(12), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(13), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(14), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(23), #myHexGrid .hexGrid .r-2.hex:nth-child(16), #myHexGrid .hexGrid .r-2.hex:nth-child(23) {
+  grid-row-start: 3;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-2.r-3, #myHexGrid .hexGrid .r-3.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(21), #myHexGrid .hexGrid .r-3.hex:nth-child(9), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(21), #myHexGrid .hexGrid .c-2.hex:nth-child(15), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(16), #myHexGrid .hexGrid .c-2.hex:nth-child(17), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(18), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(19), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(20), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(21), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(23), #myHexGrid .hexGrid .r-3.hex:nth-child(23) {
+  grid-row-start: 5;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-2.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(9), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(16), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(28), #myHexGrid .hexGrid .c-2.hex:nth-child(22), #myHexGrid .hexGrid .hex:nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(24), #myHexGrid .hexGrid .c-2.hex:nth-child(25), #myHexGrid .hexGrid .c-2.hex:nth-child(26), #myHexGrid .hexGrid .c-2.hex:nth-child(27), #myHexGrid .hexGrid .c-2.hex:nth-child(28) {
+  grid-row-start: 7;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-2.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(9), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(16), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(28), #myHexGrid .hexGrid .c-2.hex:nth-child(22), #myHexGrid .hexGrid .hex:nth-child(23), #myHexGrid .hexGrid .c-2.hex:nth-child(24), #myHexGrid .hexGrid .c-2.hex:nth-child(25), #myHexGrid .hexGrid .c-2.hex:nth-child(26), #myHexGrid .hexGrid .c-2.hex:nth-child(27), #myHexGrid .hexGrid .c-2.hex:nth-child(28) {
+  visibility: hidden;
+}
+
+#myHexGrid .hexGrid .c-3, #myHexGrid .hexGrid .hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(10), #myHexGrid .hexGrid .hex:nth-child(17), #myHexGrid .hexGrid .hex:nth-child(24) {
+  grid-column-start: 5;
+  grid-column-end: span 3;
+}
+
+#myHexGrid .hexGrid .c-3.r-1, #myHexGrid .hexGrid .c-3.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(3), #myHexGrid .hexGrid .c-3.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(24), #myHexGrid .hexGrid .r-1.hex:nth-child(10), #myHexGrid .hexGrid .r-1.hex:nth-child(17), #myHexGrid .hexGrid .r-1.hex:nth-child(24) {
+  grid-row-start: 2;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-3.r-2, #myHexGrid .hexGrid .r-2.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(14), #myHexGrid .hexGrid .c-3.hex:nth-child(8), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(9), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(10), #myHexGrid .hexGrid .c-3.hex:nth-child(11), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(12), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(13), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(14), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(24), #myHexGrid .hexGrid .r-2.hex:nth-child(17), #myHexGrid .hexGrid .r-2.hex:nth-child(24) {
+  grid-row-start: 4;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-3.r-3, #myHexGrid .hexGrid .r-3.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(21), #myHexGrid .hexGrid .r-3.hex:nth-child(10), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(21), #myHexGrid .hexGrid .c-3.hex:nth-child(15), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(16), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(17), #myHexGrid .hexGrid .c-3.hex:nth-child(18), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(19), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(20), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(21), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(24), #myHexGrid .hexGrid .r-3.hex:nth-child(24) {
+  grid-row-start: 6;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-3.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(10), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(17), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(28), #myHexGrid .hexGrid .c-3.hex:nth-child(22), #myHexGrid .hexGrid .c-3.hex:nth-child(23), #myHexGrid .hexGrid .hex:nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(25), #myHexGrid .hexGrid .c-3.hex:nth-child(26), #myHexGrid .hexGrid .c-3.hex:nth-child(27), #myHexGrid .hexGrid .c-3.hex:nth-child(28) {
+  grid-row-start: 8;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-3.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(10), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(17), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(28), #myHexGrid .hexGrid .c-3.hex:nth-child(22), #myHexGrid .hexGrid .c-3.hex:nth-child(23), #myHexGrid .hexGrid .hex:nth-child(24), #myHexGrid .hexGrid .c-3.hex:nth-child(25), #myHexGrid .hexGrid .c-3.hex:nth-child(26), #myHexGrid .hexGrid .c-3.hex:nth-child(27), #myHexGrid .hexGrid .c-3.hex:nth-child(28) {
+  visibility: hidden;
+}
+
+#myHexGrid .hexGrid .c-4, #myHexGrid .hexGrid .hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(11), #myHexGrid .hexGrid .hex:nth-child(18), #myHexGrid .hexGrid .hex:nth-child(25) {
+  grid-column-start: 7;
+  grid-column-end: span 3;
+}
+
+#myHexGrid .hexGrid .c-4.r-1, #myHexGrid .hexGrid .c-4.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(4), #myHexGrid .hexGrid .c-4.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(25), #myHexGrid .hexGrid .r-1.hex:nth-child(11), #myHexGrid .hexGrid .r-1.hex:nth-child(18), #myHexGrid .hexGrid .r-1.hex:nth-child(25) {
+  grid-row-start: 1;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-4.r-2, #myHexGrid .hexGrid .r-2.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(14), #myHexGrid .hexGrid .c-4.hex:nth-child(8), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(9), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(10), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(11), #myHexGrid .hexGrid .c-4.hex:nth-child(12), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(13), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(14), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(25), #myHexGrid .hexGrid .r-2.hex:nth-child(18), #myHexGrid .hexGrid .r-2.hex:nth-child(25) {
+  grid-row-start: 3;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-4.r-3, #myHexGrid .hexGrid .r-3.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(21), #myHexGrid .hexGrid .r-3.hex:nth-child(11), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(21), #myHexGrid .hexGrid .c-4.hex:nth-child(15), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(16), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(17), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(18), #myHexGrid .hexGrid .c-4.hex:nth-child(19), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(20), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(21), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(25), #myHexGrid .hexGrid .r-3.hex:nth-child(25) {
+  grid-row-start: 5;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-4.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(11), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(18), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(28), #myHexGrid .hexGrid .c-4.hex:nth-child(22), #myHexGrid .hexGrid .c-4.hex:nth-child(23), #myHexGrid .hexGrid .c-4.hex:nth-child(24), #myHexGrid .hexGrid .hex:nth-child(25), #myHexGrid .hexGrid .c-4.hex:nth-child(26), #myHexGrid .hexGrid .c-4.hex:nth-child(27), #myHexGrid .hexGrid .c-4.hex:nth-child(28) {
+  grid-row-start: 7;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-5, #myHexGrid .hexGrid .hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(12), #myHexGrid .hexGrid .hex:nth-child(19), #myHexGrid .hexGrid .hex:nth-child(26) {
+  grid-column-start: 9;
+  grid-column-end: span 3;
+}
+
+#myHexGrid .hexGrid .c-5.r-1, #myHexGrid .hexGrid .c-5.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(5), #myHexGrid .hexGrid .c-5.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(26), #myHexGrid .hexGrid .r-1.hex:nth-child(12), #myHexGrid .hexGrid .r-1.hex:nth-child(19), #myHexGrid .hexGrid .r-1.hex:nth-child(26) {
+  grid-row-start: 2;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-5.r-2, #myHexGrid .hexGrid .r-2.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(14), #myHexGrid .hexGrid .c-5.hex:nth-child(8), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(9), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(10), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(11), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(12), #myHexGrid .hexGrid .c-5.hex:nth-child(13), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(14), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(26), #myHexGrid .hexGrid .r-2.hex:nth-child(19), #myHexGrid .hexGrid .r-2.hex:nth-child(26) {
+  grid-row-start: 4;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-5.r-3, #myHexGrid .hexGrid .r-3.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(21), #myHexGrid .hexGrid .r-3.hex:nth-child(12), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(21), #myHexGrid .hexGrid .c-5.hex:nth-child(15), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(16), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(17), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(18), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(19), #myHexGrid .hexGrid .c-5.hex:nth-child(20), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(21), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(26), #myHexGrid .hexGrid .r-3.hex:nth-child(26) {
+  grid-row-start: 6;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-5.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(12), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(19), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(28), #myHexGrid .hexGrid .c-5.hex:nth-child(22), #myHexGrid .hexGrid .c-5.hex:nth-child(23), #myHexGrid .hexGrid .c-5.hex:nth-child(24), #myHexGrid .hexGrid .c-5.hex:nth-child(25), #myHexGrid .hexGrid .hex:nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(27), #myHexGrid .hexGrid .c-5.hex:nth-child(28) {
+  grid-row-start: 8;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-5.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(12), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(19), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(28), #myHexGrid .hexGrid .c-5.hex:nth-child(22), #myHexGrid .hexGrid .c-5.hex:nth-child(23), #myHexGrid .hexGrid .c-5.hex:nth-child(24), #myHexGrid .hexGrid .c-5.hex:nth-child(25), #myHexGrid .hexGrid .hex:nth-child(26), #myHexGrid .hexGrid .c-5.hex:nth-child(27), #myHexGrid .hexGrid .c-5.hex:nth-child(28) {
+  visibility: hidden;
+}
+
+#myHexGrid .hexGrid .c-6, #myHexGrid .hexGrid .hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(13), #myHexGrid .hexGrid .hex:nth-child(20), #myHexGrid .hexGrid .hex:nth-child(27) {
+  grid-column-start: 11;
+  grid-column-end: span 3;
+}
+
+#myHexGrid .hexGrid .c-6.r-1, #myHexGrid .hexGrid .c-6.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(6), #myHexGrid .hexGrid .c-6.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(27), #myHexGrid .hexGrid .r-1.hex:nth-child(13), #myHexGrid .hexGrid .r-1.hex:nth-child(20), #myHexGrid .hexGrid .r-1.hex:nth-child(27) {
+  grid-row-start: 1;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-6.r-1, #myHexGrid .hexGrid .c-6.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(6), #myHexGrid .hexGrid .c-6.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(13), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(27), #myHexGrid .hexGrid .r-1.hex:nth-child(13), #myHexGrid .hexGrid .r-1.hex:nth-child(20), #myHexGrid .hexGrid .r-1.hex:nth-child(27) {
+  visibility: hidden;
+}
+
+#myHexGrid .hexGrid .c-6.r-2, #myHexGrid .hexGrid .r-2.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(14), #myHexGrid .hexGrid .c-6.hex:nth-child(8), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(9), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(10), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(11), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(12), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(13), #myHexGrid .hexGrid .c-6.hex:nth-child(14), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(20), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(27), #myHexGrid .hexGrid .r-2.hex:nth-child(20), #myHexGrid .hexGrid .r-2.hex:nth-child(27) {
+  grid-row-start: 3;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-6.r-3, #myHexGrid .hexGrid .r-3.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(21), #myHexGrid .hexGrid .r-3.hex:nth-child(13), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(21), #myHexGrid .hexGrid .c-6.hex:nth-child(15), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(16), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(17), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(18), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(19), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(27), #myHexGrid .hexGrid .hex:nth-child(20), #myHexGrid .hexGrid .c-6.hex:nth-child(21), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(27), #myHexGrid .hexGrid .r-3.hex:nth-child(27) {
+  grid-row-start: 5;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-6.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(13), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(20), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(28), #myHexGrid .hexGrid .c-6.hex:nth-child(22), #myHexGrid .hexGrid .c-6.hex:nth-child(23), #myHexGrid .hexGrid .c-6.hex:nth-child(24), #myHexGrid .hexGrid .c-6.hex:nth-child(25), #myHexGrid .hexGrid .c-6.hex:nth-child(26), #myHexGrid .hexGrid .hex:nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(28) {
+  grid-row-start: 7;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-6.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(13), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(28), #myHexGrid .hexGrid .r-4.hex:nth-child(20), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(28), #myHexGrid .hexGrid .c-6.hex:nth-child(22), #myHexGrid .hexGrid .c-6.hex:nth-child(23), #myHexGrid .hexGrid .c-6.hex:nth-child(24), #myHexGrid .hexGrid .c-6.hex:nth-child(25), #myHexGrid .hexGrid .c-6.hex:nth-child(26), #myHexGrid .hexGrid .hex:nth-child(27), #myHexGrid .hexGrid .c-6.hex:nth-child(28) {
+  visibility: hidden;
+}
+
+#myHexGrid .hexGrid .c-7, #myHexGrid .hexGrid .hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(14), #myHexGrid .hexGrid .hex:nth-child(21), #myHexGrid .hexGrid .hex:nth-child(28) {
+  grid-column-start: 13;
+  grid-column-end: span 3;
+}
+
+#myHexGrid .hexGrid .c-7.r-1, #myHexGrid .hexGrid .c-7.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(28), #myHexGrid .hexGrid .hex:nth-child(7), #myHexGrid .hexGrid .r-1.hex:nth-child(14), #myHexGrid .hexGrid .r-1.hex:nth-child(21), #myHexGrid .hexGrid .r-1.hex:nth-child(28) {
+  grid-row-start: 2;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-7.r-1, #myHexGrid .hexGrid .c-7.hex:nth-child(1), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(1):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(2), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(2):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(3), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(3):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(4), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(4):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(5), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(5):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(6), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(14), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(6):nth-child(28), #myHexGrid .hexGrid .hex:nth-child(7), #myHexGrid .hexGrid .r-1.hex:nth-child(14), #myHexGrid .hexGrid .r-1.hex:nth-child(21), #myHexGrid .hexGrid .r-1.hex:nth-child(28) {
+  visibility: hidden;
+}
+
+#myHexGrid .hexGrid .c-7.r-2, #myHexGrid .hexGrid .r-2.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(8), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(9), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(10), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(11), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(12), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(13), #myHexGrid .hexGrid .c-7.hex:nth-child(8), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(8):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(9), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(9):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(10), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(10):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(11), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(11):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(12), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(12):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(13), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(21), #myHexGrid .hexGrid .hex:nth-child(13):nth-child(28), #myHexGrid .hexGrid .hex:nth-child(14), #myHexGrid .hexGrid .r-2.hex:nth-child(21), #myHexGrid .hexGrid .r-2.hex:nth-child(28) {
+  grid-row-start: 4;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-7.r-3, #myHexGrid .hexGrid .r-3.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(20), #myHexGrid .hexGrid .r-3.hex:nth-child(14), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(15), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(16), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(17), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(18), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(19), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(20), #myHexGrid .hexGrid .c-7.hex:nth-child(15), #myHexGrid .hexGrid .hex:nth-child(15):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(16), #myHexGrid .hexGrid .hex:nth-child(16):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(17), #myHexGrid .hexGrid .hex:nth-child(17):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(18), #myHexGrid .hexGrid .hex:nth-child(18):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(19), #myHexGrid .hexGrid .hex:nth-child(19):nth-child(28), #myHexGrid .hexGrid .c-7.hex:nth-child(20), #myHexGrid .hexGrid .hex:nth-child(20):nth-child(28), #myHexGrid .hexGrid .hex:nth-child(21), #myHexGrid .hexGrid .r-3.hex:nth-child(28) {
+  grid-row-start: 6;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-7.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(27), #myHexGrid .hexGrid .r-4.hex:nth-child(14), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(27), #myHexGrid .hexGrid .r-4.hex:nth-child(21), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(27), #myHexGrid .hexGrid .c-7.hex:nth-child(22), #myHexGrid .hexGrid .c-7.hex:nth-child(23), #myHexGrid .hexGrid .c-7.hex:nth-child(24), #myHexGrid .hexGrid .c-7.hex:nth-child(25), #myHexGrid .hexGrid .c-7.hex:nth-child(26), #myHexGrid .hexGrid .c-7.hex:nth-child(27), #myHexGrid .hexGrid .hex:nth-child(28) {
+  grid-row-start: 8;
+  grid-row-end: span 2;
+}
+
+#myHexGrid .hexGrid .c-7.r-4, #myHexGrid .hexGrid .r-4.hex:nth-child(7), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(7):nth-child(27), #myHexGrid .hexGrid .r-4.hex:nth-child(14), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(14):nth-child(27), #myHexGrid .hexGrid .r-4.hex:nth-child(21), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(22), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(23), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(24), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(25), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(26), #myHexGrid .hexGrid .hex:nth-child(21):nth-child(27), #myHexGrid .hexGrid .c-7.hex:nth-child(22), #myHexGrid .hexGrid .c-7.hex:nth-child(23), #myHexGrid .hexGrid .c-7.hex:nth-child(24), #myHexGrid .hexGrid .c-7.hex:nth-child(25), #myHexGrid .hexGrid .c-7.hex:nth-child(26), #myHexGrid .hexGrid .c-7.hex:nth-child(27), #myHexGrid .hexGrid .hex:nth-child(28) {
+  visibility: hidden;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(1) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(4) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(5) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(6) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(7) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(8) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(9) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(10) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(11) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(12) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(13) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(14) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(15) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(16) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(17) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(18) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(19) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(20) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(21) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(22) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(23) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(24) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(25) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(26) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(27) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(28) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#myHexGrid .hexGrid .hex:nth-child(1) {
+  background-image: url(none);
+}
+
+#myHexGrid .hexGrid .hex {
+  -webkit-clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+  clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+  background-color: rgba(255, 255, 255, 0.35);
+  background-size: cover;
+  margin: 3.46px 4px;
+}
+
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background-color: rgba(26, 226, 241, 0.47);
+  z-index: 50;
+}
+
+.hexGrid {
+  margin: 5px 0px !important;
+}
+
+.hover-able-hex:hover {
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.87) !important;
+}
+
+#hex3 {
+  z-index: 100;
+  position: relative;
+  bottom: 465px;
+  width: 250px;
+  height: 250px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+#color1 {
+  background-color: #ffffff;
+}
+
+.main-hexagon-wrapper {
+  text-align: center;
+  z-index: 51;
+  position: fixed;
+  bottom: 50%;
+  right: 0;
+  display: inline-block;
+  -webkit-transform: rotate(60deg);
+          transform: rotate(60deg);
+}
+
+.main-hexagon {
+  height: 100%;
+  width: calc(100% * 0.57735);
+  display: inline-block;
+}
+
+.main-hexagon:before {
+  position: absolute;
+  top: 0;
+  right: calc((100% / 2) - ((100% * 0.57735) / 2));
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  -webkit-transform: rotateZ(60deg);
+          transform: rotateZ(60deg);
+}
+
+.main-hexagon:after {
+  position: absolute;
+  top: 0;
+  right: calc((100% / 2) - ((100% * 0.57735) / 2));
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+  content: '';
+  -webkit-transform: rotateZ(-60deg);
+          transform: rotateZ(-60deg);
+}
+
+.logo {
+  z-index: 1200;
+  height: 144px;
+  width: 271px;
+  position: relative;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  top: 50px;
+  right: 60%;
+}
+
+@media (min-width: 0px) {
+  body {
+    background-color: #29eaea;
+  }
+}
+
+@media (min-width: 576px) {
+  body {
+    background-color: #29eaea;
+  }
+  #myHexGrid {
+    visibility: visible;
+    height: 24.77045455em;
+    width: 35em;
+  }
+  #myHexGrid .hexGrid {
+    height: 24.77045455em;
+    width: 35em;
+    grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+    grid-template-rows: repeat(9, 2.75227273em);
+  }
+  .logo {
+    height: 72px;
+    width: 135px;
+    top: 34px;
+    right: 40%;
+  }
+  #hex3 {
+    bottom: 230px;
+    width: 140px;
+    height: 140px;
+  }
+  #background {
+    height: 214px;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    background-color: #29eaea;
+  }
+  #myHexGrid {
+    visibility: visible;
+    height: 35.38636364em;
+    width: 50em;
+  }
+  #myHexGrid .hexGrid {
+    height: 35.38636364em;
+    width: 50em;
+    grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+    grid-template-rows: repeat(9, 3.93181818em);
+  }
+  .logo {
+    height: 96px;
+    width: 180px;
+    top: 38px;
+    right: 50%;
+  }
+  #hex3 {
+    bottom: 313px;
+    width: 170px;
+    height: 170px;
+  }
+  #background {
+    height: 282px;
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    background-color: #29eaea;
+  }
+  #myHexGrid {
+    visibility: visible;
+    height: 46.00227273em;
+    width: 65em;
+  }
+  #myHexGrid .hexGrid {
+    height: 46.00227273em;
+    width: 65em;
+    grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+    grid-template-rows: repeat(9, 5.11136364em);
+  }
+  .logo {
+    height: 124.8px;
+    width: 234px;
+    top: 43px;
+    right: 55%;
+  }
+  #hex3 {
+    bottom: 415px;
+    width: 220px;
+    height: 220px;
+  }
+  #background {
+    height: 350px;
+  }
+}
+
+@media (min-width: 1200px) {
+  body {
+    background-color: #29eaea;
+  }
+  #myHexGrid {
+    visibility: visible;
+    height: 49.54090909em;
+    width: 70em;
+  }
+  #myHexGrid .hexGrid {
+    height: 49.54090909em;
+    width: 70em;
+    grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+    grid-template-rows: repeat(9, 5.50454545em);
+  }
+  .logo {
+    height: 144px;
+    width: 271px;
+    top: 50px;
+    right: 60%;
+  }
+  #hex3 {
+    bottom: 465px;
+    width: 250px;
+    height: 250px;
+  }
+  #background {
+    height: 372px;
+  }
+}
+
+.first-page-links {
+  font-size: 1.3em;
+}
