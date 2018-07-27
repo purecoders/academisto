@@ -14,8 +14,8 @@
                         </p>
                     </div>
                     <div class="card-footer">
-                        <item>قیمت:</item>
-                        <item>{{$project->user_price}}</item>
+                        <item>قیمت(تومان):</item>
+                        <item>{{number_format($project->user_price)}}</item>
                     </div>
                 </div>
             </div>

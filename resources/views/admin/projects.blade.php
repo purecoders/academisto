@@ -141,7 +141,7 @@
                             <label for="modal-text-project">متن :</label>
                             <input id="project_id" type="hidden" value="" name="project_id">
                             <textarea id="modal-text-project" type="text" class="form-control" name="name" value="" placeholder="متن درخواست خود را برای گرفتن پروژه بنویسید..."></textarea>
-                            <label for="modal-price-project" class="mt-2">قیمت:</label>
+                            <label for="modal-price-project" class="mt-2">قیمت(تومان):</label>
                             <input type="text" class="form-control" placeholder="قیمت پیشنهادی شما برای این پروژه">
                         </div>
 

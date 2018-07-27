@@ -13,6 +13,7 @@
 
 use App\Ad;
 use App\City;
+use App\Project;
 use App\State;
 use App\User;
 
@@ -82,6 +83,8 @@ Route::post('report-ad', 'ReportController@reportAd')->middleware('auth')->name(
 Route::get('projects','ProjectController@showAllProjects')->name('projects');
 Route::post('search-project','ProjectController@searchProject')->name('search-project');
 Route::post('add-new-project','ProjectController@addNewProject')->name('add-new-project');///add new project with pay###############
+Route::get('add-new-project-after-pay/{amount}/{project_id}/{user_id}','ProjectController@addNewProjectAfterPayment')->name('add-new-project-after-pay');///zarinpal callback ###############
+Route::get('add-new-ad-after-pay/{amount}/{ad_id}/{user_id}','AdController@addNewAdAfterPayment')->name('add-new-ad-after-pay');///zarinpal callback ###############
 
 Route::post('send-request','ProjectRequestController@sendRequest')->middleware('auth')->name('send-request');
 
@@ -138,15 +141,11 @@ Route::get('admin/tickets',function (){
 
 Route::get('/test',function (){
 
-$ad = Ad::find(10);
-$reports = $ad->reports;
-$i=0;
-  foreach ($reports as $report){
-   // echo $reports;
-    $i++;
-  }
+$project = Project::where('id', '=', 7)->withTrashed()->first();
+//echo $project;
+$project->deleted_at = null;
+$project->save();
 
-  echo $i;
 });
 
 

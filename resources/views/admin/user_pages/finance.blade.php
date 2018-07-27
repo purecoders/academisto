@@ -21,16 +21,16 @@
         <div class="col-md-7 mt-5 ml-5">
             <div class="d-flex justify-content-start align-items-center">
                 <h5 class="d-inline-block mr-3">جمع پرداخت های <strong class="academisto-brand" >آکادمیستو</strong> به {{$user->name}} :</h5>
-                <span class="font-weight-bold strong-font-size admin-price-info p-1">{{$siteSumPays}} ریال</span>
+                <span class="font-weight-bold strong-font-size admin-price-info p-1">{{number_format($siteSumPays)}} تومان</span>
             </div>
             <div class="d-flex justify-content-start align-items-center mt-2">
                 <h5 class="d-inline-block mr-3">جمع پرداخت های {{$user->name}} به <strong class="academisto-brand" >آکادمیستو</strong>:</h5>
-                <span class="font-weight-bold strong-font-size admin-price-info p-1">{{$userSumPays}} ریال</span>
+                <span class="font-weight-bold strong-font-size admin-price-info p-1">{{number_format($userSumPays)}} تومان</span>
             </div>
 
             <div class="d-flex justify-content-start align-items-center mt-5 pt-5 flex-wrap">
                 <h5 class="d-inline-block mr-3">جمع مبلغی که باید به {{$user->name}} پرداخت کنید: </h5>
-                <span class="font-weight-bold strong-font-size admin-price-info p-1"> {{$siteSumMustPays}} ریال</span>
+                <span class="font-weight-bold strong-font-size admin-price-info p-1"> {{number_format($siteSumMustPays)}} تومان</span>
                 <a href="" class="btn btn-outline-success ml-3 ">رفتن به صفحه پرداخت</a>
             </div>
 
@@ -45,7 +45,7 @@
                 <tr>
                     <th  class="text-center" scope="col" >ردیف</th>
                     <th   class="text-center" scope="col">تاریخ</th>
-                    <th class="text-center" scope="col">مبلغ</th>
+                    <th class="text-center" scope="col">مبلغ(تومان)</th>
                     <th class="text-center" scope="col">بابت</th>
                 </tr>
                 </thead>
@@ -56,7 +56,7 @@
                     <tr class="text-center">
                         <th class="text-center" scope="row ">{{$i}}</th>
                         <td>{{$item['payment']['created_at']}}</td>
-                        <td>{{$item['payment']['amount']}}</td>
+                        <td>{{number_format($item['payment']['amount'])}}</td>
                         @if($item['payment']['paymentable_type'] == 'App\Ad')
                              <td> آگهی {{$item['payment_name']}}</td>
                         @else
@@ -97,7 +97,7 @@
                 <tr>
                     <th  class="text-center" scope="col" >ردیف</th>
                     <th   class="text-center" scope="col">تاریخ</th>
-                    <th class="text-center" scope="col">مبلغ</th>
+                    <th class="text-center" scope="col">مبلغ(تومان)</th>
 
                 </tr>
                 </thead>
@@ -108,7 +108,7 @@
                     <tr class="text-center">
                         <th class="text-center" scope="row ">{{$i}}</th>
                         <td>{{$sitePay->created_at}}</td>
-                        <td>{{$sitePay->amount}}</td>
+                        <td>{{number_format($sitePay->amount)}}</td>
                     </tr>
                 @endforeach
 

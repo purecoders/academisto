@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ad;
 use App\City;
+use App\Payment;
 use App\Photo;
 use App\Report;
 use App\State;
@@ -11,6 +12,8 @@ use App\Univ;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Zarinpal\Zarinpal;
+use Zarinpal\Drivers\SoapDriver;
 
 class AdController extends Controller
 {
@@ -196,6 +199,7 @@ class AdController extends Controller
 
       //save image to table
       $lastAdId = $newAd->id;
+
       $photo = new Photo();
       $photo->url = $site_url . $image_dir.'/'.$image_name;
       $photo->path = $image_dir.'/'.$image_name;
@@ -204,13 +208,71 @@ class AdController extends Controller
       $photo->save();
 
 
+      $newAd->delete();
 
-      return redirect('/user-ads');
+
+      $this->zarinpalPayment(1000, $lastAdId, $user_id);
+      //return redirect('/user-ads');
 
     }
 
 
-    public function show($id)
+
+
+  private function zarinpalPayment($amount, $ad_id, $user_id){
+    $zarinpal = new Zarinpal('0959fefa-4605-11e8-984b-005056a205be', new SoapDriver());
+    echo json_encode($answer = $zarinpal->request(route('add-new-ad-after-pay',
+        ['amount' => $amount, 'ad_id' => $ad_id, 'user_id' => $user_id] )
+      , $amount, 'new project'));
+    if(isset($answer['Authority'])) {
+      file_put_contents('Authority',$answer['Authority']);
+      $zarinpal->redirect();
+    }
+  }
+
+
+  public function addNewAdAfterPayment($amount, $ad_id, $user_id) {
+    $zarinpal = new Zarinpal('0959fefa-4605-11e8-984b-005056a205be', new SoapDriver());
+    $answer['Authority'] = file_get_contents('Authority');
+    $result = ($zarinpal->verify('OK', $amount, $answer['Authority']));
+    //echo json_encode($result);
+    $status = $result['Status'];
+
+    if($status == 'success') {
+      $RefID = $result['RefID'];
+      $payment = new Payment();
+      $payment->user_id = $user_id;
+      $payment->paymentable_id = $ad_id;
+      $payment->paymentable_type = 'App\Ad';
+      $payment->amount = $amount;
+      $payment->bank_receipt = $RefID;
+      $payment->success = 1 ;
+      $payment->save();
+
+      Ad::withTrashed()->find($ad_id)->restore();
+
+      return redirect('/user-ads');
+
+    }else{
+
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  public function show($id)
     {
       $ad = Ad::findOrFail($id);
     }

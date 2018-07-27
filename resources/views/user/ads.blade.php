@@ -29,7 +29,7 @@
                                 <li class="list-group-item">دانشگاه : {{$ad->univ['name']}}</li>
                             </ul>
                             <div class="card-footer p-1">
-                                <span class="card-info pr-4">قیمت : {{$ad->price}}  </span>
+                                <span class="card-info pr-4">قیمت : {{number_format($ad->price)}}  </span>
 
                                 {{--<a href="{{route('ad.destroy', $ad->id)}}" class="btn btn-danger mr-auto">حذف آگهی</a>--}}
 

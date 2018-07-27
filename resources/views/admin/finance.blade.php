@@ -7,7 +7,7 @@
                 <div class="card bg-light  border-danger admin-finance-card-pay">
                     <div class="card-body ">
                         <h4>کل پرداخت های <strong class="academisto-brand">آکادمیستو</strong></h4>
-                        <h3 class="admin-finance-price">{{$site_paysSum}} ریال </h3>
+                        <h3 class="admin-finance-price">{{number_format($site_paysSum)}} تومان </h3>
                     </div>
                 </div>
             </div>
@@ -15,7 +15,7 @@
                 <div class="card bg-light  border-success admin-finance-card-income">
                     <div class="card-body ">
                         <h4>کل درآمد <strong class="academisto-brand">آکادمیستو</strong></h4>
-                        <h3 class="admin-finance-price">{{$paymentsSum}} ریال </h3>
+                        <h3 class="admin-finance-price">{{number_format($paymentsSum)}} تومان </h3>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                         <th  class="text-center" scope="col" >ردیف</th>
                         <th  class="text-center" scope="col">کاربر</th>
                         <th  class="text-center" scope="col">تاریخ</th>
-                        <th  class="text-center" scope="col">مبلغ</th>
+                        <th  class="text-center" scope="col">مبلغ(تومان)</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,7 +44,7 @@
                             <th class="text-center" scope="row ">{{$i}}</th>
                             <td>{{$payment->user['email']}}</td>
                             <td>{{$payment->created_at}}</td>
-                            <td>{{$payment->amount}} ریال </td>
+                            <td>{{number_format($payment->amount)}}  </td>
 
                         </tr>
                     @endforeach
@@ -65,7 +65,7 @@
                         <th  class="text-center" scope="col" >ردیف</th>
                         <th  class="text-center" scope="col" >کاربر</th>
                         <th   class="text-center" scope="col">تاریخ</th>
-                        <th class="text-center" scope="col">مبلغ</th>
+                        <th class="text-center" scope="col">مبلغ(تومان)</th>
 
                     </tr>
                     </thead>
@@ -77,7 +77,7 @@
                             <th class="text-center" scope="row ">{{$i}}</th>
                             <td>{{$site_pay->user['email']}}</td>
                             <td>{{$site_pay->created_at}}</td>
-                            <td>{{$site_pay->amount}} ریال </td>
+                            <td>{{number_format($site_pay->amount)}} تومان </td>
                         </tr>
                     @endforeach
 

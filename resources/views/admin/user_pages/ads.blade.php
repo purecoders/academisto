@@ -44,7 +44,7 @@
                                 @endif
                             </ul>
                             <div class="card-footer p-1 d-flex">
-                                <span class="card-info pl-2 pt-2 mr-auto">قیمت:{{$ad->price}} تومان</span>
+                                <span class="card-info pl-2 pt-2 mr-auto">قیمت:{{number_format($ad->price)}} تومان</span>
 
                                 <form class="btn btn-danger mr-2" method="post" action="{{route('admin-remove-user-ad')}}">
                                     {{csrf_field()}}

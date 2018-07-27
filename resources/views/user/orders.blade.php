@@ -98,10 +98,10 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPrice" class="col-sm-2 col-form-label">قیمت : (ریال)</label>
+                        <label for="inputPrice" class="col-sm-2 col-form-label">قیمت : (تومان)</label>
                         <div class="col-sm-10">
                             <input type="text" name="user_price" class="form-control" id="inputPrice"
-                                   placeholder="قیمت (ریال)">
+                                   placeholder="قیمت (تومان)">
                         </div>
                     </div>
 
@@ -155,7 +155,6 @@
                         <div class="col-sm-10">
                             <button type="submit" class="btn btn-success">پرداخت و ارسال پروژه</button>
 
-                            goto payment page
                         </div>
                     </div>
                 </form>

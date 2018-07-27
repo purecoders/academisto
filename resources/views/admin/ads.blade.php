@@ -125,7 +125,7 @@
 
                             </ul>
                             <div class="card-footer p-1 d-flex">
-                                <span class="card-info pl-2 pt-2 mr-auto">  قیمت: {{$ad->price}} تومان</span>
+                                <span class="card-info pl-2 pt-2 mr-auto">  قیمت: {{number_format($ad->price)}} تومان</span>
                                 <form action="{{route('admin-remove-ads')}}" method="post">
                                     {{csrf_field()}}
                                     <input type="hidden" name="ad_id" value="{{$ad->id}}"/>
