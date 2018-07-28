@@ -19,11 +19,6 @@
   font-family: vazir-fd;
 }
 
-#admin-finance table {
-  border-collapse: separate;
-  border-spacing: 0 0.1em;
-}
-
 .admin-chat-view-user-header {
   background: #303030;
   color: #dfdfdf;

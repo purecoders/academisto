@@ -16,6 +16,10 @@ class Payment extends Model
     'user_to_site','bank_receipt'
   ];
 
+  public function user(){
+    return $this->belongsTo('App\User');
+  }
+
 //  public function paymentable(){
 //    return $this->morphTo();
 //  }

@@ -65,7 +65,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tehran',
+//    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,6 +160,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        //zarinpal
+         Zarinpal\Laravel\ZarinpalServiceProvider::class,
+
+//      Larabookir\Gateway\GatewayServiceProvider::class,
 
     ],
 

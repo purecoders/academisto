@@ -21,9 +21,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPrice" class="col-sm-2 col-form-label">قیمت:</label>
+                        <label for="inputPrice" class="col-sm-2 col-form-label">قیمت(تومان):</label>
                         <div class="col-sm-10">
-                            <input type="text" name="user_price" class="form-control" id="inputPrice" value="{{$project->user_price}}"
+                            <input type="text" name="user_price" class="form-control" id="inputPrice" value="{{number_format($project->user_price)}}"
                                    placeholder="قیمت (تومان)">
                         </div>
                     </div>

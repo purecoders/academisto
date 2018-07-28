@@ -15,7 +15,6 @@
                                 <div id="summary">
                                     <p class="collapse" id="sum1{{$ad->id}}">
                                         {{$ad->description}}
-
                                     </p>
                                     <a class="collapsed" data-toggle="collapse" href="#sum1{{$ad->id}}"
                                        aria-expanded="false"
@@ -27,17 +26,22 @@
                                 <li class="list-group-item">دانشگاه : {{$ad->univ['name']}}</li>
                             </ul>
                             <div class="card-footer p-1">
-                                <span class="card-info pr-4">قیمت : {{$ad->price}}  </span>
+                                <span class="card-info pr-4">قیمت : {{number_format($ad->price)}}  </span>
+
                                 {{--<a href="{{route('ad.destroy', $ad->id)}}" class="btn btn-danger mr-auto">حذف آگهی</a>--}}
+
                                 <form class="form-group mr-auto d-inline-block" method="post"
                                       action="{{route('ad.destroy', $ad->id)}}">
                                     {{csrf_field()}}
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input class="form-control btn btn-danger" type="submit" value="حذف آگهی">
                                 </form>
+
+
                             </div>
                         </div>
                     </div>
+
                 @endforeach
             </div>
             <!-- Add Pagination -->
@@ -49,7 +53,6 @@
     </section>
     <hr>
     {{--User Create Ad Form--}}
-
     <section>
         <h5>ثبت آگهی جدید:</h5>
         <div class="row">
@@ -131,5 +134,4 @@
             </div>
         </div>
     </section>
-
 @endsection

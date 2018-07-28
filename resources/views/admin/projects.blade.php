@@ -35,18 +35,43 @@
                         <div id="site-projects_card" class="card rtl mb-3">
                             <div class="card-header bg-light">
                                 <div class="d-flex justify-content-around">
-                                    <a href="" style="text-decoration: none;color:black">
+{{--<<<<<<< HEAD--}}
+                                    {{--<a href="" style="text-decoration: none;color:black">--}}
+                                        {{--<div class="card-header-icon">--}}
+                                            {{--<item><i class="fa fa-user-circle "></i></item>--}}
+                                            {{--<item>{{$project->user->name}}</item>--}}
+                                        {{--</div>--}}
+                                    {{--</a>--}}
+                                    {{--<a href="http://www.google.com" style="text-decoration: none;color:black">--}}
+{{--=======--}}
+                                    <form action="{{route('admin-user-profile')}}" method="post" style="text-decoration: none;color:black">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="user_id" value="{{$project->user_id}}"/>
+
+
                                         <div class="card-header-icon">
                                             <item><i class="fa fa-user-circle "></i></item>
-                                            <item>{{$project->user->name}}</item>
+                                            <input style="text-decoration: none;color:black" type="submit"  value="{{$project->user->email}}"/>
                                         </div>
-                                    </a>
-                                    <a href="http://www.google.com" style="text-decoration: none;color:black">
+
+                                        {{--<a href="{{route('admin-user-profile', $ad->user_id)}}" style="text-decoration: none;color:black">--}}
+                                        {{--<item type="submit">{{$ad->user->name}}</item>--}}
+                                        {{--</a>--}}
+                                    </form>
+                                    {{--<a href="http://www.google.com" style="text-decoration: none;color:black">--}}
+{{-->>>>>>> r3remote/back_end--}}
                                         <div class="card-header-icon">
                                             <item >{{$project->reports->count()}}</item>
                                             <item class="text-danger" > گزارش </item>
                                         </div>
-                                    </a>
+{{--<<<<<<< HEAD--}}
+                                    {{--</a>--}}
+{{--=======--}}
+                                    {{--</a>--}}
+
+
+
+{{-->>>>>>> r3remote/back_end--}}
                                 </div>
                             </div>
                             <div class="card-body">
@@ -66,12 +91,11 @@
                                      <alert class="alert alert-danger p-1 m-1">فوری</alert>
                                 @else
                                         <alert class="alert alert-danger p-1 m-1 hide">فوری</alert>
+
                                 @endif
                             </div>
                             <div class="card-footer d-flex  p-1 align-items-start">
-
                                 {{--<a href="#" class="btn btn-danger">حذف</a>--}}
-
                                 <form action="{{route('admin-remove-project')}}" method="post">
                                     {{csrf_field()}}
                                     <input type="hidden" name="project_id" value="{{$project->id}}"/>
@@ -82,9 +106,6 @@
                         </div>
                     </div>
                 @endforeach
-
-
-
             </div>
             <nav>
                 <ul class="pagination justify-content-center p-1">
@@ -108,10 +129,6 @@
         </div>
     </div>
     </div>
-    <div id="vue-test">
-    @{{msg}}
-
-    </div>
     <!-- Edit Tag Modal -->
     <div class="modal fade rtl" id="sendRequestModal">
         <div class="modal-dialog modal-lg">
@@ -128,7 +145,7 @@
                             <label for="modal-text-project">متن :</label>
                             <input id="project_id" type="hidden" value="" name="project_id">
                             <textarea id="modal-text-project" type="text" class="form-control" name="name" value="" placeholder="متن درخواست خود را برای گرفتن پروژه بنویسید..."></textarea>
-                            <label for="modal-price-project" class="mt-2">قیمت:</label>
+                            <label for="modal-price-project" class="mt-2">قیمت(تومان):</label>
                             <input type="text" class="form-control" placeholder="قیمت پیشنهادی شما برای این پروژه">
                         </div>
 

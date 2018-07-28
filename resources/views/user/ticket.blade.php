@@ -9,6 +9,7 @@
                 @foreach($tickets as $ticket)
                     @if($ticket->is_user_send == 1)
                         <div class="chat-view d-flex w-50">
+
                             <div class="d-flex flex-column  m-1">
                                 <i class="fa fa-user img-chat-view"></i>
                                 <b><span>{{$user->name}}</span></b>
@@ -19,6 +20,7 @@
                         </div>
                     @else
                         <div class="chat-view d-flex w-50 ml-auto  bg-info">
+
                             <p class=" mr-auto" >
                                 {{$ticket->text}}
                             </p>
@@ -29,13 +31,6 @@
                         </div>
                     @endif
                 @endforeach
-
-
-
-
-
-
-
             </div>
         </div>
             <form action="{{route('user-send-ticket')}}" method="post">

@@ -57,9 +57,8 @@
                                 {{--</form>--}}
 
                                 <button  class="btn btn-primary" data-toggle="modal" data-target="#sendRequestModal" onclick="sendRequet({{$project->id}})">ارسال درخواست</button>
-
-
                                 <form class="ml-auto d-inline-block" method="post" action="{{route('report-project')}}">
+
                                     {{csrf_field()}}
                                     <input  type="hidden" name="project_id" value="{{$project->id}}">
                                     <input class="form-control btn btn-danger" type="submit" value="گزارش">
@@ -309,7 +308,8 @@
                             <label for="modal-text-project">متن :</label>
                             <input id="project_id" type="hidden"name="project_id">
                             <textarea id="modal-text-project" type="text" class="form-control" name="description" value="" placeholder="متن درخواست خود را برای گرفتن پروژه بنویسید..."></textarea>
-                            <label for="modal-price-project" class="mt-2">قیمت:</label>
+
+                            <label for="modal-price-project" class="mt-2">قیمت(تومان):</label>
                             <input name="price" type="text" class="form-control" placeholder="قیمت پیشنهادی شما برای این پروژه">
                             <input name="project_id" value="{{$project->id}}" type="hidden" >
                         </div>

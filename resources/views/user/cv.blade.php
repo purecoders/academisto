@@ -3,7 +3,6 @@
     <div class="row">
         <div class="col-md-6">
             <h5 class="pb-1">رزومه خود را برای ما ارسال کنید</h5>
-
             <form action="{{route('cv-update')}}" method="post">
                 <div class="form-group">
                     <textarea name="cv_text" id="" cols="30" rows="10" class="form-control"

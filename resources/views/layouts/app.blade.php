@@ -35,6 +35,7 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
+
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -61,12 +62,9 @@
                         </li>
                     @else
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}   <span class="caret"></span>
                             </a>
-
-
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -77,8 +75,8 @@
                                     حساب کاربری
                                 </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                      style="display: none;">
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
@@ -150,12 +148,13 @@
     });
 
     function send(e) {
-        var text = document.getElementById('chat-text');
-        if (text.value == "") {
+        var text=document.getElementById('chat-text');
+        var chatContaienr=document.querySelector('#chat');
+        if(text.value==""){
             return false
         }
-        var dump = text.value.toString().split(' ').join('');
-        if (dump == '') {
+        var dump=text.value.toString().split(' ').join('');
+        if(dump==''){
             return false;
         }
         //  var template = $('#hidden-template').html();
@@ -165,28 +164,26 @@
         //  template.html(container.html())
         var t = $("script[type='text/x-custom-template']")
         container = $('<div/>').html(t.html())
-        var newtext = "<p>" + text.value + "</p>"
+        var newtext="<p>"+text.value+"</p>"
         container.find('p').replaceWith(newtext)
-        var temp = t.html(container.html())
-        console.log($("script[type='text/x-custom-template']").html())
+        var temp=t.html(container.html())
         $('#chat').append(temp.html());
-        document.getElementById('chat-text').value = "";
+        document.getElementById('chat-text').value="";
+        chatContaienr.scrollTop=chatContaienr.scrollHeight;
     }
-
-
 
     function sendRequet(e) {
         document.getElementById('project_id').value = e;
     }
 </script>
+
 <script id="hidden-template" type="text/x-custom-template">
-    <div class="chat-view d-flex w-50">
+    <div class="chat-view d-flex">
         <div class="d-flex flex-column  m-1">
             <i class="fa fa-user img-chat-view"></i>
             <span>کاربر</span>
         </div>
         <p class="ml-1">
-
         </p>
     </div>
 </script>
@@ -254,13 +251,10 @@
         });
 
     });
-
     function ClearOptions() {
         var selectObj = $('#cities');
         selectObj.find('option').remove().end().append('<option value="0"></option>');
     }
 </script>
-<script>
 
-</script>
 </html>

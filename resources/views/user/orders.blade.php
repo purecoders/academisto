@@ -24,18 +24,18 @@
                              @if($project->is_finished == 1 && $project->is_started == 1)
                              class="card rtl border-success"
                              @elseif($project->is_started == 1 && $project->is_finished == 0)
-                             class="card rtl border-warning"
+                                class="card rtl border-warning"
                              @elseif($project->is_started == 0)
-                             class="card rtl border-primary"
-                                @endif>
+                                class="card rtl border-primary"
+                                     @endif>
                             <div class="card-body">
                                 <h5 class="card-title">{{$project->title}}</h5>
                                 <div id="summary">
                                     <p class="card-text collapse" id="sum1{{$project->id}}">
                                         {{$project->description}}
                                     </p>
-                                    <a class="collapsed" data-toggle="collapse" href="#sum1{{$project->id}}"
-                                       aria-expanded="false"
+
+                                    <a class="collapsed" data-toggle="collapse" href="#sum1{{$project->id}}" aria-expanded="false"
                                        aria-controls="collapseSummary"></a>
                                 </div>
                             </div>
@@ -72,6 +72,7 @@
                 @endforeach
 
 
+
             </div>
             <!-- Add Pagination -->
             <!-- Add Navigation -->
@@ -85,8 +86,7 @@
         <div class="row">
             <div class="col-md-6">
 
-                <form class="rtl" action="{{route('add-new-project')}}" method="POST">
-
+                <form class="rtl" action="{{route('add-new-project')}}" enctype="multipart/form-data" method="post">
                     <div class="form-group row">
                         <label for="inputTitle" class="col-sm-2 col-form-label">عنوان:</label>
                         <div class="col-sm-10">
@@ -102,9 +102,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPrice" class="col-sm-2 col-form-label">قیمت:</label>
+                        <label for="inputPrice" class="col-sm-2 col-form-label">قیمت : (تومان)</label>
                         <div class="col-sm-10">
-                            <input type="text" name="price" class="form-control" id="inputPrice"
+                            <input type="text" name="user_price" class="form-control" id="inputPrice"
                                    placeholder="قیمت (تومان)">
                         </div>
                     </div>
@@ -114,52 +114,55 @@
                     <div class="form-group row">
                         <label for="adphoto" class="col-sm-2 col-form-label">پیوست: </label>
                         <div class="col-sm-10">
+
                             <input accept=".zip" type="file" class="form-control-file" id="adphoto" name="file">
                             <span style="color: #f82a38; font-size: 13px">اگر پروژه شما نیاز به پیوست فایلی دارد لطفا آن را به فرمت .zip درآورده و انتخاب کنید</span>
                         </div>
                     </div>
 
 
+
+
                     {{--<div class="form-group row">--}}
-                    {{--<label for="inputDescription" class="col-sm-2 col-form-label">فوری:</label>--}}
-                    {{--<div class="col-sm-10" name="imm">--}}
-                    {{--<div class="form-check">--}}
-                    {{--<input class="form-check-input" type="radio" name="is_imm_1" id="gridRadios1" value="is_imm_1" checked>--}}
-                    {{--<label class="form-check-label" for="gridRadios1">--}}
-                    {{--فوری باشد--}}
-                    {{--</label>--}}
-                    {{--</div>--}}
-                    {{--<div class="form-check">--}}
-                    {{--<input class="form-check-input" type="radio" name="is_imm_0" id="gridRadios2" value="is_imm_0">--}}
-                    {{--<label class="form-check-label" for="gridRadios2">--}}
-                    {{--فوری نباشد--}}
-                    {{--</label>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
+                        {{--<label for="inputDescription" class="col-sm-2 col-form-label">فوری:</label>--}}
+                        {{--<div class="col-sm-10" name="imm">--}}
+                            {{--<div class="form-check">--}}
+                                {{--<input class="form-check-input" type="radio" name="is_imm_1" id="gridRadios1" value="is_imm_1" checked>--}}
+                                {{--<label class="form-check-label" for="gridRadios1">--}}
+                                    {{--فوری باشد--}}
+                                {{--</label>--}}
+                            {{--</div>--}}
+                            {{--<div class="form-check">--}}
+                                {{--<input class="form-check-input" type="radio" name="is_imm_0" id="gridRadios2" value="is_imm_0">--}}
+                                {{--<label class="form-check-label" for="gridRadios2">--}}
+                                    {{--فوری نباشد--}}
+                                {{--</label>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                     {{--</div>--}}
 
                     <div class="form-group row">
                         <label for="inputPrice" class="col-sm-2 col-form-label">فوری: </label>
                         <div class="col-sm-10">
-                            <select id="imm-select" class="form-control " name="is_immediate">
+                            <select id="imm-select" class="form-control " name="is_immediate" >
                                 <option value="0">فوری نباشد</option>
                                 <option value="1">فوری باشد</option>
                             </select>
-                        </div>
+                         </div>
                         <br>
                     </div>
-
-
                     {{csrf_field()}}
 
                     <div class="form-group row">
                         <div class="col-sm-10">
                             <button type="submit" class="btn btn-success">پرداخت و ارسال پروژه</button>
-                            goto payment page
+
                         </div>
                     </div>
                 </form>
+
             </div>
+
             <div class="col-md-6">
 
             </div>

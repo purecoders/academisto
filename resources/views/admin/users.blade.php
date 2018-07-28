@@ -4,10 +4,10 @@
         <div class="d-flex mb-4">
             <h4 class="pt-2"> کاربران سایت:</h4>
             <div class="mr-4"></div>
-            <form action="">
+            <form action="{{route('admin-search-user')}}" method="post">
                 <div class="d-flex justify-content-around  ">
-
-                    <input type="text" class="form-control w-50 mr-3" placeholder="جستجو">
+                    <input type="text" name="user_email" class="form-control w-50 mr-3" placeholder="ایمیل کاربر">
+                    {{csrf_field()}}
                     <button type="submit" class=" btn btn-outline-success ">جستجو</button>
                 </div>
             </form>

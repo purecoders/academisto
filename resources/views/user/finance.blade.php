@@ -32,8 +32,9 @@
                 <thead>
                 <tr>
                     <th  class="text-center" scope="col" >ردیف</th>
-                    <th   class="text-center" scope="col">تاریخ</th>
-                    <th class="text-center" scope="col">مبلغ</th>
+
+                    <th  class="text-center" scope="col">تاریخ</th>
+                    <th  class="text-center" scope="col">مبلغ(تومان)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,7 +44,7 @@
                     <tr class="text-center">
                         <th class="text-center" scope="row ">{{$i}}</th>
                         <td>{{$payment->created_at}}</td>
-                        <td>{{$payment->amount}}</td>
+                        <td>{{number_format($payment->amount)}}</td>
                     </tr>
                 @endforeach
                 {{--<tr class="text-center">--}}
@@ -67,7 +68,7 @@
                 <tr>
                     <th  class="text-center" scope="col" >ردیف</th>
                     <th   class="text-center" scope="col">تاریخ</th>
-                    <th class="text-center" scope="col">مبلغ</th>
+                    <th class="text-center" scope="col">مبلغ(تومان)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -77,7 +78,7 @@
                     <tr class="text-center">
                         <th class="text-center" scope="row ">{{$i}}</th>
                         <td>{{$payment->created_at}}</td>
-                        <td>{{$payment->amount}}</td>
+                        <td>{{number_format($payment->amount)}}</td>
                     </tr>
                 @endforeach
 

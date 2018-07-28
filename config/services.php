@@ -35,4 +35,12 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+
+//  //zarinpal
+//  'zarinpal' => [
+//    'merchantID' => '0959fefa-4605-11e8-984b-005056a205be',
+//    'zarinGate' => true,
+//    'sandbox' => true,
+//  ],
+
 ];

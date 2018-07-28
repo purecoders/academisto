@@ -2,11 +2,8 @@
 @section('content')
     <div class="container rtl">
         <div class="row bg-light site-filer-container">
-
             <form class="row" id="filter-form" action="{{route('admin-search-ads')}}">
                 <div class="col-md-6 d-flex ">
-
-
                     <div class="form-group d-inline-block mr-1">
                         <label for="inputDescription" class=" col-form-label">استان:</label>
                         <select id="city-state" class="form-control" name="city_id">
@@ -16,7 +13,6 @@
                             @endforeach
                         </select>
                     </div>
-
                     <div class="form-group d-inline-block mr-1">
                         <label for="inputDescription" class=" col-form-label">شهر:</label>
                         <select id="city-select" class="form-control" name="city_id">
@@ -26,7 +22,6 @@
                             @endforeach
                         </select>
                     </div>
-
                     <div class="form-group d-inline-block ">
                         <label for="inputDescription" class="col-form-label">دانشگاه:</label>
                         <select id="uni-select" class="form-control" name="univ_id">
@@ -36,13 +31,10 @@
                             @endforeach
                         </select>
                     </div>
-
-
                 </div>
                 <div class="col-md-6 d-flex justify-content-start align-items-end mb-3">
                     <input type="text" class="form-control w-50 mr-2" placeholder="جستجو">
                     <button type="submit" class="btn btn-outline-success">جستجو</button>
-
                     <div class="d-flex align-self-end ml-4">
                         <div>
                             <itm>تعدا کل آگهی ها:</itm>
@@ -51,7 +43,6 @@
                     </div>
                 </div>
             </form>
-
             {{--<div class="col-md-6 d-flex justify-content-start ">--}}
             {{--<item></item>--}}
             {{--<input type="text" class="form-control w-50 mr-2 hide" placeholder=" بر اساس نام کاربر">--}}
@@ -61,29 +52,58 @@
         <div class="mt-3 site-ads-container">
             <h4 class="m-3">آخرین آگهی ها</h4>
             <div class="row p-4">
-
                 @foreach($ads as $ad)
                     <div class="col-lg-4 col-md-6">
                         <div class="card rtl mb-3">
                             <div class="card-header bg-light ">
                                 <div class="d-flex justify-content-around">
-                                    <a href="{{route('admin-user-profile', $ad->user_id)}}"
-                                       style="text-decoration: none;color:black">
+{{--<<<<<<< HEAD--}}
+                                    {{--<a href="{{route('admin-user-profile', $ad->user_id)}}"--}}
+                                       {{--style="text-decoration: none;color:black">--}}
+                                        {{--<div class="card-header-icon">--}}
+                                            {{--<item><i class="fa fa-user-circle "></i></item>--}}
+                                            {{--<item>{{$ad->user->name}}</item>--}}
+                                        {{--</div>--}}
+                                    {{--</a>--}}
+                                    {{--<a href="http://www.google.com" style="text-decoration: none;color:black">--}}
+                                    {{--<div class="card-header-icon">--}}
+                                        {{--<item class="">   {{$ad->reports->count()}} </item>--}}
+                                        {{--<item class="text-danger "> گزارش</item>--}}
+                                    {{--</div>--}}
+                                    {{--</a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<img class="card-img-top  card-img-top-250" src="{{asset($ad->photo->path)}}"--}}
+                                 {{--alt="Card image cap">--}}
+{{--=======--}}
+
+
+                                    <form action="{{route('admin-user-profile')}}" method="post" style="text-decoration: none;color:black">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="user_id" value="{{$ad->user_id}}"/>
+
+
                                         <div class="card-header-icon">
                                             <item><i class="fa fa-user-circle "></i></item>
-                                            <item>{{$ad->user->name}}</item>
+                                            <input style="text-decoration: none;color:black" type="submit"  value="{{$ad->user->email}}"/>
                                         </div>
-                                    </a>
+
+                                        {{--<a href="{{route('admin-user-profile', $ad->user_id)}}" style="text-decoration: none;color:black">--}}
+                                                 {{--<item type="submit">{{$ad->user->name}}</item>--}}
+                                         {{--</a>--}}
+
+                                    </form>
+
                                     {{--<a href="http://www.google.com" style="text-decoration: none;color:black">--}}
-                                    <div class="card-header-icon">
-                                        <item class="">   {{$ad->reports->count()}} </item>
-                                        <item class="text-danger "> گزارش</item>
-                                    </div>
+                                        <div class="card-header-icon">
+                                            <item class="">   {{$ad->reports->count()}} </item>
+                                            <item class="text-danger "> گزارش </item>
+                                        </div>
                                     {{--</a>--}}
                                 </div>
                             </div>
-                            <img class="card-img-top  card-img-top-250" src="{{asset($ad->photo->path)}}"
-                                 alt="Card image cap">
+                            <img class="card-img-top  card-img-top-250" src="{{asset($ad->photo->path)}}" alt="Card image cap">
+{{-->>>>>>> r3remote/back_end--}}
                             <div class="card-body pb-1">
                                 <h5 class="card-title">{{$ad->title}}</h5>
                                 <div id="summary">
@@ -99,18 +119,28 @@
                                 @if($ad->city_id != 0)
                                     <li class="list-group-item"> شهر: {{$ad->city->name}} </li>
                                 @else
-                                    <li class="list-group-item">شهر:</li>
+{{--<<<<<<< HEAD--}}
+                                    {{--<li class="list-group-item">شهر:</li>--}}
+                                {{--@endif--}}
+
+                                {{--@if($ad->univ_id != 0)--}}
+                                    {{--<li class="list-group-item">دانشگاه: {{$ad->univ->name}}</li>--}}
+                                {{--@else--}}
+                                    {{--<li class="list-group-item">دانشگاه:</li>--}}
+{{--=======--}}
+                                    <li class="list-group-item">شهر: </li>
                                 @endif
 
                                 @if($ad->univ_id != 0)
-                                    <li class="list-group-item">دانشگاه: {{$ad->univ->name}}</li>
+                                        <li class="list-group-item">دانشگاه: {{$ad->univ->name}}</li>
                                 @else
-                                    <li class="list-group-item">دانشگاه:</li>
+                                        <li class="list-group-item">دانشگاه:</li>
+{{-->>>>>>> r3remote/back_end--}}
                                 @endif
 
                             </ul>
                             <div class="card-footer p-1 d-flex">
-                                <span class="card-info pl-2 pt-2 mr-auto">  قیمت: {{$ad->price}} تومان</span>
+                                <span class="card-info pl-2 pt-2 mr-auto">  قیمت: {{number_format($ad->price)}} تومان</span>
                                 <form action="{{route('admin-remove-ads')}}" method="post">
                                     {{csrf_field()}}
                                     <input type="hidden" name="ad_id" value="{{$ad->id}}"/>
@@ -119,10 +149,7 @@
                             </div>
                         </div>
                     </div>
-
                 @endforeach
-
-
             </div>
 
             <nav>

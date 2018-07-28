@@ -50,8 +50,8 @@
                             <div class="d-flex justify-content-between p-0">
                                 <item class="py-1 m-1 card-info">{{$request['projects']['title']}}</item>
                                 <item class="py-1 m-1 card-info">
-                                    <item>قیمت:</item>
-                                    <item>{{$request['projects']['user_price']}}</item>
+                                    <item>قیمت(تومان):</item>
+                                    <item>{{number_format($request['projects']['user_price'])}}</item>
                                 </item>
                             </div>
                             <div class="card-footer d-flex justify-content-between p-1">
@@ -183,11 +183,6 @@
                     {{--</div>--}}
                 {{--</div>--}}
                 {{----}}
-
-
-
-
-
             </div>
             <!-- Add Pagination -->
             <!-- Add Navigation -->

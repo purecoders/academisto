@@ -9,13 +9,13 @@
                     <div class="form-group d-inline-block mr-1">
                         <label for="inputDescription" class=" col-form-label">استان:</label>
                         <select id="state" class="form-control" name="city_id">
+
                             <option value="0"> </option>
                             @foreach($states as $state)
                                 <option value="{{$state->id}}">{{$state->name}}</option>
                             @endforeach
                         </select>
                     </div>
-
                     <div class="form-group d-inline-block mr-1">
                         <label for="inputDescription" class=" col-form-label">شهر:</label>
                         <select id="cities" class="form-control" name="city_id">
@@ -41,7 +41,6 @@
                         <item></item>
                         <input type="text" class="form-control w-50 mr-2" placeholder="جستجو">
                         <button type="submit" class="btn btn-outline-success">جستجو</button>
-
                 </div>
             </form>
 
@@ -69,7 +68,7 @@
                                 @if($ad->city_id != 0)
                                     <li class="list-group-item">شهر: {{$ad->city->name}}</li>
                                 @else
-                                    <li class="list-group-item">شهر:<li class="list-group-item">شهر: {{$ad->city->name}}</li></li>
+                                    <li class="list-group-item">شهر:</li>
                                 @endif
                                 @if($ad->univ_id != 0)
                                      <li class="list-group-item">دانشگاه: {{$ad->univ->name}}</li>
@@ -78,10 +77,7 @@
                                 @endif
                             </ul>
                             <div class="card-footer p-1 d-flex">
-                                <span class="card-info pl-2 pt-2 mr-auto">  قیمت: {{$ad->price}} تومان</span>
-
-
-
+                                <span class="card-info pl-2 pt-2 mr-auto">  قیمت: {{number_format($ad->price)}} تومان</span>
                                 <form class="form-group mr-auto d-inline-block" method="post" action="{{route('report-ad')}}">
                                     {{csrf_field()}}
                                     <input  type="hidden" name="ad_id" value="{{$ad->id}}">
@@ -275,5 +271,4 @@
 
         </div>
     </div>
-    <Test></Test>
 @endsection
