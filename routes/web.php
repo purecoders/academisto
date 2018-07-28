@@ -126,9 +126,9 @@ Route::post('admin/search-user', 'AdminController@adminSearchUser')->middleware(
 
 
 
-Route::get('admin/tickets',function (){
-  return view('admin.tickets');
-})->middleware(['auth','super_admin'])->name('admin-tickets');
+Route::get('admin/tickets', 'TicketController@showAdminTickets')->middleware(['auth','super_admin'])->name('admin-tickets');
+Route::get('admin/user-tickets/{user_id}', 'TicketController@showAdminUserTickets')->middleware(['auth','super_admin'])->name('admin-user-tickets');
+Route::post('admin/send-ticket', 'TicketController@AdminSendTicket')->middleware(['auth','super_admin'])->name('admin-send-ticket');
 
 
 

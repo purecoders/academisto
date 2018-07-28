@@ -211,7 +211,7 @@ class AdController extends Controller
       $newAd->delete();
 
 
-      $this->zarinpalPayment(1000, $lastAdId, $user_id);
+      $this->zarinpalPayment(100, $lastAdId, $user_id);
       //return redirect('/user-ads');
 
     }

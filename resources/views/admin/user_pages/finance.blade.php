@@ -6,15 +6,27 @@
             <form action="">
                 <div class="form-group">
                     <lable for="cart-no" > شماره کارت</lable>
-                    <input id="card-no" name="cv" class="form-control"  value="{{$user_full_info->bank_card_id}}" disabled>
+                    <input id="card-no" name="cv" class="form-control"
+                           @if($user_full_info !== null)
+                           value="{{$user_full_info->bank_card_id}}"
+                           @endif
+                           disabled>
                 </div>
                 <div class="form-group">
                     <lable for="account-no"> شماره حساب</lable>
-                    <input id="account-no" name="cv" class="form-control" value="{{$user_full_info->bank_account_id}}" disabled>
+                    <input id="account-no" name="cv" class="form-control"
+                           @if($user_full_info !== null)
+                           value="{{$user_full_info->bank_account_id}}"
+                           @endif
+                           disabled>
                 </div>
                 <div class="form-group">
                     <lable for="account-name" >نام دارنده حساب</lable>
-                    <input id="account-name" name="cv" class="form-control" value="{{$user_full_info->bank_account_owner_name}}" disabled>
+                    <input id="account-name" name="cv" class="form-control"
+                           @if($user_full_info !== null)
+                           value="{{$user_full_info->bank_account_owner_name}}"
+                           @endif
+                           disabled>
                 </div>
             </form>
         </div>
