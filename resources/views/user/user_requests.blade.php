@@ -67,7 +67,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between p-1">
                             <a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
-                            <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ارسال پروژه</a>
+                            <a href="{{route('user-send-project',1)}}" class="btn btn-primary">ارسال پروژه</a>
                         </div>
                     </div>
                 </div>
