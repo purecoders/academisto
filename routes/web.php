@@ -95,6 +95,11 @@ Route::get('admin/users',function (){
     return view('admin.users');
 })->middleware('auth')->name('admin-users');
 
+
+Route::get('admin/freelancers',function (){
+    return view('admin.freelancers');
+})->middleware('auth')->name('admin-freelancers');
+
 Route::get('admin/user-control',function (){
     return view('admin.user_pages.user_control');
 })->middleware('auth')->name('admin-user-control');
