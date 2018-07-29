@@ -119,6 +119,10 @@ Route::get('admin/user-finance',function (){
     return view('admin.user_pages.finance');
 })->middleware('auth')->name('admin-user-finance');
 
+Route::get('admin/user-pay',function (){
+    return view('admin.user_pages.pay');
+})->middleware('auth')->name('admin-user-pay');
+
 Route::get('admin/reports',function (){
     return view('admin.reports');
 })->middleware('auth')->name('admin-reports');
