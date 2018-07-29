@@ -71,6 +71,10 @@ Route::get('user-ticket',function (){
     return view('user.ticket');
 })->middleware('auth')->name('user-ticket');
 
+Route::get('user-send-project',function (){
+    return view('user.send_project');
+})->middleware('auth')->name('user-send-project');
+
 Route::get('ads',function (){
     return view('site.ads');
 })->middleware('auth')->name('ads');
