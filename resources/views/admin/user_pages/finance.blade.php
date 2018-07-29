@@ -31,7 +31,7 @@
             <div class="d-flex justify-content-start align-items-center mt-5 pt-5 flex-wrap">
                 <h5 class="d-inline-block mr-3">جمع مبلغی که باید به محسن پرداخت کنید: </h5>
                 <span class="font-weight-bold strong-font-size admin-price-info p-1">140,000 تومان</span>
-                <a href="" class="btn btn-outline-success ml-3 ">رفتن به صفحه پرداخت</a>
+                <a href="{{route('admin-user-pay')}}" class="btn btn-outline-success ml-3 ">رفتن به صفحه پرداخت</a>
             </div>
 
         </div>
