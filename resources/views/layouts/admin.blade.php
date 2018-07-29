@@ -51,6 +51,9 @@
                         <a id="nav-users" class="nav-link" href="{{ route('admin-users') }}">کاربران</a>
                     </li>
                     <li class="nav-item">
+                        <a id="nav-freelancers" class="nav-link" href="{{ route('admin-freelancers') }}">فریلنسرها</a>
+                    </li>
+                    <li class="nav-item">
                         <a id="nav-reports" class="nav-link" href="{{ route('admin-reports') }}">گزارش ها</a>
                     </li>
                     <li class="nav-item">
@@ -159,6 +162,9 @@
             if(url.includes("orders")){document.getElementById('card-nav-orders').classList.add('active')}
             if(url.includes("requests")){document.getElementById('card-nav-requests').classList.add('active')}
             if(url.includes("finance")){document.getElementById('card-nav-finance').classList.add('active')}
+        }
+        if(url.includes("/admin/freelancers")){
+            document.getElementById('nav-freelancers').classList.add('active')
         }
         if(url.includes("/admin/reports")){
             document.getElementById('nav-reports').classList.add('active')
