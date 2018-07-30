@@ -7,15 +7,15 @@
             <form action="{{route('user-finance-update')}}" method="post">
                 <div class="form-group">
                     <lable for="cart-no" > شماره کارت</lable>
-                    <input  id="card-no" value="{{$userFullInfo->bank_card_id}}" name="bank_card_id" class="form-control" placeholder=" شماره کارت خود را بنویسید">
+                    <input  id="card-no" value="@if($userFullInfo){{$userFullInfo->bank_card_id}}@endif" name="bank_card_id" class="form-control" placeholder="شماره کارت خود را بنویسید">
                 </div>
                 <div class="form-group">
                     <lable for="account-no"> شماره حساب</lable>
-                    <input id="account-no" value="{{$userFullInfo->bank_account_id}}" name="bank_account_id" class="form-control" placeholder=" شماره حساب خود را بنویسید">
+                    <input id="account-no" value="@if($userFullInfo){{$userFullInfo->bank_account_id}}@endif" name="bank_account_id" class="form-control" placeholder=" شماره حساب خود را بنویسید">
                 </div>
                 <div class="form-group">
                     <lable for="account-name" >به نام</lable>
-                    <input id="account-name" value="{{$userFullInfo->bank_account_owner_name}}" name="bank_account_owner_name" class="form-control" placeholder="نام دارنده حساب را بنویسید">
+                    <input id="account-name" value="@if($userFullInfo){{$userFullInfo->bank_account_owner_name}}@endif" name="bank_account_owner_name" class="form-control" placeholder="نام دارنده حساب را بنویسید">
                 </div>
 
                 {{csrf_field()}}

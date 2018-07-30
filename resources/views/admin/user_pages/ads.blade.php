@@ -19,7 +19,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <img class="card-img-top  card-img-top-250" src="{{asset('assets/img/logo.png')}}" alt="Card image cap">
+                            <img class="card-img-top  card-img-top-250" src="{{asset($ad->photo->path)}}" alt="Card image cap">
                             <div class="card-body pb-1">
                                 <h5 class="card-title">{{$ad->title}}</h5>
                                 <div id="summary">

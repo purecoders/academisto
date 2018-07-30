@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\SitePay;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class SitePayController extends Controller
 {
@@ -14,6 +16,46 @@ class SitePayController extends Controller
   {
     $this->middleware(['auth', 'super_admin']);
   }
+
+
+
+
+
+
+  public function freelancerPayPage(Request $request){
+    $user_id = $request->input('user_id');
+    $sum_pay = $request->input('sum_pay');
+
+    return view('admin.user_pages.pay', compact(['user_id', 'sum_pay']));
+  }
+
+  public function sendFreelancerPay(Request $request){
+    $this->validate($request,[
+      'user_id' =>'required',
+      'sum_pay' =>'required',
+      'bank_receipt' =>'required',
+    ]);
+
+    $user_id = $request->input('user_id');
+    $sum_pay = $request->input('sum_pay');
+    $bank_receipt = $request->input('bank_receipt');
+
+    $sity_pays = SitePay::where('user_id', '=', $user_id)->where('success', '=', 0)->get();
+    foreach ($sity_pays as $pay){
+      $pay->success = 1;
+      $pay->bank_receipt = $bank_receipt;
+      $pay->save();
+    }
+
+    return redirect('/admin/users');
+
+  }
+
+
+
+
+
+
 
   public function index()
   {

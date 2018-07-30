@@ -39,12 +39,32 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
+                    @php
+                        $user = \Illuminate\Support\Facades\Auth::user();
+                        $roles = $user->roles;
+                         $isSuperAdmin = false;
+                         foreach ($roles as $role){
+                           if($role->name == 'super_admin'){
+                             $isSuperAdmin = true;
+                             break;
+                           }
+                         }
+                    @endphp
+                    @if($isSuperAdmin)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin-ads') }}">پنل مدیریت</a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user-panel') }}">پنل کاربری من</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('ads') }}">آگهی ها</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('projects') }}">پروژه ها</a>
                     </li>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->

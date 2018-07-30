@@ -19,7 +19,7 @@
                                         <i class="fa fa-user-circle admin-chat-view-user-img mr-2"></i>
                                         <h5 class="admin-chat-view-user-name mr-auto ">{{$user_ticket['user']['email']}}</h5>
                                         @if($user_ticket['new_tikects_count'] > 0)
-                                            <span class="btn-danger" style="padding: 10px;margin: 10px">{{$user_ticket['new_tikects_count']}}</span>
+                                            <span class="btn-success" style="padding: 10px;margin: 10px">{{$user_ticket['new_tikects_count']}}</span>
                                         @else
                                             <span  style="padding: 10px;margin: 10px"></span>
                                         @endif
@@ -219,7 +219,7 @@
                               placeholder="متن..."></textarea>
 
                         <input type="hidden" name="user_id" value="{{$ticket->user->id}}">
-                        <button class="btn btn-primary align-self-center " type="submit"> ارسال</button>
+                        <button class="btn btn-primary align-self-center" type="submit"> ارسال</button>
 
                     </form>
 

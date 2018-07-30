@@ -46,14 +46,23 @@ class UserController extends Controller
       }
 
       if($isForThisUser) {
-        $project = Project::findOrFail($id);
+        $project = Project::find($id);
         $project_requests = $project->requests;
         $requests = array();
         foreach ($project_requests as $project_request){
-          $requests[] = ["project_request"=>$project_request, "user"=>User::findOrFail($project_request->user_id)];
+          $requests[] = ["project_request"=>$project_request, "user"=>User::find($project_request->user_id)];
         }
 
-        return view('user.detail_order', compact(['id', 'project', 'requests']));
+        $files = $project->files;
+        $project_file = [];
+        foreach ($files as $file){
+          if($file->is_for_answer == 0){
+            $project_file = $file;
+            break;
+          }
+        }
+
+        return view('user.detail_order', compact(['id', 'project', 'requests', 'project_file']));
       }else{
         return redirect('/user-orders');
       }

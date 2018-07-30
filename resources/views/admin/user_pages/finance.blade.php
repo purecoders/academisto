@@ -43,7 +43,13 @@
             <div class="d-flex justify-content-start align-items-center mt-5 pt-5 flex-wrap">
                 <h5 class="d-inline-block mr-3">جمع مبلغی که باید به {{$user->name}} پرداخت کنید: </h5>
                 <span class="font-weight-bold strong-font-size admin-price-info p-1"> {{number_format($siteSumMustPays)}} تومان</span>
-                <a href="" class="btn btn-outline-success ml-3 ">رفتن به صفحه پرداخت</a>
+                {{--<a href="{{route('admin-user-pay')}}" class="btn btn-outline-success ml-3 ">رفتن به صفحه پرداخت</a>--}}
+                <form class="btn btn-outline-success ml-3 " action="{{route('admin-user-pay')}}" method="post">
+                    <input type="hidden" name="sum_pay" value="{{$siteSumMustPays}}">
+                    <input type="hidden" name="user_id" value="{{$user->id}}">
+                    {{csrf_field()}}
+                    <input type="submit" value="رفتن به صفحه پرداخت" class="btn btn-outline-success ml-3 ">
+                </form>
             </div>
 
         </div>

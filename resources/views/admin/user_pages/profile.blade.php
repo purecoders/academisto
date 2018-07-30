@@ -3,7 +3,8 @@
     <div id="user-information" class="row">
         <div class="col-md-5">
             <h5 class="pb-1">اطلاعات پروفایل</h5>
-            <form action="">
+            <form action="{{route('admin-set-rate')}}" method="post">
+
                 <div class="p-1 border-info border-top border-left border-right border-bottom ">
 
                     <div class="form-group row">
@@ -25,9 +26,11 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-3 col-form-label"> امتیاز: </label>
+                        <label class="col-sm-3 col-form-label"> امتیاز(0-5): </label>
                         <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" value="{{$rate}}">
+                            {{csrf_field()}}
+                            <input type="text" name="rate" class="form-control-plaintext" value="{{(int)$rate}}">
+                            <input type="hidden" name="user_id"  value="{{$user->id}}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -46,7 +49,7 @@
                         <item></item>
                     </div>
                 </div>
-                <input type="submit" class="btn btn-outline-secondary btn-block mt-3 mr-2 hide" value="ویرایش">
+                <input type="submit" class="btn btn-outline-secondary btn-block mt-3 mr-2 " value="ثبت امتیاز">
             </form>
         </div>
         <div class="col-md-5">

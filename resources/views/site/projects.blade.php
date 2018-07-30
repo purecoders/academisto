@@ -15,11 +15,7 @@
                     </div>
                 </form>
             </div>
-            {{--<div class="d-flex bd-highlight mb-3">--}}
-            {{--<div class="p-2 bd-highlight">Flex item</div>--}}
-            {{--<div class="p-2 bd-highlight">Flex item</div>--}}
-            {{--<div class="ml-auto p-2 bd-highlight">Flex item</div>--}}
-            {{--</div>--}}
+
 
             <div class="row p-4">
 
@@ -51,13 +47,16 @@
                             @endif
                             <div class="card-footer d-flex justify-content-between p-1">
 
-                                {{--<form class="form-group mr-auto d-inline-block" method="post" action="{{route('send-request', $project->id)}}">--}}
-                                {{--{{csrf_field()}}--}}
-                                {{--<input class="form-control btn btn-primary" type="submit" value="ارسال درخواست">--}}
-                                {{--</form>--}}
+                                @php
+                                $user = \Illuminate\Support\Facades\Auth::user();
+                                $cv = $user->cv;
+                                @endphp
 
-                                <button  class="btn btn-primary" data-toggle="modal" data-target="#sendRequestModal" onclick="sendRequet({{$project->id}})">ارسال درخواست</button>
-
+                                @if($cv !== null)
+                                   @if($cv->is_accepted == 1)
+                                      <button  class="btn btn-primary" data-toggle="modal" data-target="#sendRequestModal" onclick="sendRequet({{$project->id}})">ارسال درخواست</button>
+                                  @endif
+                                @endif
 
                                 <form class="form-group mr-auto d-inline-block" method="post" action="{{route('report-project')}}">
                                     {{csrf_field()}}
@@ -74,197 +73,6 @@
 
 
 
-
-
-                {{--<div class="col-lg-4 col-md-6">--}}
-                {{--<div id="site-projects_card" class="card rtl mb-3">--}}
-                {{--<div class="card-body">--}}
-                {{--<h5 class="card-title">پروژه 1</h5>--}}
-                {{--<div id="summary">--}}
-                {{--<p class="card-text collapse" id="collapseSummary1">--}}
-                {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان--}}
-                {{--گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و--}}
-                {{--برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی--}}
-                {{--می باشد.--}}
-
-                {{--</p>--}}
-                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary1"--}}
-                {{--aria-expanded="false"--}}
-                {{--aria-controls="collapseSummary"></a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="d-flex justify-content-between p-0">--}}
-                {{--<item></item>--}}
-                {{--<alert class="alert alert-danger p-1 m-1">فوری</alert>--}}
-                {{--</div>--}}
-                {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                {{--<a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ارسال درخواست</a>--}}
-                {{--<a href="#" class="btn btn-danger">گزارش</a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-lg-4 col-md-6">--}}
-                {{--<div id="site-projects_card" class="card rtl mb-3">--}}
-                {{--<div class="card-body">--}}
-                {{--<h5 class="card-title">پروژه 1</h5>--}}
-                {{--<div id="summary">--}}
-                {{--<p class="card-text collapse" id="collapseSummary1">--}}
-                {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان--}}
-                {{--گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و--}}
-                {{--برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی--}}
-                {{--می باشد.--}}
-
-                {{--</p>--}}
-                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary1"--}}
-                {{--aria-expanded="false"--}}
-                {{--aria-controls="collapseSummary"></a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="d-flex justify-content-between p-0">--}}
-                {{--<item></item>--}}
-                {{--<alert class="alert alert-danger p-1 m-1">فوری</alert>--}}
-                {{--</div>--}}
-                {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                {{--<a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ارسال درخواست</a>--}}
-                {{--<a href="#" class="btn btn-danger">گزارش</a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-lg-4 col-md-6">--}}
-                {{--<div id="site-projects_card" class="card rtl mb-3">--}}
-                {{--<div class="card-body">--}}
-                {{--<h5 class="card-title">پروژه 1</h5>--}}
-                {{--<div id="summary">--}}
-                {{--<p class="card-text collapse" id="collapseSummary1">--}}
-                {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان--}}
-                {{--گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و--}}
-                {{--برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی--}}
-                {{--می باشد.--}}
-
-                {{--</p>--}}
-                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary1"--}}
-                {{--aria-expanded="false"--}}
-                {{--aria-controls="collapseSummary"></a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="d-flex justify-content-between p-0">--}}
-                {{--<item></item>--}}
-                {{--<alert class="alert alert-danger p-1 m-1">فوری</alert>--}}
-                {{--</div>--}}
-                {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                {{--<a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ارسال درخواست</a>--}}
-                {{--<a href="#" class="btn btn-danger">گزارش</a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-lg-4 col-md-6">--}}
-                {{--<div id="site-projects_card" class="card rtl mb-3">--}}
-                {{--<div class="card-body">--}}
-                {{--<h5 class="card-title">پروژه 1</h5>--}}
-                {{--<div id="summary">--}}
-                {{--<p class="card-text collapse" id="collapseSummary1">--}}
-                {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان--}}
-                {{--گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و--}}
-                {{--برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی--}}
-                {{--می باشد.--}}
-
-                {{--</p>--}}
-                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary1"--}}
-                {{--aria-expanded="false"--}}
-                {{--aria-controls="collapseSummary"></a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="d-flex justify-content-between p-0">--}}
-                {{--<item></item>--}}
-                {{--<alert class="alert alert-danger p-1 m-1">فوری</alert>--}}
-                {{--</div>--}}
-                {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                {{--<a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ارسال درخواست</a>--}}
-                {{--<a href="#" class="btn btn-danger">گزارش</a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-lg-4 col-md-6">--}}
-                {{--<div id="site-projects_card" class="card rtl mb-3">--}}
-                {{--<div class="card-body">--}}
-                {{--<h5 class="card-title">پروژه 1</h5>--}}
-                {{--<div id="summary">--}}
-                {{--<p class="card-text collapse" id="collapseSummary1">--}}
-                {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان--}}
-                {{--گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و--}}
-                {{--برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی--}}
-                {{--می باشد.--}}
-
-                {{--</p>--}}
-                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary1"--}}
-                {{--aria-expanded="false"--}}
-                {{--aria-controls="collapseSummary"></a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="d-flex justify-content-between p-0">--}}
-                {{--<item></item>--}}
-                {{--<alert class="alert alert-danger p-1 m-1">فوری</alert>--}}
-                {{--</div>--}}
-                {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                {{--<a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ارسال درخواست</a>--}}
-                {{--<a href="#" class="btn btn-danger">گزارش</a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-lg-4 col-md-6">--}}
-                {{--<div id="site-projects_card" class="card rtl mb-3">--}}
-                {{--<div class="card-body">--}}
-                {{--<h5 class="card-title">پروژه 1</h5>--}}
-                {{--<div id="summary">--}}
-                {{--<p class="card-text collapse" id="collapseSummary1">--}}
-                {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان--}}
-                {{--گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و--}}
-                {{--برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی--}}
-                {{--می باشد.--}}
-
-                {{--</p>--}}
-                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary1"--}}
-                {{--aria-expanded="false"--}}
-                {{--aria-controls="collapseSummary"></a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="d-flex justify-content-between p-0">--}}
-                {{--<item></item>--}}
-                {{--<alert class="alert alert-danger p-1 m-1">فوری</alert>--}}
-                {{--</div>--}}
-                {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                {{--<a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ارسال درخواست</a>--}}
-                {{--<a href="#" class="btn btn-danger">گزارش</a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-lg-4 col-md-6">--}}
-                {{--<div id="site-projects_card" class="card rtl mb-3">--}}
-                {{--<div class="card-body">--}}
-                {{--<h5 class="card-title">پروژه 1</h5>--}}
-                {{--<div id="summary">--}}
-                {{--<p class="card-text collapse" id="collapseSummary1">--}}
-                {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان--}}
-                {{--گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و--}}
-                {{--برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی--}}
-                {{--می باشد.--}}
-
-                {{--</p>--}}
-                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary1"--}}
-                {{--aria-expanded="false"--}}
-                {{--aria-controls="collapseSummary"></a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="d-flex justify-content-between p-0">--}}
-                {{--<item></item>--}}
-                {{--<alert class="alert alert-danger p-1 m-1">فوری</alert>--}}
-                {{--</div>--}}
-                {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                {{--<a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ارسال درخواست</a>--}}
-                {{--<a href="#" class="btn btn-danger">گزارش</a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
-                {{--</div>--}}
 
 
 
@@ -309,8 +117,8 @@
                             <label for="modal-text-project">متن :</label>
                             <input id="project_id" type="hidden"name="project_id">
                             <textarea id="modal-text-project" type="text" class="form-control" name="description" value="" placeholder="متن درخواست خود را برای گرفتن پروژه بنویسید..."></textarea>
-                            <label for="modal-price-project" class="mt-2">قیمت(تومان):</label>
-                            <input name="price" type="text" class="form-control" placeholder="قیمت پیشنهادی شما برای این پروژه">
+                            <label  for="modal-price-project" class="mt-2 hide">قیمت(تومان):</label>
+                            <input name="price" type="text" class="form-control hide" placeholder="قیمت پیشنهادی شما برای این پروژه">
                             <input name="project_id" value="{{$project->id}}" type="hidden" >
                         </div>
                     </div>

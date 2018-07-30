@@ -3,13 +3,15 @@
     <div class="row">
         <div class="col-md-6">
             <h5>رزومه خود را برای ما ارسال کنید</h5>
+            @if($cv)
             @if($cv->is_accepted == 1)
                  <h8 class="bg-success">رزومه شما تایید شده است</h8><br><br>
                 @endif
+            @endif
             <form action="{{route('cv-update')}}" method="post">
                 <div class="form-group">
                     <textarea name="cv_text" id="" cols="30" rows="10" class="form-control"
-                              placeholder="رزومه خود را بنویسید...">{{$cv->cv_text}}</textarea>
+                              placeholder="رزومه خود را بنویسید..."> @if($cv){{$cv->cv_text}}@endif</textarea>
                 </div>
                 {{csrf_field()}}
                 <input type="submit" class="form-control btn btn-primary" value="ارسال رزومه">

@@ -7,10 +7,12 @@ use App\Cv;
 use App\Payment;
 use App\Project;
 use App\ProjectRequest;
+use App\Rate;
 use App\Report;
 use App\SitePay;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -43,7 +45,7 @@ class AdminController extends Controller
     $cv->is_accepted = 1;
     $cv->save();
 
-    return redirect('/admin/user-profile/' . $user_id);
+    return redirect('/admin/freelancers');
   }
 
 
@@ -112,7 +114,7 @@ class AdminController extends Controller
   public function adminUserFinance(Request $request){
 
     $user_id = $request->input('user_id');
-    $user = User::findOrFail($user_id);
+    $user = User::find($user_id);
     $user_full_info = $user->fullInfo;
 
     $payments = $user->payments;
@@ -232,10 +234,14 @@ class AdminController extends Controller
     foreach ($reports as $report) {
       if($report->reportable_type == 'App\Ad'){
         $ad = Ad::find($report->reportable_id);
-        $reportsFullInfo [] = ['report'=>$report, 'reportable_name'=>$ad['title']];
+        if($ad !== null) {
+          $reportsFullInfo [] = ['report' => $report, 'reportable_name' => $ad['title']];
+        }
       }elseif ($report->reportable_type == 'App\Project'){
-        $project = Project::find($report->reportable_id);
-        $reportsFullInfo [] = ['report'=>$report, 'reportable_name'=>$project['title']];
+        $project = Project::find($report->reportable_id)->first();
+        if($project !== null) {
+          $reportsFullInfo [] = ['report' => $report, 'reportable_name' => $project['title']];
+        }
       }
 
     }
@@ -297,6 +303,73 @@ class AdminController extends Controller
 
   }
 
+
+  public function setRate(Request $request){
+
+    $this->validate($request,[
+      'rate' =>'required|max:5'
+    ]);
+
+    $user_id = $request->input('user_id');
+    $rate_count = $request->input('rate');
+
+    $rate = new Rate();
+
+    $admin = Auth::user();
+    $rate->user_id_from = $admin->id;
+    $rate->user_id_to = $user_id;
+    $rate->project_id = 0;
+    $rate->rate = $rate_count;
+
+    $rate->save();
+
+    return redirect('/admin/users');
+  }
+
+
+  public function adminShowFreelancers(){
+    $cvs = Cv::all();
+    $accepted_freelancers = array();
+    $not_accepted_freelancers = array();
+    foreach ($cvs as $cv){
+      if ($cv->is_accepted == 1){
+        $accepted_freelancers[] = $cv->user;
+      }else{
+        $not_accepted_freelancers[] = $cv->user;
+      }
+    }
+
+    $users = array();
+    foreach ($cvs as $cv){
+      $users[] = $cv->user;
+    }
+
+
+
+
+    $rates = array();
+
+    foreach ($users as $user) {
+      $user_rates = $user->rates;
+
+      $rate_count = 0;
+      $sum_rates = 0;
+      foreach ($user_rates as $rate) {
+        $sum_rates += $rate->rate;
+        $rate_count++;
+      }
+
+      if ($rate_count != 0) {
+        $rate = $sum_rates / $rate_count;
+      } else {
+        $rate = 0;
+      }
+      $rates[$user->id] = $rate;
+    }
+
+
+    return view('admin.freelancers', compact(['accepted_freelancers', 'not_accepted_freelancers', 'rates']));
+  }
 
 
 

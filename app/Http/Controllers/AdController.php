@@ -143,7 +143,7 @@ class AdController extends Controller
       $image = $request->file('image');
 
       if($image){
-        $site_url = 'http://academisto.com/';
+        $site_url = env('SITE_URL','http://academisto.ud/');
 
         date_default_timezone_set('Asia/Tehran');
 
@@ -252,9 +252,11 @@ class AdController extends Controller
       Ad::withTrashed()->find($ad_id)->restore();
 
       return redirect('/user-ads');
+      echo 'پرداخت با موفقیت انجام شد';
 
     }else{
-
+      return redirect('/user-ads');
+      echo 'پرداخت ناموفق بود.لطفا دوباره امتحان کنید';
     }
 
   }

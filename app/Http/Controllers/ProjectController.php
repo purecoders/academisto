@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\File;
 use App\Payment;
 use App\Project;
+use App\ProjectAnswer;
 use App\ProjectRequest;
 use App\Report;
+use App\SitePay;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -43,7 +46,7 @@ class ProjectController extends Controller
     $file = $request->file('file');
 
     if($file){
-      $site_url = 'http://academisto.com/';
+      $site_url = env('SITE_URL','http://academisto.ud/');
 
       date_default_timezone_set('Asia/Tehran');
 
@@ -102,6 +105,7 @@ class ProjectController extends Controller
 //
     $newPrj->delete();
 
+    if($is_immediate == 1) $price += env('IMMEDIATE_PRICE', 100);
     $this->zarinpalPayment((int)($price), $lastAdId, $user_id);
   }
 
@@ -139,9 +143,11 @@ class ProjectController extends Controller
       Project::withTrashed()->find($project_id)->restore();
 
       return redirect('/user-orders');
+      echo 'پرداخت با موفقیت انجام شد';
 
     }else{
-
+      return redirect('/user-orders');
+      echo 'پرداخت ناموفق بود.لطفا دوباره امتحان کنید';
     }
 
   }
@@ -182,7 +188,7 @@ class ProjectController extends Controller
 
 
   public function showAllProjects(){
-    $projects = Project::orderBy('created_at', 'desc')->paginate(12);
+    $projects = Project::where('is_finished', '=', 0)->orderBy('is_immediate', 'desc')->orderBy('created_at', 'asc')->paginate(12);
     return view('site.projects', compact('projects'));
   }
 
@@ -227,6 +233,108 @@ class ProjectController extends Controller
     $project->delete();
     return redirect('/admin/projects');
   }
+
+
+
+  //send project answer
+  public function sendProjectAnswerPage(Request $request){
+    $project_id = $request->input('project_id');
+//    $sender_user_id = $request->input('sender_user_id');
+    $sender_user_id = Auth::user()->id;
+
+    $project = Project::find($project_id);
+    $user = User::find($sender_user_id);
+    return view('user.send_project', compact(['user', 'project']));
+  }
+
+
+  public function sendProjectAnswer(Request $request){
+    $this->validate($request,[
+      'description' =>'required'
+    ]);
+
+    $project_id = $request->input('project_id');
+    $user_id = $request->input('user_id');
+    $description = $request->input('description');
+    $file = $request->file('file');
+
+    $project = Project::find($project_id);
+
+
+    //save file
+    if($file){
+
+      $site_url = env('SITE_URL','http://academisto.ud/');
+
+      date_default_timezone_set('Asia/Tehran');
+
+      //create file dir
+      $year_dir = date('Y', time());
+      $month_dir = date('m', time());
+      $file_dir = 'uploads/files/' . $year_dir.'/'.$month_dir;
+
+      //generate name to file
+      $file_extension = $file->getClientOriginalExtension();
+
+
+
+      $day = date('d', time());
+      $hour = date('h', time());
+      $minute = date('i', time());
+
+
+      $file_name = $day.'d'.$hour.'h'.$minute. 'm' .$user_id . 'u'. $this->generateRandomString(15). '.' . $file_extension;
+
+      //save file into dir
+      $file->move($file_dir, $file_name);
+
+      //save file to table
+      $file = new File();
+      $file->user_id = $user_id;
+      $file->project_id = $project_id;
+      $file->is_for_answer = 1;
+      $file->path = $file_dir . '/' . $file_name;
+      $file->url = $site_url . $file_dir . '/' . $file_name;
+      $file->save();
+
+
+    }
+
+
+    $project_answer = new ProjectAnswer();
+    $project_answer->project_id = $project_id;
+    $project_answer->sender_user_id = $user_id;
+    $project_answer->description = $description;
+    $project_answer->save();
+
+    $price = $project->user_price;
+    $commission = env('COMMISSION_PERCENT',10)/100;
+    $price = (int)($price - ($price * $commission));
+
+    $site_pay = new SitePay();
+    $site_pay->user_id = $user_id;
+    $site_pay->amount = $price;
+    $site_pay->bank_receipt = '0';
+    $site_pay->success = 0;
+    $site_pay->save();
+
+    $project->is_finished = 1;
+    $project->save();
+
+    echo 'پروژه با موفقیت به کارفرما ارسال شد';
+
+    return redirect('/user-requests');
+
+
+
+
+  }
+
+
+
+
+
+
 
 
   public function index()

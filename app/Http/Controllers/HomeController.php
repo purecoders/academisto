@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,6 +25,38 @@ class HomeController extends Controller
     public function index()
     {
 
-        return view('home');
+
+      $user = Auth::user();
+      $roles = $user->roles;
+      $isSuperAdmin = false;
+      foreach ($roles as $role){
+        if($role->name == 'super_admin'){
+          $isSuperAdmin = true;
+          break;
+        }
+      }
+
+
+      if($isSuperAdmin){
+        return redirect('/admin/ads');
+
+      }else{
+        return redirect('/user-panel');
+      }
+
+
+
+
+//        $user = Auth::user();
+//        $roles = $user->roles;
+//        foreach ($roles as $role){
+//          if($role->name == 'super_admin'){
+//            return redirect('/admin/ads');
+//          }
+//        }
+//
+//        return redirect('/user-panel');
+
+
     }
 }

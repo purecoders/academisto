@@ -42,4 +42,8 @@ class Project extends Model
     public function files(){
       return $this->hasMany('App\File');
     }
+
+    public function answer(){
+      return $this->hasOne('App\ProjectAnswer');
+    }
 }

@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->middleware('auth')->name('home');
 Route::get('/hex', function (){
    return view('hexagons');
 });
@@ -91,6 +91,11 @@ Route::post('send-request','ProjectRequestController@sendRequest')->middleware('
 Route::post('report-project', 'ReportController@reportProject')->middleware('auth')->name('report-project');
 
 
+Route::post('user-send-project-answer-page', 'ProjectController@sendProjectAnswerPage')->middleware('auth')->name('user-send-project-answer-page');
+Route::post('user-send-project-answer', 'ProjectController@sendProjectAnswer')->middleware('auth')->name('user-send-project-answer');
+
+
+
 
 
 ////############ admin ###############///
@@ -117,18 +122,19 @@ Route::post('admin/user-requests', 'AdminController@adminUserRequests')->middlew
 Route::post('admin/user-finance', 'AdminController@adminUserFinance')->middleware(['auth','super_admin'])->name('admin-user-finance');
 Route::get('admin/reports', 'AdminController@adminReports')->middleware(['auth','super_admin'])->name('admin-reports');
 Route::get('admin/finance', 'AdminController@adminFinance')->middleware(['auth','super_admin'])->name('admin-finance');
-
-
 Route::post('admin/search-user', 'AdminController@adminSearchUser')->middleware(['auth','super_admin'])->name('admin-search-user');
-
-
-
-
-
-
 Route::get('admin/tickets', 'TicketController@showAdminTickets')->middleware(['auth','super_admin'])->name('admin-tickets');
 Route::get('admin/user-tickets/{user_id}', 'TicketController@showAdminUserTickets')->middleware(['auth','super_admin'])->name('admin-user-tickets');
 Route::post('admin/send-ticket', 'TicketController@AdminSendTicket')->middleware(['auth','super_admin'])->name('admin-send-ticket');
+
+Route::post('admin/user-pay','SitePayController@freelancerPayPage')->middleware(['auth','super_admin'])->name('admin-user-pay');
+Route::post('admin/user-send-pay','SitePayController@sendFreelancerPay')->middleware(['auth','super_admin'])->name('admin-user-send-pay');
+Route::post('admin/set-rate','AdminController@setRate')->middleware(['auth','super_admin'])->name('admin-set-rate');
+
+
+
+
+Route::get('admin/freelancers','AdminController@adminShowFreelancers')->middleware(['auth','super_admin'])->name('admin-freelancers');
 
 
 

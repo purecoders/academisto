@@ -77,30 +77,7 @@
 
 
 
-            {{--<tr>--}}
-                {{--<th scope="row">3</th>--}}
-                {{--<td>Mark</td>--}}
-                {{--<td>Mark@yahoo.com</td>--}}
-                {{--<td>4.5</td>--}}
-                {{--<td><a href="" class="btn btn-outline-light">مشاهده پروفایل</a></td>--}}
-                {{--<td><a href="" class="btn btn-outline-danger">حذف</a></td>--}}
-            {{--</tr>--}}
-            {{--<tr>--}}
-                {{--<th scope="row">4</th>--}}
-                {{--<td>Mark</td>--}}
-                {{--<td>Mark@yahoo.com</td>--}}
-                {{--<td>3.2</td>--}}
-                {{--<td><a href="" class="btn btn-outline-light">مشاهده پروفایل</a></td>--}}
-                {{--<td><a href="" class="btn btn-outline-danger">حذف</a></td>--}}
-            {{--</tr>--}}
-            {{--<tr>--}}
-                {{--<th scope="row">1</th>--}}
-                {{--<td>Mark</td>--}}
-                {{--<td>Mark@yahoo.com</td>--}}
-                {{--<td>5.1</td>--}}
-                {{--<td><a href="" class="btn btn-outline-light">مشاهده پروفایل</a></td>--}}
-                {{--<td><a href="" class="btn btn-outline-danger">حذف</a></td>--}}
-            {{--</tr>--}}
+
 
 
 

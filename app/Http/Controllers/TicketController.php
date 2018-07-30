@@ -23,6 +23,7 @@ class TicketController extends Controller
       $ticket->user_id = $user->id;
       $ticket->text = $request->input('text');
       $ticket->is_user_send = 1;
+      $ticket->is_admin_seen = 0;
       $ticket->save();
     }
 

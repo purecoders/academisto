@@ -12,13 +12,44 @@
                         <p class="card-text">
                             {{$project->description}}
                         </p>
+
+                        @if($project_file !== null && $project_file != [])
+                        <h5 class="d-inline-block">فایل پیوست شده: </h5>
+                        <a href="{{$project_file->url}}">دانلود</a>
+                        @endif
                     </div>
                     <div class="card-footer">
                         <item>قیمت(تومان):</item>
                         <item>{{number_format($project->user_price)}}</item>
                     </div>
                 </div>
+
+                <div>
+                    @php
+                    $thisUser = \Illuminate\Support\Facades\Auth::user();
+                    @endphp
+                    @if($project->user_id == $thisUser->id)
+                        @if($project->is_finished == 1)
+                            <h4>پاسخ پروژه شما</h4>
+                            <textarea>
+                            {{$project->answer->description}}
+                        </textarea>
+                            @php
+                                $project_answer_file = \App\File::where('project_id', '=', $project->id)->where('is_for_answer', '=', 1)->first();
+                            @endphp
+
+                            @if($project_answer_file !== null)
+                                <h5>فایل پیوست شده برای پروژه شما :</h5><br>
+                                <a href="{{$project_answer_file->url}}">دانلود</a>
+                            @endif
+                        @endif
+                    @endif
+                </div>
+
             </div>
+
+
+
             <div class="col-md-6 bg-light pt-4">
                 <h5 class="pb-4">کاربرانی که برای پروژه شما درخواست داده اند :</h5>
                 <table class="table table-striped">
@@ -80,59 +111,13 @@
 
                         @endforeach
 
-                    {{--<tr>--}}
-                        {{--<th scope="row">1</th>--}}
-                        {{--<td>Mark</td>--}}
-                        {{--<td>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از--}}
-                            {{--طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای</td>--}}
-                        {{--<td><button class="btn btn-success">پذیرفتن</button></td>--}}
-                        {{--<td><button class="btn btn-danger">رد</button></td>--}}
-                    {{--</tr>--}}
 
-
-                    {{--<tr>--}}
-                        {{--<th scope="row">2</th>--}}
-                        {{--<td>Mark</td>--}}
-                        {{--<td>--}}
-                            {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از--}}
-                            {{--طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای--}}
-                        {{--</td>--}}
-
-                        {{--<td><button class="btn btn-success">پذیرفتن</button></td>--}}
-                        {{--<td><button class="btn btn-danger">رد</button></td>--}}
-                    {{--</tr>--}}
-                    {{--<tr>--}}
-                        {{--<th scope="row">3</th>--}}
-                        {{--<td>Mark</td>--}}
-                        {{--<td>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از--}}
-                            {{--طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای</td>--}}
-
-                        {{--<td><button class="btn btn-success">پذیرفتن</button></td>--}}
-                        {{--<td><button class="btn btn-danger">در</button></td>--}}
                     </tr>
 
 
                     </tbody>
                 </table>
-                {{--<nav>--}}
-                    {{--<ul class="pagination justify-content-center">--}}
-                        {{--<li class="page-item">--}}
-                            {{--<a class="page-link" href="#" aria-label="Previous">--}}
-                                {{--<span aria-hidden="true">&laquo;</span>--}}
-                                {{--<span class="sr-only">Previous</span>--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                        {{--<li class="page-item"><a class="page-link" href="#">1</a></li>--}}
-                        {{--<li class="page-item"><a class="page-link" href="#">2</a></li>--}}
-                        {{--<li class="page-item"><a class="page-link" href="#">3</a></li>--}}
-                        {{--<li class="page-item">--}}
-                            {{--<a class="page-link" href="#" aria-label="Next">--}}
-                                {{--<span aria-hidden="true">&raquo;</span>--}}
-                                {{--<span class="sr-only">Next</span>--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                {{--</nav>--}}
+
             </div>
         </div>
     </div>

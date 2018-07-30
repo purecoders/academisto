@@ -21,168 +21,87 @@
             <div class="swiper-wrapper">
 
 
+                @php
+                    $user = \Illuminate\Support\Facades\Auth::user();
+                    $cv = $user->cv;
+                @endphp
+
+                @if($cv !== null)
+                    @if($cv->is_accepted == 1)
+                        @foreach($requests as $request)
+                            <div class="swiper-slide">
+                                <div id="request_card" class="card rtl">
+                                    <div
+                                            @if($request['project_request']['is_denied'] == 1)
+                                            class="card-header bg-danger"
+                                            @elseif($request['projects']['is_finished'] == 1)
+                                            class="card-header bg-success"
+                                            @elseif($request['projects']['is_started'] == 1 && $request['project_request']['is_accepted'] == 1 && $request['projects']['is_finished'] == 0)
+                                            class="card-header bg-primary"
+                                            @else
+                                            class="card-header bg-warning"
+                                            @endif
+                                    ></div>
+                                    <div class="card-body">
+                                        {{--<h5 class="card-title">متن درخواست</h5>--}}
+                                        <div id="summary">
+                                            <p class="card-text collapse" id="sum{{$request['project_request']['id']}}">
+                                                {{$request['project_request']['description']}}
+                                            </p>
+                                            <a class="collapsed" data-toggle="collapse" href="#sum{{$request['project_request']['id']}}" aria-expanded="false"
+                                               aria-controls="collapseSummary"></a>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-between p-0">
+                                        <item class="py-1 m-1 card-info">{{$request['projects']['title']}}</item>
+                                        <item class="py-1 m-1 card-info">
+                                            <item>قیمت(تومان):</item>
+                                            <item>{{number_format($request['projects']['user_price'])}}</item>
+                                        </item>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between p-1">
+                                        <a href="{{route('user-order-detail',$request['projects']['id'])}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
 
 
-                @foreach($requests as $request)
-                    <div class="swiper-slide">
-                        <div id="request_card" class="card rtl">
-                            <div
-                                    @if($request['project_request']['is_denied'] == 1)
-                                        class="card-header bg-danger"
-                                    @elseif($request['projects']['is_finished'] == 1)
-                                        class="card-header bg-success"
-                                    @elseif($request['projects']['is_started'] == 1 && $request['project_request']['is_accepted'] == 1 && $request['projects']['is_finished'] == 0)
-                                        class="card-header bg-primary"
-                                    @else
-                                        class="card-header bg-warning"
-                                    @endif
-                            ></div>
-                            <div class="card-body">
-                                {{--<h5 class="card-title">متن درخواست</h5>--}}
-                                <div id="summary">
-                                    <p class="card-text collapse" id="sum{{$request['project_request']['id']}}">
-                                       {{$request['project_request']['description']}}
-                                    </p>
-                                    <a class="collapsed" data-toggle="collapse" href="#sum{{$request['project_request']['id']}}" aria-expanded="false"
-                                       aria-controls="collapseSummary"></a>
+                                        @if($request['projects']['is_started'] == 1 && $request['projects']['is_finished'] == 0 && $request['project_request']['is_accepted'] == 1)
+                                            {{--<a href="{{route('user-send-project-answer')}}" class="btn btn-primary">ارسال پروژه</a>--}}
+                                            <form class="btn btn-primary" method="post" action="{{route('user-send-project-answer-page')}}">
+                                                {{csrf_field()}}
+                                                <input type="hidden" name="project_id" value="{{$request['projects']['id']}}">
+                                                <input type="hidden" name="user_id" value="{{$request['project_request']['user_id']}}">
+                                                <input class="btn btn-primary" type="submit" value="ارسال پروژه">
+                                            </form>
+                                        @endif
+
+                                        {{--<a href="#" class="btn btn-danger">لغو درخواست</a>--}}
+
+                                        @if($request['project_request']['is_denied'] == 1)
+                                        @elseif($request['projects']['is_finished'] == 1)
+                                        @elseif($request['projects']['is_started'] == 1 && $request['project_request']['is_accepted'] == 1 && $request['projects']['is_finished'] == 0)
+                                        @else
+                                            <form class="form-group mr-auto d-inline-block" method="post" action="{{route('project-request.destroy', $request['project_request']['id'])}}">
+                                                {{csrf_field()}}
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input class="form-control btn btn-danger" type="submit" value="لغو درخواست">
+                                            </form>
+                                        @endif
+
+
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between p-0">
-                                <item class="py-1 m-1 card-info">{{$request['projects']['title']}}</item>
-                                <item class="py-1 m-1 card-info">
-                                    <item>قیمت(تومان):</item>
-                                    <item>{{number_format($request['projects']['user_price'])}}</item>
-                                </item>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between p-1">
-                                <a href="{{route('user-order-detail',$request['projects']['id'])}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
-
-                                {{--<a href="#" class="btn btn-danger">لغو درخواست</a>--}}
-
-                                @if($request['project_request']['is_denied'] == 1)
-                                @elseif($request['projects']['is_finished'] == 1)
-                                @elseif($request['projects']['is_started'] == 1 && $request['project_request']['is_accepted'] == 1 && $request['projects']['is_finished'] == 0)
-                                @else
-                                    <form class="form-group mr-auto d-inline-block" method="post" action="{{route('project-request.destroy', $request['project_request']['id'])}}">
-                                        {{csrf_field()}}
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input class="form-control btn btn-danger" type="submit" value="لغو درخواست">
-                                    </form>
-                                @endif
-
-
-
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                        @endforeach
+                    @elseif($cv->is_accepted == 0)
+                        <h4 class="btn-warning">رزومه شما در حال بررسی است. بعد از تایید رزومه میتوانید اقدام به انجام پروژه نمایید</h4>
+                    @endif
+                @else
+                    <h4 class="btn-danger">برای انجام پروژه باید رزومه خود را ارسال نمایید</h4>
+                @endif
 
 
 
 
-
-
-                {{--<div class="swiper-slide">--}}
-                    {{--<div id="request_card" class="card rtl">--}}
-                        {{--<div class="card-header bg-primary"></div>--}}
-                        {{--<div class="card-body">--}}
-                            {{--<h5 class="card-title">درخواست 1</h5>--}}
-                            {{--<div id="summary">--}}
-                                {{--<p class="card-text collapse" id="collapseSummary2">--}}
-                                    {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.--}}
-                                {{--</p>--}}
-                                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary2" aria-expanded="false"--}}
-                                   {{--aria-controls="collapseSummary"></a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="d-flex justify-content-between p-0">--}}
-                            {{--<item class="py-1 m-1 card-info">پروژه سما</item>--}}
-                            {{--<item class="py-1 m-1 card-info">--}}
-                                {{--<item>قیمت:</item>--}}
-                                {{--<item>10000</item>--}}
-                            {{--</item>--}}
-                        {{--</div>--}}
-                        {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                            {{--<a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>--}}
-                            {{--<a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ارسال پروژه</a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="swiper-slide">--}}
-                    {{--<div id="request_card" class="card rtl">--}}
-                        {{--<div class="card-header bg-warning"></div>--}}
-                        {{--<div class="card-body">--}}
-                            {{--<h5 class="card-title">درخواست 1</h5>--}}
-                            {{--<div id="summary">--}}
-                                {{--<p class="card-text collapse" id="collapseSummary3">--}}
-                                    {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.--}}
-                                {{--</p>--}}
-                                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary3" aria-expanded="false"--}}
-                                   {{--aria-controls="collapseSummary"></a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="d-flex justify-content-between p-0">--}}
-                            {{--<item class="py-1 m-1 card-info">پروژه سما</item>--}}
-                            {{--<item class="py-1 m-1 card-info">--}}
-                                {{--<item>قیمت:</item>--}}
-                                {{--<item>10000</item>--}}
-                            {{--</item>--}}
-                        {{--</div>--}}
-                        {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                            {{--<a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>--}}
-                            {{--<a href="#" class="btn btn-danger">حذف</a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="swiper-slide">--}}
-                    {{--<div id="request_card" class="card rtl border-success">--}}
-                        {{--<div class="card-header bg-success"></div>--}}
-                        {{--<div class="card-body">--}}
-                            {{--<h5 class="card-title">درخواست 1</h5>--}}
-                            {{--<div id="summary">--}}
-                                {{--<p class="card-text collapse" id="collapseSummary4">--}}
-                                    {{--چاپ و با استفاده از طراحان گرافیک است.--}}
-                                {{--</p>--}}
-                                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary4" aria-expanded="false"--}}
-                                   {{--aria-controls="collapseSummary"></a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="d-flex justify-content-between p-0">--}}
-                            {{--<item class="py-1 m-1 card-info">پروژه سما</item>--}}
-                            {{--<item class="py-1 m-1 card-info">--}}
-                                {{--<item>قیمت:</item>--}}
-                                {{--<item>10000</item>--}}
-                            {{--</item>--}}
-                        {{--</div>--}}
-                        {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                            {{--<a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>--}}
-                            {{--<a href="#" class="btn btn-danger">حذف</a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="swiper-slide">--}}
-                    {{--<div id="request_card" class="card rtl">--}}
-                        {{--<div class="card-header bg-success"></div>--}}
-                        {{--<div class="card-body">--}}
-                            {{--<h5 class="card-title">درخواست 1</h5>--}}
-                            {{--<div id="summary">--}}
-                                {{--<p class="card-text collapse" id="collapseSummary5">--}}
-                                    {{--لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.--}}
-                                {{--</p>--}}
-                                {{--<a class="collapsed" data-toggle="collapse" href="#collapseSummary5" aria-expanded="false"--}}
-                                   {{--aria-controls="collapseSummary"></a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="d-flex justify-content-between p-0">--}}
-                            {{--<a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>--}}
-                        {{--</div>--}}
-                        {{--<div class="card-footer d-flex justify-content-between p-1">--}}
-                            {{--<a href="{{route('user-order-detail',1)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>--}}
-                            {{--<a href="#" class="btn btn-danger">حذف</a>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{----}}
 
 
 
