@@ -618,11 +618,11 @@ body {
 }
 
 .hover-able-hex {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  font-size: 1.3em;
-  color: rgba(253, 25, 80, 0.62);
-  background: white;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  font-size: 1.5em;
+  color: #b11a3b;
+  background: rgba(255, 255, 255, 0.77) !important;
   z-index: 2200;
 }
 
@@ -709,15 +709,40 @@ body {
 }
 
 @media (min-width: 0px) {
-  body {
-    background-color: #29eaea;
+  #myHexGrid {
+    visibility: visible;
+    height: 14.15454545em;
+    width: 20em;
+  }
+  #myHexGrid .hexGrid {
+    height: 14.15454545em;
+    width: 20em;
+    grid-template-columns: repeat(7, 1fr 2fr) 1fr;
+    grid-template-rows: repeat(9, 1.57272727em);
+  }
+  .logo {
+    height: 36px;
+    width: 67.5px;
+    top: 17px;
+    right: 40%;
+  }
+  #hex3 {
+    bottom: 115px;
+    width: 70px;
+    height: 70px;
+  }
+  #background {
+    height: 148px;
+  }
+  .slogan {
+    top: 80px;
+  }
+  .hover-able-hex {
+    font-size: 0.8em;
   }
 }
 
 @media (min-width: 576px) {
-  body {
-    background-color: #29eaea;
-  }
   #myHexGrid {
     visibility: visible;
     height: 24.77045455em;
@@ -746,12 +771,12 @@ body {
   .slogan {
     top: 100px;
   }
+  .hover-able-hex {
+    font-size: 1.2em;
+  }
 }
 
 @media (min-width: 768px) {
-  body {
-    background-color: #29eaea;
-  }
   #myHexGrid {
     visibility: visible;
     height: 35.38636364em;
@@ -783,9 +808,6 @@ body {
 }
 
 @media (min-width: 992px) {
-  body {
-    background-color: #29eaea;
-  }
   #myHexGrid {
     visibility: visible;
     height: 46.00227273em;
@@ -817,9 +839,6 @@ body {
 }
 
 @media (min-width: 1200px) {
-  body {
-    background-color: #29eaea;
-  }
   #myHexGrid {
     visibility: visible;
     height: 49.54090909em;
@@ -849,4 +868,23 @@ body {
 
 .first-page-links {
   font-size: 1.3em;
+}
+
+.home-list-item-wrapper {
+  line-height: 1.5em;
+  list-style-type: none;
+}
+
+.home-page-links {
+  text-decoration: none !important;
+  color: #5e5e5e;
+}
+
+.home-page-links:hover {
+  color: #fd1950;
+}
+
+.list-item-image {
+  height: 30px;
+  width: 30px;
 }

@@ -14,7 +14,7 @@
 <div id="background"></div>
 <div class="container text-center">
     <div id="myHexGrid">
-        <div class="hexCrop d-none d-sm-block">
+        <div class="hexCrop ">
             <div class="hexGrid  pt-5">
                 <div class="hex"></div>
                 <div class="hex"></div>
@@ -30,21 +30,29 @@
                 <div class="hex"></div>
                 <div class="hex"></div>
                 <div class="hex"></div>
-                <div class="hex hover-able-hex">
-                    پروژه ها
-                </div>
-                <div class="hex hover-able-hex">
-                    آگهی ها
-                </div>
+                <a class="hex hover-able-hex" href="{{route('projects')}}" style="text-decoration: none">
+                    <div>
+                        پروژه ها
+                    </div>
+                </a>
+                <a class="hex hover-able-hex" href="{{route('ads')}}" style="text-decoration: none">
+                    <div>
+                        آگهی ها
+                    </div>
+                </a>
                 <div class="hex"></div>
                 <div class="hex"></div>
                 <div class="hex"></div>
-                <div class="hex hover-able-hex">
+                <a class="hex hover-able-hex" href="{{route('register')}}" style="text-decoration: none">
+                <div>
                     ثبت نام
                 </div>
-                <div class="hex hover-able-hex">
+                </a>
+                <a class="hex hover-able-hex" href="{{route('login')}}" style="text-decoration: none">
+                <div >
                     ورود
                 </div>
+                </a>
                 <div class="hex"></div>
                 <div class="hex"></div>
                 <div class="hex"></div>
@@ -65,14 +73,15 @@
     </div>
 </div>
 <h2 class="slogan">آکادمیستو پلی بین کار و تحصیل</h2>
-<ul class="fixed-top d-inline-block rtl mt-4 mr-2 first-page-links">
-    <li><a href="{{route('register')}}">ثبت نام</a></li>
-    <li><a href="{{route('register')}}">ورود</a></li>
+
+<ul class="fixed-top d-inline-block rtl mt-4 mr-2 first-page-links p-0 home-list-item-wrapper">
+    <li> <img class="list-item-image mr-2" src="{{asset('assets/img/bullot.png')}}" alt=""><a class="home-page-links" href="{{route('register')}}">ثبت نام</a></li>
+    <li><img class="list-item-image mr-2" src="{{asset('assets/img/bullot.png')}}" alt=""><a class="home-page-links" href="{{route('login')}}">ورود</a></li>
 </ul>
 
-<ul class="fixed-bottom d-inline-block rtl mb-4 mr-2 first-page-links">
-    <li>درباره ما</li>
-    <li>تماس با ما</li>
+<ul class="fixed-bottom d-inline-block rtl mb-4 mr-2 first-page-links p-0 home-list-item-wrapper">
+    <li><img class="list-item-image mr-2" src="{{asset('assets/img/bullot.png')}}" alt=""><a class="home-page-links" href="{{route('register')}}">درباره ما</a></li>
+    <li><img class="list-item-image mr-2" src="{{asset('assets/img/bullot.png')}}" alt=""><a class="home-page-links" href="{{route('register')}}">تماس با ما</a></li>
 </ul>
 
 
