@@ -25,7 +25,7 @@
                             <td>{{$item['reportable_name']}}</td>
                             @if($item['report']['reportable_type'] == 'App\Ad')
                                 <td>
-                                <form class="btn btn-outline-info" method="post" action="{{route('admin-user-ads')}}">
+                                <form  method="post" action="{{route('admin-user-ads')}}">
                                     {{csrf_field()}}
                                     <input  type="hidden" name="user_id" value="{{$item['report']['user_id_to']}}">
                                     <input class="btn btn-outline-info" type="submit" value="مشاهده">
@@ -34,11 +34,9 @@
 
                                 {{--<td><a href="" class="btn btn-outline-info"></a></td>--}}
 
-
-
                             @elseif($item['report']['reportable_type'] == 'App\Project')
                                 <td>
-                                <form class="btn btn-outline-info" method="post" action="{{route('admin-user-orders')}}">
+                                <form  method="post" action="{{route('admin-user-orders')}}">
                                     {{csrf_field()}}
                                     <input  type="hidden" name="user_id" value="{{$item['report']['user_id_to']}}">
                                     <input class="btn btn-outline-info" type="submit" value="مشاهده">
@@ -54,7 +52,7 @@
 
                             @if($item['report']['reportable_type'] == 'App\Ad')
                                 <td>
-                                <form class="btn btn-outline-danger" method="post" action="{{route('admin-remove-user-ad-from-reports')}}">
+                                <form method="post" action="{{route('admin-remove-user-ad-from-reports')}}">
                                     {{csrf_field()}}
                                     <input  type="hidden" name="ad_id" value="{{$item['report']['reportable_id']}}">
                                     <input  type="hidden" name="user_id" value="{{$item['report']['user_id_to']}}">

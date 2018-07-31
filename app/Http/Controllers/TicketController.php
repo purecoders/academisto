@@ -57,7 +57,9 @@ class TicketController extends Controller
         }
       }
 
-      $users_tickets [] =['user'=>$user, 'new_tikects_count'=>$newTicketsCount, 'last_ticket_date'=>$last_ticket_date];
+
+
+      $users_tickets [] =['user'=>$user, 'new_tickets_count'=>$newTicketsCount, 'last_ticket_date'=>$last_ticket_date];
 
     }
 
@@ -104,7 +106,7 @@ class TicketController extends Controller
         }
       }
 
-      $users_tickets [] =['user'=>$user, 'new_tikects_count'=>$newTicketsCount, 'last_ticket_date'=>$last_ticket_date];
+      $users_tickets [] =['user'=>$user, 'new_tickets_count'=>$newTicketsCount, 'last_ticket_date'=>$last_ticket_date];
 
     }
 

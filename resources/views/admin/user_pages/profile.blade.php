@@ -29,7 +29,7 @@
                         <label class="col-sm-3 col-form-label"> امتیاز(0-5): </label>
                         <div class="col-sm-9">
                             {{csrf_field()}}
-                            <input type="text" name="rate" class="form-control-plaintext" value="{{(int)$rate}}">
+                            <input type="number" min="0" max="5" name="rate" class="form-control" value="{{(int)$rate}}">
                             <input type="hidden" name="user_id"  value="{{$user->id}}">
                         </div>
                     </div>
@@ -57,7 +57,7 @@
             <form action="{{route('admin-accept-cv')}}" method="post">
                 <div class="form-group">
                     @if($user->cv !== null)
-                    <textarea name="" id="" cols="30" rows="14" readonly class="form-control-plaintext"
+                    <textarea name="" id="" cols="30" rows="14" readonly class="form-control"
                               placeholder="">{{$user->cv->cv_text}}</textarea>
                         @else
                         <textarea name="" id="" cols="30" rows="14" readonly class="form-control-plaintext"

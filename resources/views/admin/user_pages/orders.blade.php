@@ -17,7 +17,7 @@
         </div>
 
         <div id="orders" class="swiper-container" dir="rtl">
-            <div class="swiper-wrapper">
+            <div id="admin-orders" class="swiper-wrapper">
 
                 @php($i=0)
                 @foreach($projects as $project)
@@ -46,10 +46,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$project->title}}</h5>
                                 <div id="summary">
-                                    <p class="card-text collapse" id="collapseSummary1">
+                                    <p class="card-text collapse" id="c{{$project->id}}">
                                        {{$project->description}}
                                     </p>
-                                    <a class="collapsed" data-toggle="collapse" href="#collapseSummary1"
+                                    <a class="collapsed" data-toggle="collapse" href="#c{{$project->id}}"
                                        aria-expanded="false"
                                        aria-controls="collapseSummary"></a>
                                 </div>
@@ -59,13 +59,13 @@
                                 @if($project->is_immediate == 1)
                                     <alert class="alert alert-danger p-1 m-1">فوری</alert>
                                 @else
-                                    <alert class="alert alert-danger p-1 m-1 hide"></alert>
+                                    <alert class="alert alert-danger p-1 m-1 hide">فوری</alert>
                                 @endif
 
                             </div>
                             <div class="card-footer d-flex justify-content-between p-1">
 
-                                <form class="btn btn-danger" method="post" action="{{route('admin-remove-user-project')}}">
+                                <form class="" method="post" action="{{route('admin-remove-user-project')}}">
                                     {{csrf_field()}}
                                     <input  type="hidden" name="project_id" value="{{$project->id}}">
                                     <input  type="hidden" name="user_id" value="{{$user->id}}">

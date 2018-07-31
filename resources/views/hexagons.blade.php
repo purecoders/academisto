@@ -31,19 +31,19 @@
                 <div class="hex"></div>
                 <div class="hex"></div>
                 <div class="hex hover-able-hex">
-                    A
+                    پروژه ها
                 </div>
                 <div class="hex hover-able-hex">
-                    B
+                    آگهی ها
                 </div>
                 <div class="hex"></div>
                 <div class="hex"></div>
                 <div class="hex"></div>
                 <div class="hex hover-able-hex">
-                    C
+                    ثبت نام
                 </div>
                 <div class="hex hover-able-hex">
-                    D
+                    ورود
                 </div>
                 <div class="hex"></div>
                 <div class="hex"></div>
@@ -64,6 +64,7 @@
         </div>
     </div>
 </div>
+<h2 class="slogan">آکادمیستو پلی بین کار و تحصیل</h2>
 <ul class="fixed-top d-inline-block rtl mt-4 mr-2 first-page-links">
     <li><a href="{{route('register')}}">ثبت نام</a></li>
     <li><a href="{{route('register')}}">ورود</a></li>

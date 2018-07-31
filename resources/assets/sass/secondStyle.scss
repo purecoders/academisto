@@ -1,56 +1,107 @@
-#user-information{
+#user-information {
 
 }
-.custom-table{
+
+.custom-table {
   background: rgb(97, 97, 97);
 }
 
-.admin-finance-card-income:hover{
+.admin-finance-card-income:hover {
   background: rgba(38, 255, 56, 0.38) !important;
 }
 
-.admin-finance-card-pay:hover{
+.admin-finance-card-pay:hover {
   background: rgba(253, 25, 80, 0.41) !important;
   //color: #fff;
   //.academisto-brand{
   //    color: #616161;
   //}
 }
-.admin-finance-price{
+
+.admin-finance-price {
   font-family: vazir-fd;
   font-size: 2.5em;
 }
-.farsi-digits{
+
+.farsi-digits {
   font-family: vazir-fd;
 
 }
 
-#admin-finance{ table {
-  border-collapse:separate;
-  border-spacing: 0 0.1em;
+#admin-finance {
+  table {
+    border-collapse: separate;
+    border-spacing: 0 0.1em;
+  }
 }
-}
-.admin-chat-view-user-header{
+
+.admin-chat-view-user-header {
   background: #303030;
   color: #dfdfdf;
   text-align: center;
   border-top-right-radius: .25rem;
   border-top-left-radius: .25rem;
 }
-.admin-chat-view-sidebar{
-  height: 548px;
+
+.admin-chat-view-sidebar {
+  height: 520px;
   padding: 0;
   overflow-y: scroll;
   direction: ltr;
   border-bottom-right-radius: .25rem;
   border-bottom-left-radius: .25rem;
 }
-.admin-chat-view-user{
+
+.admin-chat-view-user {
   color: rgb(251, 251, 251) !important;
 }
-.admin-chat-view-user-img{
+
+.admin-chat-view-user-img {
   font-size: 2.0em;
 }
-.admin-chat-view-user-name{
+
+.admin-chat-view-user-name {
   font-size: 1.1em;
+}
+
+#admin-user-card-nav {
+  .form-control:hover {
+    color: #fd1950 !important;
+    cursor: pointer;
+    border: 0px solid #1d2124 !important;
+  }
+  .form-control:focus{
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  li:hover {
+    border: 0px solid #1d2124 !important;
+  }
+}
+#admin-projects{
+  .card{
+    min-height: 325px;
+
+  }
+}
+#admin-orders{
+  .card{
+    min-height: 310px;
+    width: 400px !important;
+  }
+}
+#admin-card-requests{
+  .card{
+    min-height: 310px;
+    width: 400px !important;
+  }
+}
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #fd1950;
+  border-radius: 50%;
+  display: inline-block;
+  z-index: 2000;
 }

@@ -17,7 +17,7 @@
             </div>
 
 
-            <div class="row p-4">
+            <div id="site-projects" class="row p-4">
 
                 @foreach($projects as $project)
                     <div class="col-lg-4 col-md-6">
@@ -48,19 +48,22 @@
                             <div class="card-footer d-flex justify-content-between p-1">
 
                                 @php
-                                $user = \Illuminate\Support\Facades\Auth::user();
-                                $cv = $user->cv;
+                                    $user = \Illuminate\Support\Facades\Auth::user();
+                                    $cv = $user->cv;
                                 @endphp
 
                                 @if($cv !== null)
-                                   @if($cv->is_accepted == 1)
-                                      <button  class="btn btn-primary" data-toggle="modal" data-target="#sendRequestModal" onclick="sendRequet({{$project->id}})">ارسال درخواست</button>
-                                  @endif
+                                    @if($cv->is_accepted == 1&& $project->user_id!=$user->id)
+                                        <button class="btn btn-primary" data-toggle="modal"
+                                                data-target="#sendRequestModal" onclick="sendRequest({{$project->id}})">
+                                            ارسال درخواست
+                                        </button>
+                                    @endif
                                 @endif
 
-                                <form class="form-group mr-auto d-inline-block" method="post" action="{{route('report-project')}}">
+                                <form class="ml-auto d-inline-block" method="post" action="{{route('report-project')}}">
                                     {{csrf_field()}}
-                                    <input  type="hidden" name="project_id" value="{{$project->id}}">
+                                    <input type="hidden" name="project_id" value="{{$project->id}}">
                                     <input class="form-control btn btn-danger" type="submit" value="گزارش">
                                 </form>
 
@@ -72,32 +75,14 @@
                 @endforeach
 
 
-
-
-
-
-
             </div>
-            <nav>
-                <ul class="pagination justify-content-center p-1">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </li>
+            <nav class="text-center" aria-label="Page navigation example">
+                <ul class="d-inline-block" class="pagination">
+                    {{$projects->links()}}
                 </ul>
             </nav>
         </div>
+
     </div>
 
     </div>
@@ -115,11 +100,12 @@
 
                         <div class="form-group">
                             <label for="modal-text-project">متن :</label>
-                            <input id="project_id" type="hidden"name="project_id">
-                            <textarea id="modal-text-project" type="text" class="form-control" name="description" value="" placeholder="متن درخواست خود را برای گرفتن پروژه بنویسید..."></textarea>
-                            <label  for="modal-price-project" class="mt-2 hide">قیمت(تومان):</label>
-                            <input name="price" type="text" class="form-control hide" placeholder="قیمت پیشنهادی شما برای این پروژه">
-                            <input name="project_id" value="{{$project->id}}" type="hidden" >
+                            <textarea id="modal-text-project" type="text" class="form-control" name="description"
+                                      value="" placeholder="متن درخواست خود را برای گرفتن پروژه بنویسید..."></textarea>
+                            <label for="modal-price-project" class="mt-2 hide">قیمت(تومان):</label>
+                            <input name="price" type="text" class="form-control hide"
+                                   placeholder="قیمت پیشنهادی شما برای این پروژه">
+                            <input id="modal-project-id" type="hidden" name="project_id" value="">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -130,5 +116,5 @@
             </div>
         </div>
     </div>
-      </div>
+    </div>
 @endsection

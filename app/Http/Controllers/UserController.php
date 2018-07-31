@@ -7,6 +7,7 @@ use App\Project;
 use App\State;
 use App\Univ;
 use App\User;
+use App\UserFullInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -106,7 +107,10 @@ class UserController extends Controller
     public function userFinanceUpdate(Request $request){
       $user = Auth::user();
       $fullInfo = $user->fullInfo;
-
+      if($fullInfo===null){
+          $fullInfo=new UserFullInformation();
+          $fullInfo->user_id=$user->id;
+      }
       $fullInfo->bank_card_id =  $request->input('bank_card_id');
       $fullInfo->bank_account_id = $request->input('bank_account_id');
       $fullInfo->bank_account_owner_name = $request->input('bank_account_owner_name');

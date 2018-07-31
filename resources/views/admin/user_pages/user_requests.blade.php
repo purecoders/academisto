@@ -18,7 +18,7 @@
         </div>
 
         <div class="swiper-container" dir="rtl">
-            <div class="swiper-wrapper">
+            <div id="admin-card-requests" class="swiper-wrapper">
 
 
                 @foreach($project_requests as $request)
@@ -27,9 +27,9 @@
 
                             <div @if($request['project_request']['is_denied'] == 1)
                                     class="card-header bg-danger"
-                                 @elseif($request['projects']['is_finished'] == 1)
+                                 @elseif($request['project']['is_finished'] == 1)
                                     class="card-header bg-success"
-                                 @elseif($request['projects']['is_started'] == 1 && $request['project_request']['is_accepted'] == 1 && $request['projects']['is_finished'] == 0)
+                                 @elseif($request['project']['is_started'] == 1 && $request['project_request']['is_accepted'] == 1 && $request['project']['is_finished'] == 0)
                                     class="card-header bg-primary"
                                  @else
                                     class="card-header bg-warning"
@@ -50,13 +50,13 @@
                                 <item class="py-1 m-1 card-info">{{$request->project['title']}}</item>
                                 <item class="py-1 m-1 card-info">
                                     <item>قیمت (تومان) :</item>
-                                    <item>{{number_format($request->price)}}</item>
+                                    <item>{{number_format($request['project']['user_price'])}}</item>
                                 </item>
                             </div>
                             <div class="card-footer d-flex justify-content-between p-1">
 
 
-                                <form class="btn btn-danger" method="post" action="{{route('admin-remove-user-project-request')}}">
+                                <form  method="post" action="{{route('admin-remove-user-project-request')}}">
                                     {{csrf_field()}}
                                     <input  type="hidden" name="request_id" value="{{$request->id}}">
                                     <input  type="hidden" name="user_id" value="{{$user->id}}">

@@ -26,9 +26,9 @@ class ReportController extends Controller
     $ad = Ad::findOrFail($ad_id);
     $user_id_to = User::findOrFail($ad->user_id)->id;
 
-    $report = Report::where('user_id_from' ,'=', $user_id_from)->where('reportable_id', '=', $ad_id)->where('reportable_type', '=', 'App\Ad')->get();
+    $report = Report::where('user_id_from' ,'=', $user_id_from)->where('reportable_id', '=', $ad_id)->where('reportable_type', '=', 'App\Ad')->first();
 
-    //if(empty($report)) {
+    if($report === null) {
       $report = new Report();
       $report->user_id_from = $user_id_from;
       $report->user_id_to = $user_id_to;
@@ -36,7 +36,7 @@ class ReportController extends Controller
       $report->reportable_type = 'App\Ad';
 
       $report->save();
-   // }
+    }
 
     return redirect('/ads');
   }
@@ -49,8 +49,8 @@ class ReportController extends Controller
     $project = Project::findOrFail($project_id);
     $user_id_to = User::findOrFail($project->user_id)->id;
 
-    $report = Report::where('user_id_from' ,'=', $user_id_from)->where('reportable_id', '=', $project_id)->where('reportable_type', '=', 'App\Project');
-  //  if($report === null) {
+    $report = Report::where('user_id_from' ,'=', $user_id_from)->where('reportable_id', '=', $project_id)->where('reportable_type', '=', 'App\Project')->first();
+    if($report === null) {
       $report = new Report();
       $report->user_id_from = $user_id_from;
       $report->user_id_to = $user_id_to;
@@ -58,7 +58,7 @@ class ReportController extends Controller
       $report->reportable_type = 'App\Project';
 
       $report->save();
-   // }
+    }
 
     return redirect('/projects');
   }

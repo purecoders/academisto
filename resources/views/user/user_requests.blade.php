@@ -16,17 +16,14 @@
             </div>
 
         </div>
+        @php
+            $user = \Illuminate\Support\Facades\Auth::user();
+            $cv = $user->cv;
+        @endphp
+        @if($cv !== null)
+            <div class="swiper-container" dir="rtl">
+                <div id="user-requests" class="swiper-wrapper">
 
-        <div class="swiper-container" dir="rtl">
-            <div class="swiper-wrapper">
-
-
-                @php
-                    $user = \Illuminate\Support\Facades\Auth::user();
-                    $cv = $user->cv;
-                @endphp
-
-                @if($cv !== null)
                     @if($cv->is_accepted == 1)
                         @foreach($requests as $request)
                             <div class="swiper-slide">
@@ -48,7 +45,8 @@
                                             <p class="card-text collapse" id="sum{{$request['project_request']['id']}}">
                                                 {{$request['project_request']['description']}}
                                             </p>
-                                            <a class="collapsed" data-toggle="collapse" href="#sum{{$request['project_request']['id']}}" aria-expanded="false"
+                                            <a class="collapsed" data-toggle="collapse"
+                                               href="#sum{{$request['project_request']['id']}}" aria-expanded="false"
                                                aria-controls="collapseSummary"></a>
                                         </div>
                                     </div>
@@ -60,16 +58,20 @@
                                         </item>
                                     </div>
                                     <div class="card-footer d-flex justify-content-between p-1">
-                                        <a href="{{route('user-order-detail',$request['projects']['id'])}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                                        <a href="{{route('user-order-detail',$request['projects']['id'])}}"
+                                           class="py-1 m-1 btn btn-outline-secondary hide">مشاهده جزئیات</a>
 
 
                                         @if($request['projects']['is_started'] == 1 && $request['projects']['is_finished'] == 0 && $request['project_request']['is_accepted'] == 1)
                                             {{--<a href="{{route('user-send-project-answer')}}" class="btn btn-primary">ارسال پروژه</a>--}}
-                                            <form class="btn btn-primary" method="post" action="{{route('user-send-project-answer-page')}}">
+                                            <form class="" method="post"
+                                                  action="{{route('user-send-project-answer-page')}}">
                                                 {{csrf_field()}}
-                                                <input type="hidden" name="project_id" value="{{$request['projects']['id']}}">
-                                                <input type="hidden" name="user_id" value="{{$request['project_request']['user_id']}}">
-                                                <input class="btn btn-primary" type="submit" value="ارسال پروژه">
+                                                <input type="hidden" name="project_id"
+                                                       value="{{$request['projects']['id']}}">
+                                                <input type="hidden" name="user_id"
+                                                       value="{{$request['project_request']['user_id']}}">
+                                                <input class="form-control btn btn-primary" type="submit" value="ارسال پروژه">
                                             </form>
                                         @endif
 
@@ -79,39 +81,32 @@
                                         @elseif($request['projects']['is_finished'] == 1)
                                         @elseif($request['projects']['is_started'] == 1 && $request['project_request']['is_accepted'] == 1 && $request['projects']['is_finished'] == 0)
                                         @else
-                                            <form class="form-group mr-auto d-inline-block" method="post" action="{{route('project-request.destroy', $request['project_request']['id'])}}">
+                                            <form class="ml-auto d-inline-block" method="post"
+                                                  action="{{route('project-request.destroy', $request['project_request']['id'])}}">
                                                 {{csrf_field()}}
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <input class="form-control btn btn-danger" type="submit" value="لغو درخواست">
+                                                <input class="form-control btn btn-danger" type="submit"
+                                                       value="لغو درخواست">
                                             </form>
                                         @endif
-
 
 
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                    @elseif($cv->is_accepted == 0)
-                        <h4 class="btn-warning">رزومه شما در حال بررسی است. بعد از تایید رزومه میتوانید اقدام به انجام پروژه نمایید</h4>
-                    @endif
-                @else
-                    <h4 class="btn-danger">برای انجام پروژه باید رزومه خود را ارسال نمایید</h4>
-                @endif
-
-
-
-
-
-
-
-
-
+                </div>
+                <!-- Add Pagination -->
+                <!-- Add Navigation -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
-            <!-- Add Pagination -->
-            <!-- Add Navigation -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-        </div>
+        @elseif($cv->is_accepted == 0)
+            <h4 class="alert alert-warning">رزومه شما در حال بررسی است. بعد از تایید رزومه میتوانید اقدام به انجام
+                پروژه نمایید</h4>
+        @endif
+        @else
+            <h4 class="alert alert-danger text-dark">برای انجام پروژه باید رزومه خود را ارسال نمایید</h4>
+        @endif
     </section>
 @endsection

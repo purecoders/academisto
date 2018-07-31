@@ -22,7 +22,7 @@ class AdController extends Controller
   {
     //$this->middleware('auth');
     //$this->middleware('auth', ['only' => ['create', 'update','store', 'edit', 'delete']]);
-    $this->middleware('auth', ['except' => ['index', 'show', 'showAds']]);
+    $this->middleware('auth', ['except' => ['index', 'show', 'showAds','searchAds']]);
   }
 
 

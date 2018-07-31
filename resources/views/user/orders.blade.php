@@ -16,7 +16,7 @@
 
         </div>
 
-        <div class="swiper-container" dir="rtl">
+        <div id="user-project" class="swiper-container" dir="rtl">
             <div class="swiper-wrapper">
                 @foreach($projects as $project)
                     <div class="swiper-slide">
@@ -39,7 +39,7 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between p-0">
-                                <a href="{{route('user-order-detail',$project->id)}}" class="py-1 m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
+                                <a href="{{route('user-order-detail',$project->id)}}" class=" m-1 btn btn-outline-secondary">مشاهده جزئیات</a>
                                 @if($project->is_immediate == 1)
 
                                   <alert class="alert alert-danger p-1 m-1">فوری</alert>
@@ -48,14 +48,14 @@
                             <div class="card-footer d-flex justify-content-between p-1">
                                 @if($project->is_started == 0)
                                     <a href="{{route('user-order-edit',1)}}" class="btn btn-primary">ویرایش پروژه</a>
-                                     <form class="form-group mr-auto d-inline-block" method="post" action="{{route('project.destroy', $project->id)}}">
+                                     <form class="ml-auto d-inline-block" method="post" action="{{route('project.destroy', $project->id)}}">
                                          {{csrf_field()}}
                                          <input type="hidden" name="_method" value="DELETE">
-                                         <input class="form-control btn btn-danger" type="submit" value="حذف پروژه">
+                                         <input class="form-control btn btn-danger ml-auto" type="submit" value="حذف پروژه">
                                      </form>
                                 @else
-                                    <a href="" class="btn btn-primary hide">ه</a>
-                                    <form class="form-group mr-auto d-inline-block hide" method="" action="">
+                                    <a href="" class="btn btn-primary hide"></a>
+                                    <form class="mr-auto d-inline-block" method="" action="">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input class="form-control btn btn-danger hide" type="submit" value="">
                                     </form>
@@ -100,7 +100,7 @@
                     <div class="form-group row">
                         <label for="inputPrice" class="col-sm-2 col-form-label">قیمت : (تومان)</label>
                         <div class="col-sm-10">
-                            <input type="text" name="user_price" class="form-control" id="inputPrice"
+                            <input type="number" name="user_price" class="form-control" id="inputPrice"
                                    placeholder="قیمت (تومان)">
                         </div>
                     </div>

@@ -18,10 +18,6 @@ class SitePayController extends Controller
   }
 
 
-
-
-
-
   public function freelancerPayPage(Request $request){
     $user_id = $request->input('user_id');
     $sum_pay = $request->input('sum_pay');
@@ -47,7 +43,7 @@ class SitePayController extends Controller
       $pay->save();
     }
 
-    return redirect('/admin/users');
+    return redirect('/admin/freelancers');
 
   }
 

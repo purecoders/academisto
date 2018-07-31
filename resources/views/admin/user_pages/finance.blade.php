@@ -44,7 +44,7 @@
                 <h5 class="d-inline-block mr-3">جمع مبلغی که باید به {{$user->name}} پرداخت کنید: </h5>
                 <span class="font-weight-bold strong-font-size admin-price-info p-1"> {{number_format($siteSumMustPays)}} تومان</span>
                 {{--<a href="{{route('admin-user-pay')}}" class="btn btn-outline-success ml-3 ">رفتن به صفحه پرداخت</a>--}}
-                <form class="btn btn-outline-success ml-3 " action="{{route('admin-user-pay')}}" method="post">
+                <form class="ml-3 " action="{{route('admin-user-pay')}}" method="post">
                     <input type="hidden" name="sum_pay" value="{{$siteSumMustPays}}">
                     <input type="hidden" name="user_id" value="{{$user->id}}">
                     {{csrf_field()}}

@@ -17,7 +17,7 @@ class CreateProjectAnswersTable extends Migration
             $table->increments('id');
             $table->integer('project_id');
             $table->integer('sender_user_id');
-            $table->string('description');
+            $table->text('description');
             $table->timestamps();
             $table->softDeletes();
             $table->charset = 'utf8';

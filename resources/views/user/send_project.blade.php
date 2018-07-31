@@ -21,6 +21,7 @@
                         <div class="col-sm-10">
                             <input accept=".zip" type="file" name="file"  id="adfile">
                         </div>
+                        <span class="ml-3" style="color: #f82a38; font-size: 13px">اگر   نیاز به پیوست فایلی دارید لطفا آن را به فرمت .zip درآورده و انتخاب کنید</span>
                     </div>
                     <input type="hidden" name="project_id" value="{{$project->id}}">
                     <input type="hidden" name="user_id" value="{{$user['id']}}">

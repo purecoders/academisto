@@ -236,7 +236,6 @@ body {
 }
 .card-header-icon{
   font-size: 1.4em;
-  cursor: pointer;
   text-decoration: none;
 }
 .strong-font-size{
@@ -255,4 +254,38 @@ body {
   color: #495057;
   background-color: #ffffff;
   border-color: #dee2e6 #dee2e6 #ffffff;
+}
+#user-ads{
+  .card{
+    width: 900px;
+
+  }
+}
+.list-group-item-uni{
+  min-height: 70px !important;
+}
+.list-group-item{
+  font-size:0.9em !important;
+}
+#user-ads{
+  .list-group-item{
+    font-size: 0.7em !important;
+  }
+}
+#site-projects{
+  .card{
+    min-height: 280px;
+  }
+}
+#user-project{
+  .card{
+    min-height: 270px;
+    width: 900px;
+  }
+}
+#user-requests{
+  .card{
+    min-height: 270px;
+    width: 900px;
+  }
 }

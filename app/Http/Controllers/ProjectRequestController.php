@@ -64,19 +64,20 @@ class ProjectRequestController extends Controller
     $project_id = $request->input('project_id');
     $description = $request->input('description');
     $price = $request->input('price');
+    $oldRequest=ProjectRequest::Where('project_id','=',$project_id)->where('user_id','=',$user->id)->first();
+    if($oldRequest===null) {
+        if ($description === null) $description = " ";
+        if ($price === null) $price = 0;
 
-    if($description === null)$description = " ";
-    if($price === null)$price = 0;
-
-    $project_request = new ProjectRequest();
-    $project_request->user_id = $user->id;
-    $project_request->project_id = $project_id;
-    $project_request->description = $description;
-    $project_request->price = $price;
-    $project_request->is_accepted = 0;
-    $project_request->is_denied = 0;
-    $project_request->save();
-
+        $project_request = new ProjectRequest();
+        $project_request->user_id = $user->id;
+        $project_request->project_id = $project_id;
+        $project_request->description = $description;
+        $project_request->price = $price;
+        $project_request->is_accepted = 0;
+        $project_request->is_denied = 0;
+        $project_request->save();
+    }
     return redirect('/projects');
 
   }

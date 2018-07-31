@@ -8,7 +8,7 @@
             <div id="chat">
                 @foreach($tickets as $ticket)
                     @if($ticket->is_user_send == 1)
-                        <div class="chat-view d-flex">
+                        <div class="chat-view d-flex w-50">
                             <div class="d-flex flex-column  m-1">
                                 <i class="fa fa-user img-chat-view"></i>
                                 <b><span>{{$user->name}}</span></b>
@@ -18,7 +18,7 @@
                             </p>
                         </div>
                     @else
-                        <div class="chat-view d-flex  bg-info">
+                        <div class="chat-view d-flex w-50 bg-info ml-auto">
                             <p class=" mr-auto" >
                                 {{$ticket->text}}
                             </p>

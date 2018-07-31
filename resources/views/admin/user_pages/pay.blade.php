@@ -2,7 +2,7 @@
 @section('content')
     <div class="container rtl bg-light p-4">
         <h4>تسویه حساب با فریلنسر:</h4><br>
-        <h6>شما باید این مبلغ را به صورت دستی به حساب کاربر ارسال کنید و در اینجا ثبت کنید.</h6>
+        <h6 class="alert alert-danger">شما باید این مبلغ را به صورت دستی به حساب کاربر ارسال کنید و در اینجا ثبت کنید.</h6>
 
         <div class="row text-center">
             <div class="col-md-6">
@@ -17,7 +17,7 @@
                     <div class="form-group row">
                         <label for="inputDescription" class="col-sm-3 col-form-label">رسید بانکی:</label>
                         <div class="col-sm-8">
-                            <input name="bank_receipt" class="form-control" id="inputDescription"
+                            <input type="number" name="bank_receipt" class="form-control" id="inputDescription"
                                    placeholder="کد رسید بانکی را وارد کنید...">
                         </div>
                     </div>

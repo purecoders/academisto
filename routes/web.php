@@ -16,6 +16,7 @@ use App\City;
 use App\Project;
 use App\State;
 use App\User;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,7 +44,7 @@ Route::resource('/user-full-info','UserFullInformationController');
 
 //Route::get('user-panel', 'ProjectController@showAllProjects')->name('user-panel');
 Route::get('user-panel',function (){
-  return view('user.user_panel');
+  return redirect('/user-ads');
 })->middleware('auth')->name('user-panel');
 
 
@@ -76,7 +77,7 @@ Route::get('user-ticket','userController@userTickets')->middleware('auth')->name
 Route::post('user-send-ticket','ticketController@sendTicket')->middleware('auth')->name('user-send-ticket');
 
 Route::get('ads', 'AdController@showAds')->name('ads');
-Route::get('search-ad', 'AdController@searchAds')->middleware('auth')->name('search-ad');
+Route::get('search-ad', 'AdController@searchAds')->name('search-ad');
 Route::post('report-ad', 'ReportController@reportAd')->middleware('auth')->name('report-ad');
 
 
@@ -162,3 +163,11 @@ $project->save();
 Route::get('/super-admin-panel', function (){
   //you must return 'admin panel view';
 })->middleware(['auth', 'super_admin']);
+
+//pouya updated:
+Route::post('get-city',function(Request $request){
+    $state=State::findOrFail($request->state_id);
+    $cities=$state->cities;
+    return response()->json($cities);
+
+});

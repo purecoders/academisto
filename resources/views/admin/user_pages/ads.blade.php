@@ -46,7 +46,7 @@
                             <div class="card-footer p-1 d-flex">
                                 <span class="card-info pl-2 pt-2 mr-auto">قیمت:{{number_format($ad->price)}} تومان</span>
 
-                                <form class="btn btn-danger mr-2" method="post" action="{{route('admin-remove-user-ad')}}">
+                                <form class=" mr-2" method="post" action="{{route('admin-remove-user-ad')}}">
                                     {{csrf_field()}}
                                     <input  type="hidden" name="ad_id" value="{{$ad->id}}">
                                     <input  type="hidden" name="user_id" value="{{$user->id}}">

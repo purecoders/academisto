@@ -5,7 +5,7 @@
     <section>
         <h5>آخرین آگهی های شما:</h5>
         <div class="swiper-container" dir="rtl">
-            <div class="swiper-wrapper">
+            <div id="user-ads" class="swiper-wrapper">
 
 
                 @foreach($ads as $ad)
@@ -18,7 +18,6 @@
                                 <div id="summary">
                                     <p class="collapse" id="sum1{{$ad->id}}">
                                        {{$ad->description}}
-
                                     </p>
                                     <a class="collapsed" data-toggle="collapse" href="#sum1{{$ad->id}}" aria-expanded="false"
                                        aria-controls="collapseSummary"></a>
@@ -26,14 +25,11 @@
                             </div>
                             <ul class="list-group list-group-flush p-0 rtl">
                                 <li class="list-group-item">شهر : {{ $ad->city['name']}}</li>
-                                <li class="list-group-item">دانشگاه : {{$ad->univ['name']}}</li>
+                                <li class="list-group-item list-group-item-uni">دانشگاه : {{$ad->univ['name']}}</li>
                             </ul>
-                            <div class="card-footer p-1">
-                                <span class="card-info pr-4">قیمت : {{number_format($ad->price)}}  </span>
-
-                                {{--<a href="{{route('ad.destroy', $ad->id)}}" class="btn btn-danger mr-auto">حذف آگهی</a>--}}
-
-                                <form class="form-group mr-auto d-inline-block" method="post" action="{{route('ad.destroy', $ad->id)}}">
+                            <div class="card-footer d-flex p-1">
+                                <span class="card-info pr-4">قیمت : {{number_format($ad->price)}}</span>
+                                <form class="ml-auto d-inline-block" method="post" action="{{route('ad.destroy', $ad->id)}}">
                                     {{csrf_field()}}
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input class="form-control btn btn-danger" type="submit" value="حذف آگهی">
@@ -82,7 +78,7 @@
                     <div class="form-group row">
                         <label for="inputPrice" class="col-sm-2 col-form-label">قیمت:</label>
                         <div class="col-sm-10">
-                            <input type="text" name="price" class="form-control" id="inputPrice"
+                            <input type="number" name="price" class="form-control" id="inputPrice"
                                    placeholder="قیمت (تومان)">
                         </div>
                     </div>
@@ -95,7 +91,7 @@
                                 {{--<option value=""> انتخاب استان</option>--}}
                             {{--</select>--}}
 
-                            <select class="form-control" name="state_id">
+                            <select id="state" class="form-control" name="state_id">
                                 <option value="0"></option>
                                 @foreach($states as $state)
                                     <option value="{{$state->id}}">{{$state->name}}</option>
@@ -110,7 +106,7 @@
                         <label for="inputDescription" class="col-sm-2 col-form-label">شهر:</label>
                         <div class="col-sm-10">
 
-                            <select class="form-control" name="city_id">
+                            <select id="cities" class="form-control" name="city_id">
                                 <option value="0"></option>
                                 @foreach($cities as $city)
                                     <option value="{{$city->id}}">{{$city->name}}</option>
@@ -125,7 +121,7 @@
                         <label for="inputDescription" class="col-sm-2 col-form-label">دانشگاه:</label>
                         <div class="col-sm-10">
 
-                            <select class="form-control" name="univ_id">
+                            <select id="uni-select" class="form-control" name="univ_id">
                                 <option value="0"></option>
                                 @foreach($univs as $univ)
                                     <option  value="{{$univ->id}}">{{$univ->name}}</option>
